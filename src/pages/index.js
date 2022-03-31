@@ -1,31 +1,53 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import { format, startOfDay } from "date-fns"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Day from "../components/day"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/using-ssr">Go to "Using SSR"</Link> <br />
-      <Link to="/using-dsg">Go to "Using DSG"</Link>
-    </p>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const today = startOfDay(new Date()).getTime()
+
+  const grouped = data.allEvents.edges
+    .map(e => e.node)
+    .map(e => ({ ...e, date: parseInt(e.date, 10) }))
+    .filter(e => e.date >= today)
+    .map(e => ({ ...e, date: new Date(e.date) }))
+    .reduce((groups, e) => {
+      const key = format(e.date, "yyyy-MM-dd")
+      const events = groups[key] ?? []
+
+      return {
+        ...groups,
+        [key]: [...events, e]
+      }
+    }, {})
+
+  const content = Object.entries(grouped).map(([date, events]) => (
+    <Day date={date} events={events} />
+  ))
+
+  return (
+    <Layout>
+      <Seo title="Home" />
+      {content}
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query MyQuery {
+    allEvents(sort: { fields: date }) {
+      edges {
+        node {
+          title
+          date
+          location
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage

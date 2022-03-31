@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `PGH Live`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`
@@ -38,7 +38,21 @@ module.exports = {
     {
       resolve: "gatsby-source-custom-api",
       options: {
-        url: "https://jsonplaceholder.typicode.com/todos/1"
+        rootKey: "events",
+        url: {
+          development: "http://0.0.0.0:8888/.netlify/functions/events",
+          production:
+            "https://pgh-live-api.netlify.app/.netlify/functions/events"
+        },
+        schemas: {
+          events: `
+            title: String
+            description: String
+            date: String
+            location: String
+            source: String
+          `
+        }
       }
     }
   ]
