@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `PGH Live`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`
+    title: `pgh.events`,
+    description: `pittsburgh events`,
+    author: `https://github.com/ericsakmar`,
+    siteUrl: `https://pgh.events`
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,

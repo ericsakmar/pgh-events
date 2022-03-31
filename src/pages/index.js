@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="all" />
       {content}
     </Layout>
   )
