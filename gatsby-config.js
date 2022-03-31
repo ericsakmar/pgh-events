@@ -39,6 +39,7 @@ module.exports = {
       resolve: "gatsby-source-custom-api",
       options: {
         rootKey: "events",
+        // url: "http://0.0.0.0:8888/.netlify/functions/events",
         url: {
           development: "http://0.0.0.0:8888/.netlify/functions/events",
           production:
