@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `pgh.events`,
@@ -45,6 +47,9 @@ module.exports = {
           development: "http://0.0.0.0:8888/.netlify/functions/events",
           production:
             "https://pgh-live-api.netlify.app/.netlify/functions/events"
+        },
+        headers: {
+          Authorization: process.env.CLIENT_SECRET
         },
         schemas: {
           events: `
