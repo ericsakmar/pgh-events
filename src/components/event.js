@@ -5,14 +5,15 @@ const formatTime = date =>
   format(date, "h:mm aaa", { timezone: "America/New_York" })
 
 const Event = ({ event }) => {
-  return (
-    <div>
+  const content = (
+    <>
       <h3>{event.title}</h3>
-
       <p>{event.location}</p>
       <p>{formatTime(event.date)}</p>
-    </div>
+    </>
   )
+
+  return <div>{event.link ? <a href={event.link}>{content}</a> : content}</div>
 }
 
 export default Event
