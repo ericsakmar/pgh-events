@@ -19,7 +19,7 @@ const Day = ({ date: rawDate, events }) => {
 
       <div className={containerStyles.events}>
         {events.map(e => (
-          <Event event={e} />
+          <Event key={e.title} event={e} />
         ))}
       </div>
     </div>

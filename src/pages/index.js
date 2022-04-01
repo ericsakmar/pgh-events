@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
     }, {})
 
   const content = Object.entries(grouped).map(([date, events]) => (
-    <Day date={date} events={events} />
+    <Day key={date} date={date} events={events} />
   ))
 
   return (

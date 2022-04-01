@@ -1,7 +1,8 @@
 import * as React from "react"
 import { format } from "date-fns"
 
-const formatTime = date => format(date, "h:mm aaa")
+const formatTime = date =>
+  format(date, "h:mm aaa", { timezone: "America/New_York" })
 
 const Event = ({ event }) => {
   return (
