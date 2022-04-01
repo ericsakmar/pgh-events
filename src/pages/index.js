@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { compareAsc, format, isAfter, startOfDay } from "date-fns"
+import { utcToZonedTime } from "date-fns-tz"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -11,7 +12,11 @@ const IndexPage = ({ data }) => {
 
   const grouped = data.allEvents.edges
     .map(e => e.node)
-    .map(e => ({ ...e, date: new Date(e.date) }))
+    .map(e => {
+      const d1 = new Date(e.date)
+      const d2 = utcToZonedTime(d1, "America/New_York")
+      return { ...e, date: d2 }
+    })
     .filter(e => isAfter(e.date, today))
     .concat()
     .sort((a, b) => compareAsc(a.date, b.date))
