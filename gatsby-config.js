@@ -58,6 +58,7 @@ module.exports = {
             date: String
             location: String
             source: String
+            link: String
           `
         }
       }
