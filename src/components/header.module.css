@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  max-width: 45rem;
+  padding: 1rem;
+}
+
+.name {
+  border-right: 4px solid goldenrod;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 45rem) {
+  .name {
+    border-right: 2px solid goldenrod;
+    flex: 0 0 10rem;
+    text-align: right;
+  }
+}
