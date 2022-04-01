@@ -46,7 +46,7 @@ module.exports = {
         url: {
           development: "http://0.0.0.0:8888/.netlify/functions/events",
           production:
-            "https://pgh-live-api.netlify.app/.netlify/functions/events"
+            "https://pgh-events-api.netlify.app/.netlify/functions/events"
         },
         headers: {
           Authorization: process.env.CLIENT_SECRET
