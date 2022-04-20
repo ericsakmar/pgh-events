@@ -59,6 +59,7 @@ module.exports = {
             location: String
             source: String
             link: String
+            hasTime: Boolean
           `
         }
       }

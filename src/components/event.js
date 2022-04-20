@@ -23,7 +23,7 @@ const Event = ({ event }) => {
     <>
       <h3>{event.title}</h3>
       <p>{event.location}</p>
-      <p>{formatTime(event.date)}</p>
+      {event.hasTime ? <p>{formatTime(event.date)}</p> : null}
     </>
   )
 
