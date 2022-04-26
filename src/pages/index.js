@@ -52,6 +52,7 @@ export const query = graphql`
           location
           link
           hasTime
+          source
         }
       }
     }
