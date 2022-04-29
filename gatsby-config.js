@@ -38,31 +38,33 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
 
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        rootKey: "events",
-        // url: "http://0.0.0.0:8888/.netlify/functions/events",
-        url: {
-          development: "http://0.0.0.0:8888/.netlify/functions/events",
-          production:
-            "https://pgh-events-api.netlify.app/.netlify/functions/events"
-        },
-        headers: {
-          Authorization: process.env.CLIENT_SECRET
-        },
-        schemas: {
-          events: `
-            title: String
-            description: String
-            date: String
-            location: String
-            source: String
-            link: String
-            hasTime: Boolean
-          `
-        }
-      }
-    }
+    // {
+    //   resolve: "gatsby-source-custom-api",
+    //   options: {
+    //     rootKey: "events",
+    //     // url: "http://0.0.0.0:8888/.netlify/functions/events",
+    //     url: {
+    //       development: "http://0.0.0.0:8888/.netlify/functions/events",
+    //       production:
+    //         "https://pgh-events-api.netlify.app/.netlify/functions/events"
+    //     },
+    //     headers: {
+    //       Authorization: process.env.CLIENT_SECRET
+    //     },
+    //     schemas: {
+    //       events: `
+    //         title: String
+    //         description: String
+    //         date: String
+    //         location: String
+    //         source: String
+    //         link: String
+    //         hasTime: Boolean
+    //       `
+    //     }
+    //   }
+    // }
+
+    "source-plugin"
   ]
 }

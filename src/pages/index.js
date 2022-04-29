@@ -10,7 +10,7 @@ import Day from "../components/day"
 const IndexPage = ({ data }) => {
   const today = startOfDay(new Date())
 
-  const grouped = data.allEvents.edges
+  const grouped = data.allEvent.edges
     .map(e => e.node)
     .map(e => {
       const d1 = new Date(e.date)
@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query MyQuery {
-    allEvents(sort: { fields: date }) {
+    allEvent(sort: { fields: date }) {
       edges {
         node {
           title
