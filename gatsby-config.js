@@ -24,48 +24,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `pgh.events`,
+        short_name: `pgh.events`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#daa520`,
+        theme_color: `#daa520`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+        icon: `src/images/pgh-events.png` // This path is relative to the root of the site.
       }
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-
-    // {
-    //   resolve: "gatsby-source-custom-api",
-    //   options: {
-    //     rootKey: "events",
-    //     // url: "http://0.0.0.0:8888/.netlify/functions/events",
-    //     url: {
-    //       development: "http://0.0.0.0:8888/.netlify/functions/events",
-    //       production:
-    //         "https://pgh-events-api.netlify.app/.netlify/functions/events"
-    //     },
-    //     headers: {
-    //       Authorization: process.env.CLIENT_SECRET
-    //     },
-    //     schemas: {
-    //       events: `
-    //         title: String
-    //         description: String
-    //         date: String
-    //         location: String
-    //         source: String
-    //         link: String
-    //         hasTime: Boolean
-    //       `
-    //     }
-    //   }
-    // }
-
+    `gatsby-plugin-offline`,
     "source-plugin"
   ]
 }
