@@ -36,7 +36,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="all" />
+      <Seo title="pgh.events" />
       {content}
     </Layout>
   )
