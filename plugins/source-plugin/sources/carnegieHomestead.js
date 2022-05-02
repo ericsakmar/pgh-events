@@ -21,8 +21,13 @@ exports.getEvents = async () => {
         .text()
         .trim()
 
-      const rawDate = n
-        .find(".eventColl-dateInfo")
+      const rawMonth = n
+        .find(".eventColl-month")
+        .text()
+        .trim()
+
+      const rawDay = n
+        .find(".eventColl-date")
         .text()
         .trim()
 
@@ -31,9 +36,13 @@ exports.getEvents = async () => {
         .text()
         .trim()
 
-      const date = chrono
-        .parseDate(`${rawDate} at ${rawTime}`, { timezone: "EDT" })
-        .toUTCString()
+      const rawDate = `${rawMonth} ${rawDay} at ${rawTime}`
+
+      const date = chrono.parseDate(rawDate, { timezone: "EDT" })?.toUTCString()
+
+      if (date === undefined) {
+        return undefined
+      }
 
       const location = "Carnegie Library of Homestead Music Hall"
 
@@ -51,6 +60,7 @@ exports.getEvents = async () => {
         hasTime: true
       }
     })
+    .filter(e => e !== undefined)
 
   return events
 }
