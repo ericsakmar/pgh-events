@@ -9,6 +9,7 @@ const crafthouse = require("./sources/crafthouse.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
+const oaks = require("./sources/oaks.js")
 const preserving = require("./sources/preserving.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
@@ -52,6 +53,7 @@ exports.sourceNodes = async ({
     getEvents(governmentCenter),
     getEvents(jergels),
     getEvents(kingfly),
+    getEvents(oaks),
     getEvents(preserving),
     getEvents(roboto),
     getEvents(roxian),
