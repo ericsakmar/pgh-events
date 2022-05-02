@@ -23,15 +23,8 @@ Gatsby front end for https://pgh.events
     npm install
     ```
 
-## Running
-
-1.  **Start the API.**
-
-    See https://github.com/ericsakmar/pgh-events-api for instructions.
-
-1.  **Start the Gatsby front end.**
+1.  **Start it up!**
 
     ```shell
-    cd pgh-events
     gatsby develop
     ```

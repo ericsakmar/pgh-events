@@ -1,6 +1,7 @@
 const belvederes = require("./sources/belvederes.js")
 const blackforge = require("./sources/blackforge.js")
 const brillo = require("./sources/brillo.js")
+const cattivo = require("./sources/cattivo.js")
 const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
@@ -21,7 +22,9 @@ const POST_NODE_TYPE = `Event`
 
 const getEvents = async source => {
   try {
-    return await source.getEvents()
+    const events = await source.getEvents()
+    // TODO log if something didn't find any events
+    return events
   } catch (error) {
     console.error(error)
     return []
@@ -41,6 +44,7 @@ exports.sourceNodes = async ({
     getEvents(belvederes),
     getEvents(blackforge),
     getEvents(brillo),
+    getEvents(cattivo),
     getEvents(clubcafe),
     getEvents(conAlmaDowntown),
     getEvents(conAlmaEllsworth),
