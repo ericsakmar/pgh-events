@@ -1,6 +1,7 @@
 const belvederes = require("./sources/belvederes.js")
 const blackforge = require("./sources/blackforge.js")
 const brillo = require("./sources/brillo.js")
+const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cattivo = require("./sources/cattivo.js")
 const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
@@ -45,6 +46,7 @@ exports.sourceNodes = async ({
     getEvents(belvederes),
     getEvents(blackforge),
     getEvents(brillo),
+    getEvents(carnegieHomestead),
     getEvents(cattivo),
     getEvents(clubcafe),
     getEvents(conAlmaDowntown),
