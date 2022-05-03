@@ -26,8 +26,6 @@ exports.getEvents = async () => {
         .html()
         .replace("<br>", " at ")
 
-      console.log(rawDate)
-
       const date = chrono.parseDate(rawDate, { timezone: "EDT" }).toUTCString()
 
       const location = "The Warhol"

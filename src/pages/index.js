@@ -18,6 +18,7 @@ const IndexPage = ({ data }) => {
       return { ...e, date: d2 }
     })
     .filter(e => isAfter(e.date, today))
+    .filter(e => e.title !== "")
     .concat()
     .sort((a, b) => compareAsc(a.date, b.date))
     .reduce((groups, e) => {
