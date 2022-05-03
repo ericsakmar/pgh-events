@@ -19,10 +19,13 @@ exports.getEvents = async () => {
         .attr("alt")
         .trim()
 
-      const rawDate = n
+      const content = n
         .find(".article-content")
         .text()
         .trim()
+
+      const contentParts = content.split(/\s*-\s*/)
+      const rawDate = contentParts[contentParts.length - 1]
 
       const date = chrono.parseDate(rawDate, { timezone: "EDT" }).toUTCString()
 
