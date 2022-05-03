@@ -19,6 +19,7 @@ const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
 const starlake = require("./sources/starlake.js")
 const thunderbird = require("./sources/thunderbird.js")
+const warhol = require("./sources/warhol.js")
 
 const POST_NODE_TYPE = `Event`
 
@@ -63,7 +64,8 @@ exports.sourceNodes = async ({
     getEvents(spirit),
     getEvents(stageae),
     getEvents(starlake),
-    getEvents(thunderbird)
+    getEvents(thunderbird),
+    getEvents(warhol)
   ])
 
   const events = results.flatMap(r => r)
