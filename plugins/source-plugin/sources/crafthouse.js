@@ -3,6 +3,7 @@ const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
 
 const url = "http://www.crafthousepgh.com/stage/list/"
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)

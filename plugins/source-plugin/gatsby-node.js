@@ -26,7 +26,11 @@ const POST_NODE_TYPE = `Event`
 const getEvents = async source => {
   try {
     const events = await source.getEvents()
-    // TODO log if something didn't find any events
+
+    if (events.length === 0) {
+      console.warn(`no events found for ${source.url}`)
+    }
+
     return events
   } catch (error) {
     console.error(error)

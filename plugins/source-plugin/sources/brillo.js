@@ -4,6 +4,7 @@ const fetchDynamicPage = require("./fetchDynamicPage")
 
 const url = "http://www.brilloboxpgh.com/events/"
 const waitForSelector = ".eo-eb-event-box"
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)

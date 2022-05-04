@@ -4,6 +4,7 @@ const fetchPage = require("./fetchPage")
 
 const url =
   "https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219?pl=opusfood.php"
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)

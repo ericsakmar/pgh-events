@@ -3,6 +3,7 @@ const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
 
 const url = "https://promowestlive.com/pittsburgh/stage-ae"
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)

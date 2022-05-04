@@ -4,6 +4,7 @@ const fetchPage = require("./fetchPage")
 
 const url =
   "https://www.warhol.org/calendar/?event_type=music&timespan=upcoming"
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)

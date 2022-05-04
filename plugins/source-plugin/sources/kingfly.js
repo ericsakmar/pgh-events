@@ -3,12 +3,7 @@ const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
 
 const url = "https://www.kingflyspirits.com/events"
-
-const getData = async () => {
-  const res = await fetch(url)
-  const body = await res.text()
-  return body
-}
+exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)

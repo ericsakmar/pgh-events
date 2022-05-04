@@ -3,6 +3,7 @@ const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
 
 const url = "https://librarymusichall.com/all-shows"
+exports.url = url
 
 exports.getEvents = async () => {
   // TODO this site uses an infinite scroll to keep loading events. maybe there's something

@@ -1,20 +1,21 @@
-const cheerio = require("cheerio");
-const fetchDynamicPage = require("./fetchDynamicPage");
+const cheerio = require("cheerio")
+const fetchDynamicPage = require("./fetchDynamicPage")
 
-const url = "https://blackforgecoffee.com/pages/events";
-const waitForSelector = ".eaec-grid-item-info";
+const url = "https://blackforgecoffee.com/pages/events"
+const waitForSelector = ".eaec-grid-item-info"
+exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector);
+  const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)
 
-  const $ = cheerio.load(data);
+  const $ = cheerio.load(data)
 
   const events = $(".eaec-grid-item script")
     .toArray()
     .map(el => {
-      const ldJson = el.children[0].data;
-      const json = JSON.parse(ldJson);
-      return json;
+      const ldJson = el.children[0].data
+      const json = JSON.parse(ldJson)
+      return json
     })
     .filter(event => event.location.name !== undefined)
     .map(event => ({
@@ -24,7 +25,7 @@ exports.getEvents = async () => {
       link: "https://blackforgecoffee.com/pages/events",
       source: url,
       hasTime: true
-    }));
+    }))
 
-  return events;
-};
+  return events
+}
