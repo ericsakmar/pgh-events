@@ -19,6 +19,10 @@ exports.getEvents = async () => {
         .text()
         .trim()
 
+      if (title === "") {
+        return undefined
+      }
+
       const rawDate = n
         .find(".date")
         .text()
@@ -39,7 +43,7 @@ exports.getEvents = async () => {
         hasTime: false // 9pm, or in the event description
       }
     })
-    .filter(e => e.title !== "")
+    .filter(e => e !== undefined)
 
   return events
 }
