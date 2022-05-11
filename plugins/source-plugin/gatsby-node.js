@@ -7,6 +7,7 @@ const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
 const crafthouse = require("./sources/crafthouse.js")
+const csv = require("./sources/csv.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const hartwood = require("./sources/hartwood.js")
 const jergels = require("./sources/jergels.js")
@@ -58,6 +59,7 @@ exports.sourceNodes = async ({
     getEvents(conAlmaDowntown),
     getEvents(conAlmaEllsworth),
     getEvents(crafthouse),
+    getEvents(csv),
     getEvents(governmentCenter),
     getEvents(hartwood),
     getEvents(jergels),
@@ -79,7 +81,7 @@ exports.sourceNodes = async ({
   events.forEach(event =>
     createNode({
       ...event,
-      id: createNodeId(`${POST_NODE_TYPE}-${event.title}`),
+      id: createNodeId(`${POST_NODE_TYPE}-${event.title}-${event.date}`),
       parent: null,
       children: [],
       internal: {
