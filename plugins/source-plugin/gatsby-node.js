@@ -8,6 +8,7 @@ const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
 const crafthouse = require("./sources/crafthouse.js")
 const governmentCenter = require("./sources/governmentcenter.js")
+const hartwood = require("./sources/hartwood.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
 const oaks = require("./sources/oaks.js")
@@ -58,6 +59,7 @@ exports.sourceNodes = async ({
     getEvents(conAlmaEllsworth),
     getEvents(crafthouse),
     getEvents(governmentCenter),
+    getEvents(hartwood),
     getEvents(jergels),
     getEvents(kingfly),
     getEvents(oaks),
