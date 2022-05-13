@@ -24,8 +24,14 @@ const thunderbird = require("./sources/thunderbird.js")
 const warhol = require("./sources/warhol.js")
 
 const POST_NODE_TYPE = `Event`
+const MAX_RETRIES = 3
 
-const getEvents = async source => {
+const getEvents = async (source, retries = 0) => {
+  if (retries >= MAX_RETRIES) {
+    console.warn(`max retries exceeded for ${source.url}`)
+    return []
+  }
+
   try {
     const events = await source.getEvents()
 
@@ -36,7 +42,9 @@ const getEvents = async source => {
     return events
   } catch (error) {
     console.error(error)
-    return []
+
+    const retry = await getEvents(source, retries + 1)
+    return retry
   }
 }
 
