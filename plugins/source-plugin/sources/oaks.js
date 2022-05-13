@@ -1,6 +1,6 @@
 const cheerio = require("cheerio")
-const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url = "https://www.theoakstheater.com/event-listings"
 exports.url = url
@@ -30,11 +30,7 @@ exports.getEvents = async () => {
         .text()
         .trim()
 
-      const date = chrono
-        .parseDate(`${rawDate} ${rawTime}`, {
-          timezone: "EDT"
-        })
-        .toUTCString()
+      const date = parseDate(`${rawDate} ${rawTime}`)
 
       const location = "The Oaks Theater"
 

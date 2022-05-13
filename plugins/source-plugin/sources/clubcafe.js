@@ -1,6 +1,7 @@
 const fs = require("fs")
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url =
   "https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219?pl=opusfood.php"
@@ -23,7 +24,7 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: event.startDate,
+        date: new Date(event.startDate).getTime(),
         location: event.location.name,
         link: event.url,
         source: url,

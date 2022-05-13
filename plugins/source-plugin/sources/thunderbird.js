@@ -1,6 +1,6 @@
 const cheerio = require("cheerio")
-const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url = "https://thunderbirdmusichall.com/shows/?view=list"
 exports.url = url
@@ -48,7 +48,7 @@ exports.getEvents = async () => {
 
       const rawDate = `${day} ${year} at ${time}`
 
-      const date = chrono.parseDate(rawDate, { timezone: "EDT" }).toUTCString()
+      const date = parseDate(rawDate)
 
       const location = n
         .find(".venueLink")

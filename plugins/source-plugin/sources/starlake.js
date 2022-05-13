@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url =
   "https://www.livenation.com/venue/KovZpZAEk71A/the-pavilion-at-star-lake-events"
@@ -20,7 +21,7 @@ exports.getEvents = async () => {
     .filter(event => event["@type"] === "MusicEvent")
     .map(event => ({
       title: event.name,
-      date: event.startDate,
+      date: parseDate(event.startDate),
       location: event.location.name,
       link: event.url,
       source: url,

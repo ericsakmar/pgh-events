@@ -1,6 +1,6 @@
 const cheerio = require("cheerio")
-const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url = "https://jergels.com/calendar/"
 exports.url = url
@@ -28,7 +28,7 @@ exports.getEvents = async () => {
       const contentParts = content.split(/\s*-\s*/)
       const rawDate = contentParts[contentParts.length - 1]
 
-      const date = chrono.parseDate(rawDate, { timezone: "EDT" }).toUTCString()
+      const date = parseDate(rawDate)
 
       const location = "Jergel's Rhythm Grille"
 

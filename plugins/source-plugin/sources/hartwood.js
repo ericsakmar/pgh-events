@@ -1,6 +1,6 @@
 const cheerio = require("cheerio")
-const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
 const url =
   "https://www.alleghenycounty.us/special-events/summer-concert-series.aspx"
@@ -40,9 +40,7 @@ const get = (container, location, $) => {
         .trim()
         .replace("Saturday", "") // special case
 
-      const date = chrono
-        .parseDate(`${rawDate} at 7:30pm`, { timezone: "EDT" })
-        .toUTCString()
+      const date = parseDate(`${rawDate} at 7:30pm`)
 
       return { title, date, location, link: url, source: url, hasTime: true }
     })

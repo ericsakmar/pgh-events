@@ -1,7 +1,6 @@
-const cheerio = require("cheerio")
-const chrono = require("chrono-node")
 const fetchPage = require("./fetchPage")
 const csv = require("@fast-csv/parse")
+const { parseDate } = require("./parseDate")
 
 const url = process.env.CSV_URL
 
@@ -15,9 +14,7 @@ const parse = data =>
       .parseString(data, { headers: true })
       .transform(row => ({
         title: row["Event Name"],
-        date: chrono
-          .parseDate(`${row.Date} at ${row.Time}`, { timezone: "EDT" })
-          .toUTCString(),
+        date: parseDate(`${row.Date} at ${row.Time}`),
         location: row.Location,
         link: row.Link,
         source: url,

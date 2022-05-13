@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const fetchDynamicPage = require("./fetchDynamicPage")
+const { parseDate } = require("./parseDate")
 
 const url = "https://blackforgecoffee.com/pages/events"
 const waitForSelector = ".eaec-grid-item-info"
@@ -20,7 +21,7 @@ exports.getEvents = async () => {
     .filter(event => event.location.name !== undefined)
     .map(event => ({
       title: event.name,
-      date: event.startDate,
+      date: parseDate(event.startDate),
       location: event.location.name,
       link: "https://blackforgecoffee.com/pages/events",
       source: url,
