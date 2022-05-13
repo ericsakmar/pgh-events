@@ -1,0 +1,11 @@
+.nav {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.navLink {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-decoration: underline;
+  font-size: 1rem;
+}
