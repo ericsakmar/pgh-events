@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import "./global.css"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
