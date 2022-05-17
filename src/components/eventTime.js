@@ -11,7 +11,7 @@ const formatDateTime = date =>
 const formatScreenReaderDateTime = rawDate =>
   new Date(rawDate).toLocaleString(undefined, {
     dateStyle: "long",
-    timeStyle: "short"
+    timeStyle: "medium"
   })
 
 const formatScreenReaderDate = rawDate =>
