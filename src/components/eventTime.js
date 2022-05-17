@@ -18,6 +18,13 @@ const formatScreenReaderDate = rawDate =>
   new Date(rawDate).toLocaleString(undefined, { dateStyle: "long" })
 
 const EventTime = ({ event }) => {
+  console.log(
+    new Date(event.date).toLocaleString(undefined, {
+      dateStyle: "full",
+      timeStyle: "full"
+    })
+  )
+
   return (
     <time dateTime={formatDateTime(event.date)}>
       <span className="visuallyHidden">
