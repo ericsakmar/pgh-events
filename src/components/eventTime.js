@@ -1,5 +1,5 @@
 import * as React from "react"
-import { format } from "date-fns"
+import { format } from "date-fns-tz"
 
 // can't pass options to this when using the fp version
 const formatTime = date =>
