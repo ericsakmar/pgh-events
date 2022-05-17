@@ -1,30 +1,16 @@
 import * as React from "react"
-import { format } from "date-fns-tz"
+import { format } from "date-fns"
 
-// can't pass options to this when using the fp version
-const formatTime = date =>
-  format(date, "h:mm aaa", { timezone: "America/New_York" })
+const formatTime = date => format(date, "h:mm aaa")
 
-const formatDateTime = date =>
-  format(date, "yyyy-MM-dd'T'HH:mm:ssXX", { timezone: "America/New_York" })
+const formatDateTime = date => format(date, "yyyy-MM-dd'T'HH:mm:ssXX")
 
-const formatScreenReaderDateTime = rawDate =>
-  new Date(rawDate).toLocaleString(undefined, {
-    dateStyle: "long",
-    timeStyle: "medium"
-  })
+const formatScreenReaderDateTime = date =>
+  format(date, "MMMM d, yyyy 'at' h:mm:ss aa")
 
-const formatScreenReaderDate = rawDate =>
-  new Date(rawDate).toLocaleString(undefined, { dateStyle: "long" })
+const formatScreenReaderDate = date => format(date, "MMMM d, yyyy")
 
 const EventTime = ({ event }) => {
-  console.log(
-    new Date(event.date).toLocaleString(undefined, {
-      dateStyle: "full",
-      timeStyle: "full"
-    })
-  )
-
   return (
     <time dateTime={formatDateTime(event.date)}>
       <span className="visuallyHidden">
