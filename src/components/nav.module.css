@@ -4,8 +4,6 @@
 }
 
 .navLink {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  text-decoration: underline;
-  font-size: 1rem;
+  display: inline-block;
+  font-size: 3rem;
 }
