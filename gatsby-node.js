@@ -35,8 +35,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .map(e => {
       const d1 = new Date(e.date)
       const d2 = utcToZonedTime(d1, "America/New_York")
-      // console.log(d2.toString())
-      // console.log(d2.toUTCString())
+
+      console.log("in paging: ")
+      console.log(d2.toUTCString())
+
       return { ...e, date: d2.toISOString() }
     })
     .filter(e => e.title !== "")

@@ -11,6 +11,7 @@ const formatScreenReaderDateTime = date =>
 const formatScreenReaderDate = date => format(parseISO(date), "MMMM d, yyyy")
 
 const EventTime = ({ event }) => {
+  console.log("in react:")
   console.log(event.date)
 
   // need to do that little useEffect hack so that these refresh on client-side
