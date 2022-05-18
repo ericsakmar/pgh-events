@@ -11,6 +11,7 @@ const formatScreenReaderDateTime = date =>
 const formatScreenReaderDate = date => format(date, "MMMM d, yyyy")
 
 const EventTime = ({ event }) => {
+  // need to do that little useEffect hack so that these refresh on client-side
   return (
     <time dateTime={formatDateTime(event.date)}>
       <span className="visuallyHidden">
