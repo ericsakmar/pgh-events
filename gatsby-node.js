@@ -1,7 +1,6 @@
 const path = require("path")
-const { parseISO, isAfter, startOfDay, compareAsc } = require("date-fns")
+const { isAfter, startOfDay, compareAsc } = require("date-fns")
 const { formatInTimeZone } = require("date-fns-tz")
-const { utcToZonedTime } = require("date-fns-tz")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -35,13 +34,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .map(e => e.node)
     .map(e => {
       const d1 = new Date(e.date)
-      const d2 = utcToZonedTime(d1, "America/New_York")
-
-      // console.log("base date")
-      // console.log(e.date)
-      // console.log(d1)
-      // console.log(d2)
-
       return { ...e, date: d1 }
     })
     .filter(e => isAfter(e.date, today))
@@ -51,10 +43,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .reduce((groups, e) => {
       const key = formatInTimeZone(e.date, "America/New_York", "yyyy-MM-dd")
       const events = groups[key] ?? []
-
-      console.log(key)
-      console.log(e.title)
-      console.log(e.date)
 
       return {
         ...groups,
