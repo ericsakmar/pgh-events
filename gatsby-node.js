@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const d1 = new Date(e.date)
       const d2 = utcToZonedTime(d1, "America/New_York")
 
-      return { ...e, date: d2 }
+      return { ...e, date: d1 }
     })
     .filter(e => isAfter(e.date, today))
     .filter(e => e.title !== "")
