@@ -37,7 +37,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const d2 = utcToZonedTime(d1, "America/New_York")
 
       console.log("in paging: ")
-      console.log(d2.toUTCString())
+      console.log(d1.toISOString())
+      console.log(d2.toISOString())
 
       return { ...e, date: d2.toISOString() }
     })
