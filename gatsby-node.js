@@ -58,8 +58,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const events = groups[key] ?? []
 
       console.log(key)
-      console.log(event.title)
-      console.log(event.date)
+      console.log(e.title)
+      console.log(e.date)
 
       return {
         ...groups,
