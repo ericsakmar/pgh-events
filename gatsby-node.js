@@ -1,5 +1,11 @@
 const path = require("path")
-const { parseISO, format, isAfter, startOfDay } = require("date-fns")
+const {
+  parseISO,
+  format,
+  isAfter,
+  startOfDay,
+  compareAsc
+} = require("date-fns")
 const { utcToZonedTime } = require("date-fns-tz")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -9,7 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       query MyQuery {
-        allEvent(sort: { fields: date, order: ASC }, filter: {date: {gte: ${today}}}) {
+        allEvent {
           edges {
             node {
               title
@@ -36,15 +42,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const d1 = new Date(e.date)
       const d2 = utcToZonedTime(d1, "America/New_York")
 
-      // console.log("in paging: ")
-      // console.log(d2.toISOString())
-      // console.log(d2.toISOString())
-
-      return { ...e, date: d1.toISOString() }
+      return { ...e, date: d2 }
     })
+    .filter(e => isAfter(e.date, today))
     .filter(e => e.title !== "")
+    .concat()
+    .sort((a, b) => compareAsc(a.date, b.date))
     .reduce((groups, e) => {
-      const key = format(parseISO(e.date), "yyyy-MM-dd")
+      const key = format(e.date, "yyyy-MM-dd")
       const events = groups[key] ?? []
 
       return {
