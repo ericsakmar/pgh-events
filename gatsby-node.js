@@ -39,11 +39,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const grouped = result.data.allEvent.edges
     .map(e => e.node)
     .map(e => {
-      console.log("base date")
-      console.log(d1)
-
       const d1 = new Date(e.date)
       const d2 = utcToZonedTime(d1, "America/New_York")
+
+      console.log("base date")
+      console.log(e.date)
+      console.log(d1)
+      console.log(d2)
 
       return { ...e, date: d1 }
     })
