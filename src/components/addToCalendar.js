@@ -1,5 +1,5 @@
 import * as React from "react"
-import { addHours } from "date-fns"
+import { addHours, parseISO } from "date-fns"
 import { format } from "date-fns/fp"
 
 const formatCalendarDate = format("yyyyMMdd'T'HHmmss")
@@ -37,13 +37,13 @@ const buildGoogleCalendarLink = (title, location, details, start, end) =>
 
 const getCalendarStartDate = event =>
   event.hasTime
-    ? formatCalendarDate(event.date)
-    : formatAllDayCalendarDate(event.date)
+    ? formatCalendarDate(parseISO(event.date))
+    : formatAllDayCalendarDate(parseISO(event.date))
 
 const getCalendarEndDate = event =>
   event.hasTime
-    ? formatCalendarDate(addHours(event.date, 3))
-    : formatAllDayCalendarDate(event.date)
+    ? formatCalendarDate(addHours(parseISO(event.date), 3))
+    : formatAllDayCalendarDate(parseISO(event.date))
 
 const buildCalendarLink = event =>
   buildGoogleCalendarLink(
