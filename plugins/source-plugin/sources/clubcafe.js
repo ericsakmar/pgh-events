@@ -23,7 +23,7 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: new Date(event.startDate).getTime(),
+        date: new Date(event.startDate).toISOString(),
         location: event.location.name,
         link: event.url,
         source: url,
