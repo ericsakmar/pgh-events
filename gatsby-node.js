@@ -42,10 +42,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const d1 = new Date(e.date)
       const d2 = utcToZonedTime(d1, "America/New_York")
 
-      console.log("base date")
-      console.log(e.date)
-      console.log(d1)
-      console.log(d2)
+      // console.log("base date")
+      // console.log(e.date)
+      // console.log(d1)
+      // console.log(d2)
 
       return { ...e, date: d1 }
     })
@@ -56,6 +56,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .reduce((groups, e) => {
       const key = format(e.date, "yyyy-MM-dd")
       const events = groups[key] ?? []
+
+      console.log(key)
+      console.log(event.title)
+      console.log(event.date)
 
       return {
         ...groups,
