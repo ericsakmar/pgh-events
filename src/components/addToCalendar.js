@@ -1,9 +1,12 @@
 import * as React from "react"
-import { addHours } from "date-fns"
-import { format } from "date-fns/fp"
+import { addHours, parseISO } from "date-fns"
+import { formatInTimeZone } from "date-fns-tz"
 
-const formatCalendarDate = format("yyyyMMdd'T'HHmmss")
-const formatAllDayCalendarDate = format("yyyyMMdd")
+const format = (date, dateFormat) =>
+  formatInTimeZone(date, "America/New_York", dateFormat)
+
+const formatCalendarDate = date => format(date, "yyyyMMdd'T'HHmmss")
+const formatAllDayCalendarDate = date => format(date, "yyyyMMdd")
 
 // from https://systemuicons.com/
 // and https://kittygiraudel.com/2020/12/10/accessible-icon-links/
@@ -37,13 +40,13 @@ const buildGoogleCalendarLink = (title, location, details, start, end) =>
 
 const getCalendarStartDate = event =>
   event.hasTime
-    ? formatCalendarDate(event.date)
-    : formatAllDayCalendarDate(event.date)
+    ? formatCalendarDate(parseISO(event.date))
+    : formatAllDayCalendarDate(parseISO(event.date))
 
 const getCalendarEndDate = event =>
   event.hasTime
-    ? formatCalendarDate(addHours(event.date, 3))
-    : formatAllDayCalendarDate(event.date)
+    ? formatCalendarDate(addHours(parseISO(event.date), 3))
+    : formatAllDayCalendarDate(parseISO(event.date))
 
 const buildCalendarLink = event =>
   buildGoogleCalendarLink(

@@ -1,5 +1,9 @@
 import * as React from "react"
-import { format } from "date-fns"
+import { parseISO } from "date-fns"
+import { formatInTimeZone } from "date-fns-tz"
+
+const format = (date, dateFormat) =>
+  formatInTimeZone(date, "America/New_York", dateFormat)
 
 const formatTime = date => format(date, "h:mm aaa")
 
@@ -11,17 +15,18 @@ const formatScreenReaderDateTime = date =>
 const formatScreenReaderDate = date => format(date, "MMMM d, yyyy")
 
 const EventTime = ({ event }) => {
-  // need to do that little useEffect hack so that these refresh on client-side
+  const date = parseISO(event.date)
+
   return (
-    <time dateTime={formatDateTime(event.date)}>
+    <time dateTime={formatDateTime(date)}>
       <span className="visuallyHidden">
         {event.hasTime
-          ? formatScreenReaderDateTime(event.date)
-          : formatScreenReaderDate(event.date)}
+          ? formatScreenReaderDateTime(date)
+          : formatScreenReaderDate(date)}
       </span>
 
       {event.hasTime ? (
-        <span aria-hidden="true">{formatTime(event.date)}</span>
+        <span aria-hidden="true">{formatTime(date)}</span>
       ) : null}
     </time>
   )
