@@ -34,7 +34,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .map(e => e.node)
     .map(e => {
       const d1 = new Date(e.date)
-      return { ...e, date: d1.getTime() }
+      const d2 = utcToZonedTime(d1, "America/New_York")
+      console.log(d2.toString())
+      console.log(d2.toUTCString())
+      return { ...e, date: d2.getTime() }
     })
     .filter(e => e.title !== "")
     .reduce((groups, e) => {
