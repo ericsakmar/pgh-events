@@ -3,6 +3,7 @@ const blackforge = require("./sources/blackforge.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cattivo = require("./sources/cattivo.js")
+const cityOfAsylum = require("./sources/cityOfAsylum.js")
 const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
@@ -57,32 +58,40 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions
 
-  const results = await Promise.all([
-    getEvents(belvederes),
-    getEvents(blackforge),
-    getEvents(brillo),
-    getEvents(carnegieHomestead),
-    getEvents(cattivo),
-    getEvents(clubcafe),
-    getEvents(conAlmaDowntown),
-    getEvents(conAlmaEllsworth),
-    getEvents(crafthouse),
-    getEvents(csv),
-    getEvents(governmentCenter),
-    getEvents(hartwood),
-    getEvents(jergels),
-    getEvents(kingfly),
-    getEvents(oaks),
-    getEvents(preserving),
-    getEvents(roboto),
-    getEvents(roxian),
-    getEvents(smalls),
-    getEvents(spirit),
-    getEvents(stageae),
-    getEvents(starlake),
-    getEvents(thunderbird),
-    getEvents(warhol)
-  ])
+  const prodSources = [
+    belvederes,
+    blackforge,
+    brillo,
+    carnegieHomestead,
+    cattivo,
+    cityOfAsylum,
+    clubcafe,
+    conAlmaDowntown,
+    conAlmaEllsworth,
+    crafthouse,
+    csv,
+    governmentCenter,
+    hartwood,
+    jergels,
+    kingfly,
+    oaks,
+    preserving,
+    roboto,
+    roxian,
+    smalls,
+    spirit,
+    stageae,
+    starlake,
+    thunderbird,
+    warhol
+  ]
+
+  const devSources = [cityOfAsylum]
+
+  const sources =
+    process.env.NODE_ENV === "development" ? devSources : prodSources
+
+  const results = await Promise.all(sources.map(s => getEvents(s)))
 
   const events = results.flatMap(r => r)
 
