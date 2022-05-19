@@ -22,6 +22,7 @@
     "gatsby-source-custom-api": "^2.2.1",
     "gatsby-source-filesystem": "^4.10.1",
     "gatsby-transformer-sharp": "^4.10.0",
+    "html-entities": "^2.3.3",
     "node-fetch": "^2.6.7",
     "prop-types": "^15.8.1",
     "puppeteer": "^13.7.0",

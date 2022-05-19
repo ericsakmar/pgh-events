@@ -1,6 +1,7 @@
 const path = require("path")
 const { isAfter, startOfDay, compareAsc } = require("date-fns")
 const { formatInTimeZone } = require("date-fns-tz")
+const { decode } = require("html-entities")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -34,7 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .map(e => e.node)
     .map(e => {
       const d1 = new Date(e.date)
-      return { ...e, date: d1 }
+      return { ...e, date: d1, title: decode(e.title) }
     })
     .filter(e => isAfter(e.date, today))
     .filter(e => e.title !== "")
