@@ -1,10 +1,13 @@
 const fs = require("fs")
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { zonedTimeToUtc } = require("date-fns-tz")
 
 const url =
   "https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219?pl=opusfood.php"
 exports.url = url
+
+const getDate = rawDate => zonedTimeToUtc(new Date(rawDate), "America/New_York")
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
@@ -23,7 +26,8 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: new Date(event.startDate).toISOString(),
+        // YYYY-MM-DDTHH:MM
+        date: getDate(event.startDate),
         location: event.location.name,
         link: event.url,
         source: url,
