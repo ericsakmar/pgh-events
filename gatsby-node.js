@@ -12,14 +12,11 @@ const TIME_ZONE = "America/New_York"
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const baseToday = startOfDay(new Date())
-  const zonedToUtc = zonedTimeToUtc(baseToday, TIME_ZONE)
-  const utcToZoned = utcToZonedTime(baseToday, TIME_ZONE)
-  const today = baseToday
+  const utcToZoned = utcToZonedTime(new Date(), TIME_ZONE)
+  const today = startOfDay(utcToZoned)
 
-  console.log(baseToday.toISOString())
-  console.log(zonedToUtc.toISOString())
   console.log(utcToZoned.toISOString())
+  console.log(today.toISOString())
 
   const result = await graphql(
     `
