@@ -1,12 +1,8 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
-const { zonedTimeToUtc } = require("date-fns-tz")
 
 const url = "https://cityofasylum.org/events/"
 exports.url = url
-
-const getDate = rawDate =>
-  zonedTimeToUtc(new Date(rawDate), "America/New_York").toISOString()
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
@@ -24,7 +20,7 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: getDate(event.startDate),
+        date: new Date(event.startDate), // it already has a time zone
         location: "City of Asylum",
         link: event.url,
         source: url,
