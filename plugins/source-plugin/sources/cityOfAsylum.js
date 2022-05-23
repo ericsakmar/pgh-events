@@ -1,12 +1,13 @@
-const fs = require("fs")
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
-const { zonedTimeToUtc } = require("date-fns-tz")
+const { parse } = require("date-fns")
 
 const url = "https://cityofasylum.org/events/"
 exports.url = url
 
-const getDate = rawDate => zonedTimeToUtc(new Date(rawDate), "America/New_York")
+// 2022-06-26T15:00:00-04:00
+const parseDate = raw =>
+  parse(raw, "yyyy-MM-dd'T'HH:mm:ssxxx", new Date()).toISOString()
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
@@ -24,7 +25,7 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: getDate(event.startDate),
+        date: parseDate(event.startDate),
         location: "City of Asylum",
         link: event.url,
         source: url,
