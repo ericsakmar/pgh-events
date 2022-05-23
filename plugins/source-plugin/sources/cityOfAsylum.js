@@ -1,4 +1,3 @@
-const fs = require("fs")
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { zonedTimeToUtc } = require("date-fns-tz")
@@ -6,7 +5,8 @@ const { zonedTimeToUtc } = require("date-fns-tz")
 const url = "https://cityofasylum.org/events/"
 exports.url = url
 
-const getDate = rawDate => zonedTimeToUtc(new Date(rawDate), "America/New_York")
+const getDate = rawDate =>
+  zonedTimeToUtc(new Date(rawDate), "America/New_York").toISOString()
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
