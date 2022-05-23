@@ -86,10 +86,10 @@ exports.sourceNodes = async ({
     warhol
   ]
 
-  const devSources = [cityOfAsylum]
+  const devSources = [cityOfAsylum, smalls, spirit, thunderbird]
 
-  const sources =
-    process.env.NODE_ENV === "development" ? devSources : prodSources
+  const sources = devSources
+  // process.env.NODE_ENV === "development" ? devSources : prodSources
 
   const results = await Promise.all(sources.map(s => getEvents(s)))
 

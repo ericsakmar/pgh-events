@@ -1,6 +1,10 @@
 const path = require("path")
 const { isAfter, startOfDay, compareAsc } = require("date-fns")
-const { formatInTimeZone, utcToZonedTime } = require("date-fns-tz")
+const {
+  formatInTimeZone,
+  utcToZonedTime,
+  zonedTimeToUtc
+} = require("date-fns-tz")
 const { decode } = require("html-entities")
 
 const TIME_ZONE = "America/New_York"
@@ -8,7 +12,11 @@ const TIME_ZONE = "America/New_York"
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const today = utcToZonedTime(startOfDay(new Date()), TIME_ZONE)
+  const utcToZoned = utcToZonedTime(new Date(), TIME_ZONE)
+  const today = startOfDay(utcToZoned)
+
+  console.log(utcToZoned.toISOString())
+  console.log(today.toISOString())
 
   const result = await graphql(
     `
