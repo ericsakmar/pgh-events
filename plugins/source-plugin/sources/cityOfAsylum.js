@@ -1,8 +1,13 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { parse } = require("date-fns")
 
 const url = "https://cityofasylum.org/events/"
 exports.url = url
+
+// 2022-06-26T15:00:00-04:00
+const parseDate = raw =>
+  parse(raw, "yyyy-MM-dd'T'HH:mm:ssxxx", new Date()).toISOString()
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
@@ -20,7 +25,7 @@ exports.getEvents = async () => {
     .map(event => {
       return {
         title: event.name,
-        date: new Date(event.startDate), // it already has a time zone
+        date: parseDate(event.startDate),
         location: "City of Asylum",
         link: event.url,
         source: url,
