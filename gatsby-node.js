@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const dates = Object.keys(grouped).sort()
 
   const totalCount = dates.length
-  const perPage = 20
+  const perPage = 14
   const numPages = Math.ceil(totalCount / perPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {

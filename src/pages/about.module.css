@@ -1,0 +1,15 @@
+.about {
+  font-size: 1rem;
+}
+
+.about:not(:first-child) {
+  padding-top: 1rem;
+}
+
+@media (min-width: 45rem) {
+  .about {
+    border-left: 2px solid goldenrod;
+    margin-left: calc(10rem - 2px);
+    padding-left: 1rem;
+  }
+}

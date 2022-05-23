@@ -1,19 +1,37 @@
 .header {
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.link {
   margin: 2rem 0;
+  display: inline-block;
+}
+
+.link:visited {
+  color: inherit;
 }
 
 .name {
   border-right: 4px solid goldenrod;
   padding-right: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.menu {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-end;
+  color: #000;
 }
 
 @media (min-width: 45rem) {
   .name {
     border-right: 2px solid goldenrod;
-    flex: 0 0 10rem;
+    width: 10rem;
     text-align: right;
+    display: inline-block;
   }
 }

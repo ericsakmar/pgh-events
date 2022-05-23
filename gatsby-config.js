@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `pgh.events`,
-    description: `pittsburgh events`,
+    description: `pgh.events is a mashup of venue calendars in Pittsburgh.`,
     author: `https://github.com/ericsakmar`,
     siteUrl: `https://pgh.events`
   },
