@@ -2,15 +2,16 @@
   margin-bottom: 2rem;
 }
 
-.date {
-  align-items: flex-end;
+.dateContainer {
   border-bottom: 2px solid goldenrod;
-  display: flex;
   font-size: 1rem;
   font-weight: 500;
-  gap: 0.5rem;
   margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
+}
+
+.date {
+  display: flex;
+  gap: 1rem;
 }
 
 .actualDate {
@@ -29,17 +30,17 @@
     gap: 1rem;
   }
 
-  .date {
+  .dateContainer {
     border-bottom: none;
     border-right: 2px solid goldenrod;
-    display: block;
     flex: 0 0 10rem;
-    font-size: 1rem;
-    font-weight: 500;
     margin-bottom: 0;
-    padding-bottom: 0;
     padding-right: 1rem;
     text-align: right;
+  }
+
+  .date {
+    display: block;
   }
 
   .actualDate {
