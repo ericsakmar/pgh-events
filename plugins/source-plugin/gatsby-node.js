@@ -86,7 +86,7 @@ exports.sourceNodes = async ({
     warhol
   ]
 
-  const devSources = [cityOfAsylum, smalls, spirit, thunderbird]
+  const devSources = [crafthouse, smalls, spirit, thunderbird]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

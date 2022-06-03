@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "http://www.crafthousepgh.com/stage/list/"
+const url = "https://crafthousepgh.com/events-shows/"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,35 +10,33 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".type-tribe_events")
+  const events = $(".pp-content-post")
     .toArray()
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".tribe-event-url")
+      const titleAndDate = n
+        .find(".pp-post-title")
         .text()
         .trim()
 
-      const rawDate = n
-        .find(".tribe-event-date-start")
-        .text()
-        .trim()
-        .replace("@", "at")
+      const [rawTitle, rawDate] = titleAndDate.split("∙")
+
+      const title = rawTitle.trim()
 
       const date = parseDate(rawDate)
 
       const location = n
-        .find(".tribe-events-venue-details a")
-        .text()
+        .find(`[itemprop="publisher"] meta`)
+        .attr("content")
         .trim()
 
       const link = n
-        .find(".tribe-event-url")
+        .find(".pp-post-link")
         .attr("href")
         .trim()
 
-      return { title, date, location, link, source: url, hasTime: true }
+      return { title, date, location, link, source: url, hasTime: false }
     })
 
   return events
