@@ -39,7 +39,9 @@ const IndexPage = ({ pageContext, location }) => {
     <Layout>
       <Seo title="pgh.events" />
 
-      {state === "SEARCHING" || state === "SEARCH" ? <Search /> : null}
+      {state === "SEARCHING" || state === "SEARCH" ? (
+        <Search date={searchDate} />
+      ) : null}
 
       {content}
 

@@ -3,13 +3,9 @@ import { navigate } from "gatsby"
 
 import * as containerStyles from "./search.module.css"
 
-const Search = () => {
-  const [date, setDate] = React.useState("")
-
+const Search = ({ date }) => {
   const handleDateChange = evt => {
     const newDate = evt.target.value
-    console.log(newDate)
-    setDate(newDate)
 
     if (newDate !== "") {
       navigate(`/?d=${newDate}`)
