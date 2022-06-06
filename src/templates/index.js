@@ -35,14 +35,18 @@ const IndexPage = ({ pageContext, location }) => {
       ))
     )
 
+  const search = React.useMemo(() => {
+    if (state === "SEARCHING" || state === "SEARCH") {
+      return <Search date={searchDate} />
+    }
+
+    return null
+  }, [state, searchDate])
+
   return (
     <Layout>
       <Seo title="pgh.events" />
-
-      {state === "SEARCHING" || state === "SEARCH" ? (
-        <Search date={searchDate} />
-      ) : null}
-
+      {search}
       {content}
 
       {state === "DEFAULT" ? (
