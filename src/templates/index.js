@@ -5,17 +5,29 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
+import Search from "../components/search"
+
+const getState = searchDate => {
+  if (searchDate === "") {
+    return "SEARCHING"
+  }
+
+  if (searchDate && searchDate.length > 0) {
+    return "SEARCH"
+  }
+
+  return "DEFAULT"
+}
 
 const IndexPage = ({ pageContext, location }) => {
   const { events, currentPage, numPages, allEvents } = pageContext
 
   const searchParams = new URLSearchParams(location.search)
   const searchDate = searchParams.get("d")
-  const state = searchDate ? "SEARCHING" : "DEFAULT"
+  const state = getState(searchDate)
 
-  // TODO empty state
   const content =
-    state === "SEARCHING" ? (
+    state === "SEARCH" ? (
       <Day key={searchDate} date={searchDate} events={allEvents[searchDate]} />
     ) : (
       Object.entries(events).map(([date, events]) => (
@@ -26,6 +38,8 @@ const IndexPage = ({ pageContext, location }) => {
   return (
     <Layout>
       <Seo title="pgh.events" />
+
+      {state === "SEARCHING" || state === "SEARCH" ? <Search /> : null}
 
       {content}
 

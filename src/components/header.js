@@ -14,6 +14,8 @@ const Header = () => (
     </h1>
 
     <div className={styles.menu}>
+      <Link to="/?d=">search</Link>&nbsp;
+      <Link to="/venues">venues</Link>&nbsp;
       <Link to="/about">about</Link>
     </div>
   </header>
