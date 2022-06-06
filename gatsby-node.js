@@ -70,11 +70,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/` : `/${i + 1}`,
       component: path.resolve("./src/templates/index.js"),
       context: {
-        limit: perPage,
-        skip: i * perPage,
         numPages,
         currentPage: i + 1,
-        events: eventsForPage
+        events: eventsForPage,
+        allEvents: grouped
       }
     })
   })
