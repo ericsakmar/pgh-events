@@ -5,20 +5,49 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
+import Search from "../components/search"
 
-const IndexPage = ({ pageContext }) => {
-  const { events, currentPage, numPages } = pageContext
+const getState = searchDate => {
+  if (searchDate === "") {
+    return "SEARCHING"
+  }
 
-  // TODO do we need to sort the date keys?
-  const content = Object.entries(events).map(([date, events]) => (
-    <Day key={date} date={date} events={events} />
-  ))
+  if (searchDate && searchDate.length > 0) {
+    return "SEARCH"
+  }
+
+  return "DEFAULT"
+}
+
+const IndexPage = ({ pageContext, location }) => {
+  const { events, currentPage, numPages, allEvents } = pageContext
+
+  const searchParams = new URLSearchParams(location.search)
+  const searchDate = searchParams.get("d")
+  const state = getState(searchDate)
+
+  const content =
+    state === "SEARCH" ? (
+      <Day key={searchDate} date={searchDate} events={allEvents[searchDate]} />
+    ) : (
+      Object.entries(events).map(([date, events]) => (
+        <Day key={date} date={date} events={events} />
+      ))
+    )
 
   return (
     <Layout>
       <Seo title="pgh.events" />
+
+      {state === "SEARCHING" || state === "SEARCH" ? (
+        <Search date={searchDate} />
+      ) : null}
+
       {content}
-      <Nav currentPage={currentPage} numPages={numPages} />
+
+      {state === "DEFAULT" ? (
+        <Nav currentPage={currentPage} numPages={numPages} />
+      ) : null}
     </Layout>
   )
 }
