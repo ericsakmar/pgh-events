@@ -17,6 +17,7 @@ const Search = ({ date }) => {
       <div className={containerStyles.field}>
         <label htmlFor="date">Date:</label>
         <input
+          autoFocus
           type="date"
           name="date"
           onChange={handleDateChange}
