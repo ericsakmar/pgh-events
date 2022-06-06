@@ -9,6 +9,7 @@ const getDate = date => format(date, "MMM d")
 
 const Day = ({ date: rawDate, events }) => {
   const date = parse(rawDate, "yyyy-MM-dd", new Date())
+  const state = events && events.length > 0 ? "DEFAULT" : "EMPTY"
 
   return (
     <div className={containerStyles.day}>
@@ -26,9 +27,11 @@ const Day = ({ date: rawDate, events }) => {
       </h2>
 
       <div className={containerStyles.events}>
-        {events.map(e => (
-          <Event key={e.title} event={e} />
-        ))}
+        {state === "EMPTY" ? (
+          <h3>no events!</h3>
+        ) : (
+          events.map(e => <Event key={e.title} event={e} />)
+        )}
       </div>
     </div>
   )
