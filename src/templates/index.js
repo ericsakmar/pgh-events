@@ -37,7 +37,7 @@ const IndexPage = ({ pageContext, location }) => {
 
   const search = React.useMemo(() => {
     if (state === "SEARCHING" || state === "SEARCH") {
-      return <Search date={searchDate} />
+      return <Search date={searchDate} key="search" />
     }
 
     return null
