@@ -4,6 +4,16 @@ import { navigate } from "gatsby"
 import * as containerStyles from "./search.module.css"
 
 const Search = ({ date }) => {
+  const [hasMounted, setHasMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) {
+    return null
+  }
+
   const handleDateChange = evt => {
     const newDate = evt.target.value
 
