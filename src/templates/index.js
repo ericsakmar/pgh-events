@@ -6,50 +6,60 @@ import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
 import Search from "../components/search"
+import MobileSearch from "../components/mobileSearch"
+import useSearch from "../hooks/useSearch"
 
-const getState = searchDate => {
-  if (searchDate === "") {
-    return "SEARCHING"
-  }
-
-  if (searchDate && searchDate.length > 0) {
-    return "SEARCH"
-  }
-
-  return "DEFAULT"
-}
+import * as styles from "./index.module.css"
 
 const IndexPage = ({ pageContext, location }) => {
   const { events, currentPage, numPages, allEvents } = pageContext
 
-  const searchParams = new URLSearchParams(location.search)
-  const searchDate = searchParams.get("d")
-  const state = getState(searchDate)
+  // TODO is this the best place to get venues?
+  const venues = Array.from(
+    Object.values(allEvents)
+      .flatMap(events => events)
+      .reduce((acc, e) => acc.add(e.location), new Set())
+  ).sort()
 
-  const content =
-    state === "SEARCH" ? (
-      <Day key={searchDate} date={searchDate} events={allEvents[searchDate]} />
-    ) : (
-      Object.entries(events).map(([date, events]) => (
-        <Day key={date} date={date} events={events} />
-      ))
-    )
+  const { events: eventsForDisplay, params, isSearching } = useSearch(
+    location.search,
+    events,
+    allEvents
+  )
 
-  const search = React.useMemo(() => {
-    if (state === "SEARCHING" || state === "SEARCH") {
-      return <Search date={searchDate} key="search" />
-    }
-
-    return null
-  }, [state, searchDate])
+  const content = Object.entries(eventsForDisplay).map(([date, events]) => (
+    <Day key={date} date={date} events={events} />
+  ))
 
   return (
     <Layout>
       <Seo title="pgh.events" />
-      {search}
-      {content}
 
-      {state === "DEFAULT" ? (
+      <div className={styles.content}>
+        <div className={styles.mobileSearch}>
+          <MobileSearch
+            date={params.date}
+            keyword={params.keyword}
+            venue={params.venue}
+            venues={venues}
+          />
+        </div>
+
+        <div className={styles.events}>
+          {content.length === 0 ? "no events" : content}
+        </div>
+
+        <div className={styles.desktopSearch}>
+          <Search
+            date={params.date}
+            keyword={params.keyword}
+            venue={params.venue}
+            venues={venues}
+          />
+        </div>
+      </div>
+
+      {!isSearching ? (
         <Nav currentPage={currentPage} numPages={numPages} />
       ) : null}
     </Layout>

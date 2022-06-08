@@ -1,15 +1,27 @@
 .search {
-  margin-bottom: 2rem;
+  background-color: #ededed;
+  padding: 0.5rem;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.extraActions {
+  flex-grow: 1;
+  text-align: right;
 }
 
 @media (min-width: 45rem) {
-  .search {
-    margin-left: 10rem;
+  .field {
+    max-width: 10rem;
   }
 }

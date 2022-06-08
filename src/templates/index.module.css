@@ -1,0 +1,32 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.events {
+  flex-grow: 1;
+}
+
+.desktopSearch {
+  display: none;
+}
+
+.mobileSearch {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 45rem) {
+  .content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .mobileSearch {
+    display: none;
+  }
+
+  .desktopSearch {
+    display: block;
+    margin-left: 1rem;
+  }
+}
