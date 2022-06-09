@@ -80,7 +80,9 @@ const WebShare = ({ event }) => {
     navigator.clipboard.writeText(shareText)
   }
 
-  if (navigator.share === undefined) {
+  const hasWebShare = navigator && navigator.share
+
+  if (!hasWebShare) {
     return (
       <button onClick={handleCopy} className="buttonLink">
         <CopyIcon />
