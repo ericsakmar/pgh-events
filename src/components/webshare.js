@@ -58,6 +58,13 @@ const CopyIcon = () => (
 )
 
 const WebShare = ({ event }) => {
+  const [hasWebShare, setHasWebShare] = React.useState(false)
+
+  // doing this here so that it updates on first real render
+  React.useEffect(() => {
+    setHasWebShare(navigator && navigator.share)
+  }, [])
+
   const date = parseISO(event.date)
 
   const shareText = `Check out this show I found on https://pgh.events - \n${
@@ -79,8 +86,6 @@ const WebShare = ({ event }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(shareText)
   }
-
-  const hasWebShare = navigator && navigator.share
 
   if (!hasWebShare) {
     return (
