@@ -2,6 +2,7 @@ import * as React from "react"
 import * as containerStyles from "./event.module.css"
 
 import AddToCalendar from "./addToCalendar"
+import WebShare from "./webshare"
 import EventTime from "./eventTime"
 
 // see https://github.com/gatsbyjs/gatsby/issues/22948
@@ -31,6 +32,7 @@ const Event = ({ event }) => {
 
       <div className={containerStyles.actions}>
         <AddToCalendar event={event} />
+        <WebShare event={event} />
       </div>
     </div>
   )

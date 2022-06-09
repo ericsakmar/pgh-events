@@ -60,16 +60,15 @@ const buildCalendarLink = event =>
 const AddToCalendar = ({ event }) => {
   const calendarLink = buildCalendarLink(event)
 
+  const handleClick = () => {
+    window.open(calendarLink, "_blank")
+  }
+
   return (
-    <a
-      href={calendarLink}
-      title="Add to Google Calendar"
-      target="_blank"
-      rel="noreferrer"
-    >
+    <button onClick={handleClick} className="buttonLink">
       <Calendar />
       <span className="visuallyHidden">Add to Google Calendar</span>
-    </a>
+    </button>
   )
 }
 

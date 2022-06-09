@@ -5,7 +5,6 @@ import Search from "../components/search"
 const MobileSearch = props => {
   const [showSearch, setShowSearch] = React.useState(false)
 
-  // TODO aria-announce?
   const toggleSearch = () => setShowSearch(!showSearch)
 
   return showSearch ? (
