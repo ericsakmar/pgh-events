@@ -7,6 +7,9 @@
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  position: sticky;
+  top: -1px;
+  background-color: #fff;
 }
 
 .date {
@@ -41,6 +44,8 @@
 
   .date {
     display: block;
+    position: sticky;
+    top: 1rem;
   }
 
   .actualDate {
