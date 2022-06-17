@@ -23,6 +23,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               link
               hasTime
               source
+              poster
             }
           }
         }

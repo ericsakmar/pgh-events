@@ -37,7 +37,12 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
-      return { title, date, location, link, source: url, hasTime: true }
+      const poster = n
+        .find("img")
+        .attr("src")
+        .trim()
+
+      return { title, date, location, link, source: url, hasTime: true, poster }
     })
 
   return events

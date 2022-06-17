@@ -11,12 +11,18 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".eaec-grid-item script")
+  const events = $(".eaec-grid-item")
     .toArray()
     .map(el => {
-      const ldJson = el.children[0].data
+      const n = $(el)
+
+      const script = n.find("script")
+      const ldJson = script[0].children[0].data
       const json = JSON.parse(ldJson)
-      return json
+
+      const poster = n.find("img").attr("src")
+
+      return { ...json, poster }
     })
     .filter(event => event.location.name !== undefined)
     .map(event => ({
@@ -25,7 +31,8 @@ exports.getEvents = async () => {
       location: event.location.name,
       link: "https://blackforgecoffee.com/pages/events",
       source: url,
-      hasTime: true
+      hasTime: true,
+      poster: event.poster
     }))
 
   return events

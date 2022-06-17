@@ -39,13 +39,16 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
+      const poster = n.find(".eventlist-thumbnail").attr("data-src")
+
       return {
         title,
         date,
         location,
         link: `https://www.theoakstheater.com${link}`,
         source: url,
-        hasTime: true
+        hasTime: true,
+        poster
       }
     })
 

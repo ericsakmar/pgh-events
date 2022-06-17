@@ -45,7 +45,17 @@ exports.getEvents = async () => {
 
       const link = `https://spiritpgh.com${rawLink}`
 
-      return { title, date, location, link, source: url, hasTime: true }
+      const poster = n.find(".main-image img").attr("data-src")
+
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: true,
+        poster: poster?.trim()
+      }
     })
 
   return events

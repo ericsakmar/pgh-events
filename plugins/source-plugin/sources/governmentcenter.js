@@ -34,13 +34,20 @@ exports.getEvents = async () => {
 
       const link = n.attr("href").trim()
 
+      const poster = n
+        .find(".div-block-35")
+        .attr("style")
+        .match(/".*?"/)[0]
+        .replace(/"/g, "")
+
       return {
         title,
         date,
         location,
         link: `https://www.thegovernmentcenter.com${link}`,
         source: url,
-        hasTime: false
+        hasTime: false,
+        poster
       }
     })
 

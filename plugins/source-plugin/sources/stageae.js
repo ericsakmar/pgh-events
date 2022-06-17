@@ -42,7 +42,14 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
-      return { title, date, location, link, source: url, hasTime: true }
+      const poster = n
+        .find(".background-image")
+        .first()
+        .attr("style")
+        .match(/'.*?'/)[0]
+        .replace(/'/g, "")
+
+      return { title, date, location, link, source: url, hasTime: true, poster }
     })
     .filter(e => e.location === "Stage AE")
 

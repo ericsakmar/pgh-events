@@ -25,7 +25,8 @@ exports.getEvents = async () => {
       location: event.location.name,
       link: event.url,
       source: url,
-      hasTime: true
+      hasTime: true,
+      poster: event.image
     }))
 
   return events

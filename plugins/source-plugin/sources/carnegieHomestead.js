@@ -52,13 +52,16 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
+      const poster = n.find("img").attr("src")
+
       return {
         title,
         date,
         location,
         link: `https://librarymusichall.com${link}`,
         source: url,
-        hasTime: true
+        hasTime: true,
+        poster
       }
     })
     .filter(e => e !== undefined)

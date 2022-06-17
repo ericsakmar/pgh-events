@@ -42,7 +42,16 @@ const get = (container, location, $) => {
 
       const date = parseDate(`${rawDate} at 7:30pm`)
 
-      return { title, date, location, link: url, source: url, hasTime: true }
+      return {
+        title,
+        date,
+        location,
+        link: url,
+        source: url,
+        hasTime: true,
+        poster:
+          "https://www.alleghenycounty.us/uploadedImages/Allegheny_Home/Dept-Content/Special_Events/SummerConcerts%202022%20Logo.jpg"
+      }
     })
 
   return events

@@ -29,7 +29,8 @@ exports.getEvents = async () => {
         location: "City of Asylum",
         link: event.url,
         source: url,
-        hasTime: true
+        hasTime: true,
+        poster: event.image
       }
     })
 

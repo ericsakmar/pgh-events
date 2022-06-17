@@ -30,7 +30,20 @@ exports.getEvents = async () => {
 
       const link = "https://cattivopgh.com/events"
 
-      return { title, date, location, link, source: url, hasTime: false }
+      const poster = n
+        .find(`[data-ux="ContentCardWrapperImage"] img`)
+        .attr("data-srclazy")
+        .trim()
+
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: false,
+        poster: `https:${poster}`
+      }
     })
 
   return events

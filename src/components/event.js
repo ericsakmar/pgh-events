@@ -22,6 +22,10 @@ const Event = ({ event }) => {
 
   return (
     <div>
+      {event.poster && (
+        <img src={event.poster} alt="event poster" loading="lazy" />
+      )}
+
       <h3>{link ? <a href={link}>{event.title}</a> : event.title}</h3>
 
       <p>{event.location}</p>

@@ -36,7 +36,20 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
-      return { title, date, location, link, source: url, hasTime: false }
+      const poster = n
+        .find(".pp-post-img")
+        .attr("src")
+        .trim()
+
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: false,
+        poster
+      }
     })
 
   return events

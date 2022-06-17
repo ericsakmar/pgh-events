@@ -35,13 +35,19 @@ exports.getEvents = async () => {
         .attr("href")
         .trim()
 
+      const poster = n
+        .find(".summary-thumbnail-image")
+        .attr("data-src")
+        .trim()
+
       return {
         title,
         date,
         location,
         link: `https://www.kingflyspirits.com${link}`,
         source: url,
-        hasTime: false
+        hasTime: false,
+        poster
       }
     })
 
