@@ -39,6 +39,7 @@ exports.getEvents = async () => {
         .find("img")
         .attr("src")
         .trim()
+        .replace("http", "https")
 
       return {
         title,
