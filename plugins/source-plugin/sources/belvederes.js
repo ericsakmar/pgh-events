@@ -35,12 +35,13 @@ exports.getEvents = async () => {
 
       const link = n.find("a").attr("href")
 
-      const relativePoster = n
-        .find("img")
-        .attr("src")
-        .trim()
+      // const relativePoster = n
+      //   .find("img")
+      //   .attr("src")
+      //   .trim()
 
-      const poster = `http://belvederesultradive.com/${relativePoster}`
+      // can't show mixed http/https content
+      // const poster = `http://belvederesultradive.com/${relativePoster}`
 
       return {
         title,
@@ -48,8 +49,7 @@ exports.getEvents = async () => {
         location,
         link,
         source: url,
-        hasTime: false, // 9pm, or in the event description
-        poster
+        hasTime: false // 9pm, or in the event description
       }
     })
     .filter(e => e !== undefined)

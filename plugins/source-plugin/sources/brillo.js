@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
-const url = "http://www.brilloboxpgh.com/events/"
+const url = "https://www.brilloboxpgh.com/events/"
 const waitForSelector = ".eo-eb-event-box"
 exports.url = url
 
