@@ -11,12 +11,14 @@ const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
+const drewsClues = require("./sources/drewsClues.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const hartwood = require("./sources/hartwood.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
 const oaks = require("./sources/oaks.js")
 const preserving = require("./sources/preserving.js")
+const radical = require("./sources/radical.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const smalls = require("./sources/smalls.js")
@@ -74,12 +76,14 @@ exports.sourceNodes = async ({
     conAlmaEllsworth,
     crafthouse,
     csv,
+    drewsClues,
     governmentCenter,
     hartwood,
     jergels,
     kingfly,
     oaks,
     preserving,
+    radical,
     roboto,
     roxian,
     smalls,
@@ -90,7 +94,7 @@ exports.sourceNodes = async ({
     warhol
   ]
 
-  const devSources = [arcade, bottlerocket]
+  const devSources = [drewsClues, radical]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
@@ -102,7 +106,9 @@ exports.sourceNodes = async ({
   events.forEach(event =>
     createNode({
       ...event,
-      id: createNodeId(`${POST_NODE_TYPE}-${event.title}-${event.date}`),
+      id: createNodeId(
+        `${POST_NODE_TYPE}-${event.title}-${event.date}-${event.location}`
+      ),
       parent: null,
       children: [],
       internal: {
