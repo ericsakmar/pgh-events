@@ -1,5 +1,7 @@
+const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
 const blackforge = require("./sources/blackforge.js")
+const bottlerocket = require("./sources/bottlerocket.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cattivo = require("./sources/cattivo.js")
@@ -59,8 +61,10 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
+    arcade,
     belvederes,
     blackforge,
+    bottlerocket,
     brillo,
     carnegieHomestead,
     cattivo,
@@ -86,7 +90,7 @@ exports.sourceNodes = async ({
     warhol
   ]
 
-  const devSources = [blackforge, brillo, smalls, spirit]
+  const devSources = [arcade, bottlerocket]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
