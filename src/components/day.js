@@ -30,7 +30,9 @@ const Day = ({ date: rawDate, events }) => {
         {state === "EMPTY" ? (
           <h3>no events!</h3>
         ) : (
-          events.map(e => <Event key={e.title} event={e} />)
+          events.map(e => (
+            <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
+          ))
         )}
       </div>
     </div>
