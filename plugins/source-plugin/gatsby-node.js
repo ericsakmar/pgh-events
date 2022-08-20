@@ -58,7 +58,7 @@ exports.onPreInit = () => console.log("Loaded gatsby-starter-plugin")
 exports.sourceNodes = async ({
   actions,
   createContentDigest,
-  createNodeId
+  createNodeId,
 }) => {
   const { createNode } = actions
 
@@ -91,10 +91,10 @@ exports.sourceNodes = async ({
     stageae,
     starlake,
     thunderbird,
-    warhol
+    warhol,
   ]
 
-  const devSources = [drewsClues, radical]
+  const devSources = [blackforge, governmentCenter]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
@@ -114,8 +114,8 @@ exports.sourceNodes = async ({
       internal: {
         type: POST_NODE_TYPE,
         content: JSON.stringify(event),
-        contentDigest: createContentDigest(event)
-      }
+        contentDigest: createContentDigest(event),
+      },
     })
   )
 }

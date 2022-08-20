@@ -3,7 +3,7 @@ const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
 const url = "https://blackforgecoffee.com/pages/events"
-const waitForSelector = ".eaec-grid-item-info"
+const waitForSelector = ".eapp-events-calendar-list-events"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -11,7 +11,7 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".eaec-grid-item")
+  const events = $(".eapp-events-calendar-list-item-component")
     .toArray()
     .map(el => {
       const n = $(el)
@@ -32,7 +32,7 @@ exports.getEvents = async () => {
       link: "https://blackforgecoffee.com/pages/events",
       source: url,
       hasTime: true,
-      poster: event.poster
+      poster: event.poster,
     }))
 
   return events
