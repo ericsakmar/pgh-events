@@ -15,32 +15,17 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".show-title")
-        .text()
-        .trim()
+      const title = n.find(".show-title").text().trim()
 
-      const rawDate = n
-        .find(".date-show")
-        .attr("content")
-        .trim()
+      const rawDate = n.find(".date-show").attr("content").trim()
 
       const date = parseDate(rawDate)
 
-      const location = n
-        .find(".venue-location-name")
-        .text()
-        .trim()
+      const location = n.find(".venue-location-name").text().trim()
 
-      const link = n
-        .find(".more-info")
-        .attr("href")
-        .trim()
+      const link = n.find(".more-info").attr("href").trim()
 
-      const poster = n
-        .find(".thumbnail")
-        .attr("src")
-        .trim()
+      const poster = n.find(".thumbnail").attr("src")?.trim()
 
       return { title, date, location, link, source: url, hasTime: true, poster }
     })
