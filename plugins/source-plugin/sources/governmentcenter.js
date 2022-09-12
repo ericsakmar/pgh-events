@@ -6,8 +6,19 @@ const url = "https://www.thegovernmentcenter.com/events"
 exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
+  const page1 = await fetchPage.fetchPage(url)
+  const page1events = getEventsOnPage(page1)
 
+  const $ = cheerio.load(page1)
+  const page2link = $(".w-pagination-next").attr("href").trim()
+  const page2url = `${url}${page2link}`
+  const page2 = await fetchPage.fetchPage(page2url)
+  const page2events = getEventsOnPage(page2)
+
+  return [...page1events, ...page2events]
+}
+
+const getEventsOnPage = data => {
   const $ = cheerio.load(data)
 
   const events = $(".events")
@@ -15,22 +26,13 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".heading-27")
-        .text()
-        .trim()
+      const title = n.find(".heading-27").text().trim()
 
-      const rawDate = n
-        .find(".date")
-        .text()
-        .trim()
+      const rawDate = n.find(".date").text().trim()
 
       const date = parseDate(rawDate)
 
-      const location = n
-        .find(".location")
-        .text()
-        .trim()
+      const location = n.find(".location").text().trim()
 
       const link = n.attr("href").trim()
 
@@ -47,7 +49,7 @@ exports.getEvents = async () => {
         link: `https://www.thegovernmentcenter.com${link}`,
         source: url,
         hasTime: false,
-        poster
+        poster,
       }
     })
 
