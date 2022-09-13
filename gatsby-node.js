@@ -11,6 +11,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const localToday = utcToZonedTime(new Date(), TIME_ZONE)
   const today = startOfDay(localToday)
 
+  console.log("localToday")
+  console.log(localToday)
+
+  console.log("today")
+  console.log(today)
+
   const result = await graphql(
     `
       query MyQuery {
@@ -52,7 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       return {
         ...groups,
-        [key]: [...events, e]
+        [key]: [...events, e],
       }
     }, {})
 
@@ -74,8 +80,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         numPages,
         currentPage: i + 1,
         events: eventsForPage,
-        allEvents: grouped
-      }
+        allEvents: grouped,
+      },
     })
   })
 }
