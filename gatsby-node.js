@@ -8,8 +8,12 @@ const TIME_ZONE = "America/New_York"
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const localToday = utcToZonedTime(new Date(), TIME_ZONE)
+  const serverDate = new Date()
+  const localToday = utcToZonedTime(serverDate, TIME_ZONE)
   const today = startOfDay(localToday)
+
+  console.log("serverDate")
+  console.log(serverDate)
 
   console.log("localToday")
   console.log(localToday)
