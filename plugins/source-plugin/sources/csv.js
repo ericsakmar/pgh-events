@@ -6,6 +6,18 @@ const url = process.env.CSV_URL
 
 exports.url = "csv"
 
+const convertPosterLink = url => {
+  if (url.length === 0) {
+    return null
+  }
+
+  const [_url, rawQuery] = url.split("?")
+  const params = new URLSearchParams(rawQuery)
+  const googleDriveId = params.get("id")
+
+  return `https://drive.google.com/uc?export=view&id=${googleDriveId}`
+}
+
 const parse = data =>
   new Promise(resolve => {
     const parsed = []
@@ -18,7 +30,8 @@ const parse = data =>
         location: row.Location,
         link: row.Link,
         source: url,
-        hasTime: true
+        hasTime: true,
+        poster: convertPosterLink(row.Poster),
       }))
       .on("data", row => parsed.push(row))
       .on("end", () => resolve(parsed))
