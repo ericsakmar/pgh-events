@@ -28,9 +28,6 @@ exports.getEvents = async () => {
         .split(" - ")
 
       const startDate = `${json.startDate} at ${startTime}`
-      console.log(startDate)
-      console.log(parseDate(startDate))
-      console.log("--")
 
       return { ...json, poster, startDate }
     })

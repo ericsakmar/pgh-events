@@ -1,6 +1,7 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
+const { findTime } = require("./findTime")
 
 const url = "https://cattivopgh.com/events"
 exports.url = url
@@ -15,16 +16,16 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find("h4")
-        .first()
-        .text()
-        .trim()
+      const title = n.find("h4").first().text().trim()
 
       // TODO find a more reliable way to get this
       const rawDate = title.split(" ")[0]
 
-      const date = parseDate(rawDate)
+      const description = n.find(`[data-ux="ContentCardText"]`).text().trim()
+      const time = findTime(description)
+      const hasTime = time !== null
+
+      const date = parseDate(hasTime ? `${rawDate} at ${time}` : rawDate)
 
       const location = "Cattivo"
 
@@ -41,8 +42,8 @@ exports.getEvents = async () => {
         location,
         link,
         source: url,
-        hasTime: false,
-        poster: `https:${poster}`
+        hasTime,
+        poster: `https:${poster}`,
       }
     })
 

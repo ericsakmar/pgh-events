@@ -1,28 +1,11 @@
 const cheerio = require("cheerio")
-const winkNLP = require("wink-nlp")
-const its = require("wink-nlp/src/its.js")
-const as = require("wink-nlp/src/as.js")
-const model = require("wink-eng-lite-model")
 const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
+const { findTime } = require("./findTime")
 
 const url = "https://www.brilloboxpgh.com/events/"
 const waitForSelector = ".eo-eb-event-box"
 exports.url = url
-
-const nlp = winkNLP(model)
-
-const findTime = text => {
-  const doc = nlp.readDoc(text)
-
-  const times = doc
-    .entities()
-    .filter(e => e.out(its.type) === "TIME")
-    .out()
-    .filter(t => t !== "NIGHT")
-
-  return times.length > 0 ? times[0] : null
-}
 
 exports.getEvents = async () => {
   const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)
