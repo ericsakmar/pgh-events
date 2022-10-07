@@ -22,7 +22,12 @@ exports.getEvents = async () => {
 
       const poster = n.find("img").attr("src")
 
-      return { ...json, poster }
+      const [startTime, _endTime] = n
+        .find(".eapp-events-calendar-time-text")
+        .text()
+        .split(" - ")
+
+      return { ...json, poster, startDate: `${json.startDate} at ${startTime}` }
     })
     .filter(event => event.location.name !== undefined)
     .map(event => ({

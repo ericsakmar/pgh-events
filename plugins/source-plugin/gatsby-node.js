@@ -94,7 +94,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [roboto]
+  const devSources = [blackforge]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
