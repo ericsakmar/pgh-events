@@ -94,7 +94,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [csv]
+  const devSources = [roboto]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

@@ -15,10 +15,7 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const rawDate = n
-        .find("strong")
-        .text()
-        .trim()
+      const rawDate = n.find("strong").text().trim()
 
       const title = n
         .text()
@@ -33,12 +30,16 @@ exports.getEvents = async () => {
 
       const location = "The Mr. Roboto Project"
 
-      const link = n
-        .find("a")
-        .attr("href")
-        .trim()
+      const link = n.find("a").attr("href")
 
-      return { title, date, location, link, source: url, hasTime: true }
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: true,
+      }
     })
 
   return events
