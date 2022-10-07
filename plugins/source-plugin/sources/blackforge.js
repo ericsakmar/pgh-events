@@ -27,7 +27,12 @@ exports.getEvents = async () => {
         .text()
         .split(" - ")
 
-      return { ...json, poster, startDate: `${json.startDate} at ${startTime}` }
+      const startDate = `${json.startDate} at ${startTime}`
+      console.log(startDate)
+      console.log(parseDate(startDate))
+      console.log("--")
+
+      return { ...json, poster, startDate }
     })
     .filter(event => event.location.name !== undefined)
     .map(event => ({
