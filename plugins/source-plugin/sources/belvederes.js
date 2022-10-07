@@ -15,21 +15,15 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".eventtextx")
-        .text()
-        .trim()
+      const title = n.find(".eventtextx").text().trim()
 
       if (title === "") {
         return undefined
       }
 
-      const rawDate = n
-        .find(".date")
-        .text()
-        .trim()
+      const rawDate = n.find(".date").text().replace("More Info", "").trim()
 
-      const date = parseDate(rawDate)
+      const date = parseDate(`${rawDate} at 9pm`)
 
       const location = "Belvederes Ultra Dive"
 
@@ -49,7 +43,7 @@ exports.getEvents = async () => {
         location,
         link,
         source: url,
-        hasTime: false // 9pm, or in the event description
+        hasTime: true,
       }
     })
     .filter(e => e !== undefined)
