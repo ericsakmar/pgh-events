@@ -17,16 +17,21 @@ const useLink = link => {
   return stateLink
 }
 
+const withLink = (link, content) =>
+  link ? <a href={link}>{content}</a> : content
+
 const Event = ({ event }) => {
   const link = useLink(event.link)
 
   return (
     <div>
-      {event.poster && (
-        <img src={event.poster} alt="event poster" loading="lazy" />
-      )}
+      {event.poster &&
+        withLink(
+          link,
+          <img src={event.poster} alt="event poster" loading="lazy" />
+        )}
 
-      <h3>{link ? <a href={link}>{event.title}</a> : event.title}</h3>
+      <h3>{withLink(link, event.title)}</h3>
 
       <p>{event.location}</p>
 
