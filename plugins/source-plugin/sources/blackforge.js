@@ -23,7 +23,7 @@ exports.getEvents = async () => {
       const poster = n.find("img").attr("src")
 
       const [startTime, _endTime] = n
-        .find(".eapp-events-calendar-time-text")
+        .find(".eapp-events-calendar-time-time")
         .text()
         .split(" - ")
 
