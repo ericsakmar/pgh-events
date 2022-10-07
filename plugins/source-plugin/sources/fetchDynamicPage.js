@@ -4,10 +4,11 @@ const getPage = async (url, selector) => {
   const browser = await puppeteer.launch({
     // args: chromium.args,
     // executablePath: await chromium.executablePath,
-    headless: true
+    headless: true,
   })
 
   const page = await browser.newPage()
+  await page.emulateTimezone("America/New_York")
   // page.setDefaultNavigationTimeout(4000);
   // page.setDefaultTimeout(3000);
   await page.goto(url)
