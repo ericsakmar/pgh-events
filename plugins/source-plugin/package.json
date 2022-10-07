@@ -20,6 +20,7 @@
     "chrono-node": "^2.3.8",
     "date-fns": "^2.28.0",
     "node-fetch": "^2.6.7",
-    "puppeteer": "^13.7.0"
+    "puppeteer": "^13.7.0",
+    "wink-nlp": "^1.12.0"
   }
 }
