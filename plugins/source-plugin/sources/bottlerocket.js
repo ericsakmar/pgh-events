@@ -1,8 +1,8 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
-const { parseDate } = require("./parseDate")
 
-const url = "https://www.tickettailor.com/events/Bottlerocket"
+const url =
+  "https://www.eventbrite.com/o/bottlerocket-social-hall-52609586153#events"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,45 +10,24 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".event_listing")
+  const events = $("script[type='application/ld+json']")
     .toArray()
     .map(el => {
-      const n = $(el)
-
-      const title = n
-        .find(".name")
-        .text()
-        .trim()
-
-      const rawDate = n
-        .find(".date_and_time")
-        .text()
-        .trim()
-
-      const date = parseDate(rawDate)
-
-      const location = "Bottlerocket Social Hall"
-
-      const link = n
-        .find("a")
-        .attr("href")
-        .trim()
-
-      const poster = n
-        .find(".event_image")
-        .attr("src")
-        .trim()
-
-      return {
-        title,
-        date,
-        location,
-        link: `https://tickettailor.com${link}`,
-        source: url,
-        hasTime: true,
-        poster
-      }
+      const ldJson = el.children[0].data
+      const json = JSON.parse(ldJson)
+      return json
     })
+    .filter(data => Array.isArray(data))
+    .flatMap(data => data)
+    .map(data => ({
+      title: data.name,
+      date: data.startDate,
+      location: data.location.name,
+      link: data.url,
+      source: url,
+      hasTime: true,
+      poster: data.image,
+    }))
 
   return events
 }
