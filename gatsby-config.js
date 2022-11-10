@@ -5,19 +5,19 @@ module.exports = {
     title: `pgh.events`,
     description: `pgh.events is a mashup of venue calendars in Pittsburgh.`,
     author: `https://github.com/ericsakmar`,
-    siteUrl: `https://pgh.events`
+    siteUrl: `https://pgh.events`,
   },
 
   plugins: [
-    "gatsby-plugin-netlify",
+    // "gatsby-plugin-netlify",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
+        path: `${__dirname}/src/images`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -32,12 +32,12 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/pgh-events.png`, // This path is relative to the root of the site.
         icon_options: {
-          purpose: `any maskable`
-        }
-      }
+          purpose: `any maskable`,
+        },
+      },
     },
     // `gatsby-plugin-offline`,
     "gatsby-plugin-remove-serviceworker",
-    "source-plugin"
-  ]
+    "source-plugin",
+  ],
 }
