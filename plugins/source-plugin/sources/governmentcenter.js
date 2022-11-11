@@ -18,6 +18,18 @@ exports.getEvents = async () => {
   return [...page1events, ...page2events]
 }
 
+const getPoster = n => {
+  try {
+    return n
+      .find(".div-block-35")
+      .attr("style")
+      .match(/".*?"/)[0]
+      .replace(/"/g, "")
+  } catch {
+    return null
+  }
+}
+
 const getEventsOnPage = data => {
   const $ = cheerio.load(data)
 
@@ -36,11 +48,7 @@ const getEventsOnPage = data => {
 
       const link = n.attr("href").trim()
 
-      const poster = n
-        .find(".div-block-35")
-        .attr("style")
-        .match(/".*?"/)[0]
-        .replace(/"/g, "")
+      const poster = getPoster(n)
 
       return {
         title,
