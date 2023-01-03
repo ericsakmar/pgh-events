@@ -18,7 +18,11 @@ exports.getEvents = async () => {
     .toArray()
     .map(el => {
       const ldJson = el.children[0].data
-      const json = JSON.parse(ldJson)
+
+      // at some point, an event had a tab character in the name, and the parser did not like that
+      const fixed = ldJson.replace(/\t/g, "")
+
+      const json = JSON.parse(fixed)
       return json
     })
     .flatMap(events => events)
@@ -32,7 +36,7 @@ exports.getEvents = async () => {
         link: event.url,
         source: url,
         hasTime: true,
-        poster: event.image
+        poster: event.image,
       }
     })
 
