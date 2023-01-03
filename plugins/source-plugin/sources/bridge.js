@@ -1,33 +1,42 @@
 const cheerio = require("cheerio")
-const fetchPage = require("./fetchPage")
+const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
 const url = "https://www.thebridgemusicbar.com/shows"
+const waitForSelector = ".eapp-events-calendar-grid-component"
 exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
+  const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)
 
   const $ = cheerio.load(data)
 
-  const events = $(".eventlist-event")
+  const events = $(".eapp-events-calendar-grid-item")
     .toArray()
     .map(el => {
       const n = $(el)
 
-      const title = n.find(".eventlist-title").text().trim()
-      const rawDate = n.find(".eventlist-meta-date").text().trim()
-      const rawTime = n.find(".event-time-localized-start").text().trim()
+      const script = n.find("script")
+      const ldJson = script[0].children[0].data
+      const json = JSON.parse(ldJson)
+
+      const title = json.name
+      const rawDate = json.startDate
+      const rawTime = n
+        .find(".eapp-events-calendar-time-time")
+        .text()
+        .trim()
+        .split(" - ")[0]
       const date = parseDate(`${rawDate} at ${rawTime}`)
       const location = "The Bridge Music Bar"
-      const link = n.find(".eventlist-title-link").attr("href").trim()
-      const poster = n.find(".eventlist-thumbnail").attr("data-src")?.trim()
+      const link = "https://www.thebridgemusicbar.com/shows"
+      const poster = n.find("img").attr("src")
 
       return {
         title,
         date,
         location,
-        link: `${url}${link}`,
+        link,
         source: url,
         hasTime: true,
         poster,
