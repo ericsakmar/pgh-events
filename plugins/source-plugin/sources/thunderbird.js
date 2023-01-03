@@ -17,10 +17,7 @@ exports.getEvents = async () => {
       year = $(year.prev())
     }
 
-    return year
-      .text()
-      .trim()
-      .split(" ")[1]
+    return year.text().trim().split(" ")[1]
   }
 
   const events = $(".eventWrapper")
@@ -28,42 +25,15 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find("#eventTitle")
-        .attr("title")
-        .trim()
-
-      const day = n
-        .find("#eventDate")
-        .text()
-        .trim()
-
+      const title = n.find("#eventTitle").attr("title")?.trim()
+      const day = n.find("#eventDate").text().trim()
       const year = getYear(n)
-
-      const time = n
-        .find(".eventDoorStartDate")
-        .text()
-        .trim()
-        .split(" ")[1]
-
+      const time = n.find(".eventDoorStartDate").text().trim().split(" ")[1]
       const rawDate = `${day} ${year} at ${time}`
-
       const date = parseDate(rawDate)
-
-      const location = n
-        .find(".venueLink")
-        .text()
-        .trim()
-
-      const link = n
-        .find("#eventTitle")
-        .attr("href")
-        .trim()
-
-      const poster = n
-        .find(".eventListImage")
-        .attr("src")
-        .trim()
+      const location = n.find(".venueLink").text().trim()
+      const link = n.find("#eventTitle").attr("href")?.trim()
+      const poster = n.find(".eventListImage").attr("src")?.trim()
 
       return {
         title,
@@ -72,7 +42,7 @@ exports.getEvents = async () => {
         link,
         source: url,
         hasTime: true,
-        poster
+        poster,
       }
     })
 
