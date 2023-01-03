@@ -90,7 +90,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [clubcafe]
+  const devSources = [thunderbird]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
