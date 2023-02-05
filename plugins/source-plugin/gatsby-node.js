@@ -92,7 +92,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [shsb]
+  const devSources = [bridge]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
