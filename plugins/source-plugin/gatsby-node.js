@@ -94,8 +94,8 @@ exports.sourceNodes = async ({
 
   const devSources = [blackforge]
 
-  const sources =
-    process.env.NODE_ENV === "development" ? devSources : prodSources
+  const sources = prodSources
+  // process.env.NODE_ENV === "development" ? devSources : prodSources
 
   const results = await Promise.all(sources.map(s => getEvents(s)))
 

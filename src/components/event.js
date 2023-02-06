@@ -28,7 +28,12 @@ const Event = ({ event }) => {
       {event.poster &&
         withLink(
           link,
-          <img src={event.poster} alt="event poster" loading="lazy" />
+          <img
+            src={event.poster}
+            alt="event poster"
+            loading="lazy"
+            className={containerStyles.poster}
+          />
         )}
 
       <h3>{withLink(link, event.title)}</h3>

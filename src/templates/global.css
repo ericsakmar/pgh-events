@@ -17,8 +17,23 @@
   border: none;
   background: none;
   padding: 0;
+  display: flex;
+  text-decoration: underline;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0.7;
+}
+
+.buttonLink-tight {
 }
 
 .buttonLink:hover {
   color: #54400d;
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-bottom: 1px;
 }

@@ -9,51 +9,44 @@ const formatDateTime = date => format(date, "MMMM d 'at' h:mm aa")
 
 const formatDate = date => format(date, "MMMM d, yyyy")
 
-// from https://systemuicons.com/
+// from https://feathericons.com/
 // and https://kittygiraudel.com/2020/12/10/accessible-icon-links/
 const ShareIcon = () => (
   <svg
-    height="21"
-    viewBox="0 0 21 21"
-    width="21"
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    class="feather feather-share-2"
     aria-hidden="true"
     focusable="false"
   >
-    <g
-      fill="none"
-      fillRule="evenodd"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      transform="translate(3 2)"
-    >
-      <path d="m15.5.465-8 8.033" />
-      <path d="m10.5 16.5-3-8.002-7-2.998 15-5z" />
-    </g>
+    <circle cx="18" cy="5" r="3"></circle>
+    <circle cx="6" cy="12" r="3"></circle>
+    <circle cx="18" cy="19" r="3"></circle>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
   </svg>
 )
 
 const CopyIcon = () => (
   <svg
-    height="21"
-    viewBox="0 0 21 21"
-    width="21"
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    class="feather feather-copy"
     aria-hidden="true"
     focusable="false"
   >
-    <g
-      fill="none"
-      fillRule="evenodd"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      transform="translate(3 3)"
-    >
-      <path d="m14.5 9.5v-7c0-1.1045695-.8954305-2-2-2h-7c-1.1045695 0-2 .8954305-2 2v7c0 1.1045695.8954305 2 2 2h7c1.1045695 0 2-.8954305 2-2z" />
-      <path d="m11.5 11.5v1c0 1.1045695-.8954305 2-2 2h-7c-1.1045695 0-2-.8954305-2-2v-7c0-1.1045695.8954305-2 2-2h1" />
-    </g>
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
   </svg>
 )
 
@@ -89,17 +82,21 @@ const WebShare = ({ event }) => {
 
   if (!hasWebShare) {
     return (
-      <button onClick={handleCopy} className="buttonLink">
-        <CopyIcon />
-        <span className="visuallyHidden">Copy event details</span>
+      <button onClick={handleCopy} className="buttonLink buttonLink-tight">
+        <div className="buttonIcon">
+          <CopyIcon />
+        </div>
+        <p>Copy event details</p>
       </button>
     )
   }
 
   return (
-    <button onClick={handleClick} className="buttonLink">
-      <ShareIcon />
-      <span className="visuallyHidden">Share</span>
+    <button onClick={handleClick} className="buttonLink buttonLink-tight">
+      <div className="buttonIcon">
+        <ShareIcon />
+      </div>
+      <p>Share</p>
     </button>
   )
 }

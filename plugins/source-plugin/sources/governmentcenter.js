@@ -44,8 +44,6 @@ const getEventsOnPage = data => {
 
       const date = parseDate(rawDate)
 
-      const location = n.find(".location").text().trim()
-
       const link = n.attr("href").trim()
 
       const poster = getPoster(n)
@@ -53,7 +51,7 @@ const getEventsOnPage = data => {
       return {
         title,
         date,
-        location,
+        location: "The Government Center",
         link: `https://www.thegovernmentcenter.com${link}`,
         source: url,
         hasTime: false,

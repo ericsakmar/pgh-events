@@ -10,11 +10,12 @@ const AboutPage = () => {
       <Seo title="pgh.events" />
 
       <p className={styles.about}>
-        pgh.events is a mashup of venue calendars in Pittsburgh.
-      </p>
-
-      <p className={styles.about}>
-        It is an open-source project and was created by Eric Sakmar.
+        pgh.events is an independent mashup of event calendars in Pittsburgh. It
+        is an{" "}
+        <a href="https://github.com/ericsakmar/pgh-events">
+          open-source project
+        </a>{" "}
+        and was created by Eric Sakmar.
       </p>
 
       <p className={styles.about}>

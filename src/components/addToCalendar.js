@@ -8,30 +8,25 @@ const format = (date, dateFormat) =>
 const formatCalendarDate = date => format(date, "yyyyMMdd'T'HHmmss")
 const formatAllDayCalendarDate = date => format(date, "yyyyMMdd")
 
-// from https://systemuicons.com/
+// from https://feathericons.com/
 // and https://kittygiraudel.com/2020/12/10/accessible-icon-links/
-const Calendar = () => (
+const CalendarIcon = () => (
   <svg
-    height="21"
-    viewBox="0 0 21 21"
-    width="21"
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    class="feather feather-calendar"
     aria-hidden="true"
     focusable="false"
   >
-    <g
-      fill="none"
-      fillRule="evenodd"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      transform="translate(2 2)"
-    >
-      <path d="m2.5.5h12c1.1045695 0 2 .8954305 2 2v12c0 1.1045695-.8954305 2-2 2h-12c-1.1045695 0-2-.8954305-2-2v-12c0-1.1045695.8954305-2 2-2z" />
-      <path d="m.5 4.5h16" />
-      <path d="m8.5 7.5v6.056" />
-      <path d="m8.5 7.5v6" transform="matrix(0 1 -1 0 19 2)" />
-    </g>
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+    <line x1="16" y1="2" x2="16" y2="6"></line>
+    <line x1="8" y1="2" x2="8" y2="6"></line>
+    <line x1="3" y1="10" x2="21" y2="10"></line>
   </svg>
 )
 
@@ -66,8 +61,10 @@ const AddToCalendar = ({ event }) => {
 
   return (
     <button onClick={handleClick} className="buttonLink">
-      <Calendar />
-      <span className="visuallyHidden">Add to Google Calendar</span>
+      <div className="buttonIcon">
+        <CalendarIcon />
+      </div>
+      <p>Add to Calendar</p>
     </button>
   )
 }

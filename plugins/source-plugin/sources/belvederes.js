@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "http://belvederesultradive.com/"
+const url = "https://belvederesultradive.com/"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -27,17 +27,14 @@ exports.getEvents = async () => {
 
       const location = "Belvederes Ultra Dive"
 
-      const link = n.find("a").attr("href")
+      const link = "https://belvederesultradive.com/"
 
-      // const relativePoster = n
-      //   .find("img")
-      //   .attr("src")
-      //   .trim()
+      const relativePoster = n.find("img").attr("src").trim()
 
-      // can't show mixed http/https content
-      // const poster = `http://belvederesultradive.com/${relativePoster}`
+      const poster = `https://belvederesultradive.com/${relativePoster}`
 
       return {
+        poster,
         title,
         date,
         location,
