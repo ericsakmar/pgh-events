@@ -21,11 +21,11 @@ const IndexPage = ({ pageContext, location }) => {
       .reduce((acc, e) => acc.add(e.location), new Set())
   ).sort()
 
-  const { events: eventsForDisplay, params, isSearching } = useSearch(
-    location.search,
-    events,
-    allEvents
-  )
+  const {
+    events: eventsForDisplay,
+    params,
+    isSearching,
+  } = useSearch(location.search, events, allEvents)
 
   const content = Object.entries(eventsForDisplay).map(([date, events]) => (
     <Day key={date} date={date} events={events} />

@@ -28,6 +28,19 @@
   gap: 1rem;
 }
 
+.addEvent {
+  background-color: #efd595;
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.addEventLink {
+  margin-left: 1rem;
+  color: #1942a7;
+  text-decoration: underline;
+}
+
 @media (min-width: 45rem) {
   .name {
     border-right: 2px solid goldenrod;

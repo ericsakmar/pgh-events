@@ -24,6 +24,7 @@ const parse = data =>
 
     csv
       .parseString(data, { headers: true })
+      // TODO filter by approved?
       .transform(row => ({
         title: row["Event Name"],
         date: parseDate(`${row.Date} at ${row.Time}`),
