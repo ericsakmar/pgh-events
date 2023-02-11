@@ -25,6 +25,7 @@ const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
 const starlake = require("./sources/starlake.js")
 const thunderbird = require("./sources/thunderbird.js")
+const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
 
 const POST_NODE_TYPE = `Event`
@@ -89,13 +90,14 @@ exports.sourceNodes = async ({
     stageae,
     starlake,
     thunderbird,
+    trace,
     warhol,
   ]
 
-  const devSources = [blackforge]
+  const devSources = [trace]
 
-  const sources = prodSources
-  // process.env.NODE_ENV === "development" ? devSources : prodSources
+  const sources =
+    process.env.NODE_ENV === "development" ? devSources : prodSources
 
   const results = await Promise.all(sources.map(s => getEvents(s)))
 

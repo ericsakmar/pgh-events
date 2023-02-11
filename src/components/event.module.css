@@ -6,4 +6,5 @@
 
 .poster {
   margin-bottom: 0.2rem;
+  max-height: 600px;
 }
