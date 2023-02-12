@@ -15,6 +15,7 @@ const csv = require("./sources/csv.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
+const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
 const preserving = require("./sources/preserving.js")
 const roboto = require("./sources/roboto.js")
@@ -80,6 +81,7 @@ exports.sourceNodes = async ({
     governmentCenter,
     jergels,
     kingfly,
+    newHazlett,
     oaks,
     preserving,
     roboto,
@@ -94,7 +96,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [trace]
+  const devSources = [newHazlett]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
