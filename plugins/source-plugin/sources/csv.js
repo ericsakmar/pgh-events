@@ -6,17 +6,7 @@ const url = process.env.CSV_URL
 
 exports.url = "csv"
 
-const convertPosterLink = url => {
-  if (url.length === 0) {
-    return null
-  }
-
-  const [_url, rawQuery] = url.split("?")
-  const params = new URLSearchParams(rawQuery)
-  const googleDriveId = params.get("id")
-
-  return `https://drive.google.com/uc?export=view&id=${googleDriveId}`
-}
+const undefinedIfBlank = str => (str === "" ? undefined : str)
 
 const parse = data =>
   new Promise(resolve => {
@@ -24,15 +14,15 @@ const parse = data =>
 
     csv
       .parseString(data, { headers: true })
-      // TODO filter by approved?
       .transform(row => ({
         title: row["Event Name"],
         date: parseDate(`${row.Date} at ${row.Time}`),
         location: row.Location,
-        link: row.Link,
+        link: undefinedIfBlank(row.Link),
         source: url,
         hasTime: true,
-        poster: convertPosterLink(row.Poster),
+        poster: undefinedIfBlank(row.Poster),
+        approved: row.Approved,
       }))
       .on("data", row => parsed.push(row))
       .on("end", () => resolve(parsed))
@@ -41,5 +31,5 @@ const parse = data =>
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
   const parsed = await parse(data)
-  return parsed
+  return parsed.filter(e => e.approved === "YES")
 }
