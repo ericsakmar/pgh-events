@@ -22,6 +22,7 @@ const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
+const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
 const starlake = require("./sources/starlake.js")
@@ -88,6 +89,7 @@ exports.sourceNodes = async ({
     roxian,
     shsb,
     smalls,
+    spaceupstairs,
     spirit,
     stageae,
     starlake,
@@ -96,7 +98,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [newHazlett]
+  const devSources = [spaceupstairs]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
