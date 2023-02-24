@@ -30,7 +30,7 @@ exports.getEvents = async () => {
 
       const link = n.find(".eo-eb-event-title a").attr("href").trim()
 
-      const poster = n.find("img").attr("src").trim().replace("http", "https")
+      const poster = n.find("img").attr("src")?.trim().replace("http", "https")
 
       return {
         title,
