@@ -13,6 +13,7 @@ const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
 const governmentCenter = require("./sources/governmentcenter.js")
+const greenbeacon = require("./sources/greenbeacon.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
@@ -80,6 +81,7 @@ exports.sourceNodes = async ({
     crafthouse,
     csv,
     governmentCenter,
+    greenbeacon,
     jergels,
     kingfly,
     newHazlett,
@@ -98,7 +100,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [arcade]
+  const devSources = [greenbeacon]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
