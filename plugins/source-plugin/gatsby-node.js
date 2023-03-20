@@ -98,7 +98,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [spirit]
+  const devSources = [arcade]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

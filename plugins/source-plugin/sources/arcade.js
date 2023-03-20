@@ -15,29 +15,20 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".et_pb_module_header")
-        .text()
-        .trim()
+      const title = n.find(".et_pb_module_header").text().trim()
 
       if (title === "") {
         return undefined
       }
 
       // h3
-      const rawDate = n
-        .find("h3:nth-child(2)")
-        .text()
-        .trim()
+      const rawDate = n.find("h3:nth-child(2)").text().trim()
 
       const date = parseDate(rawDate)
 
       const location = "Arcade Comedy Theater"
 
-      const link = n
-        .find(".et_pb_button")
-        .attr("href")
-        .trim()
+      const link = n.find(".et_pb_button").attr("href")?.trim()
 
       const poster = n.find(".et_pb_image_wrap img").attr("src")
 
@@ -48,7 +39,7 @@ exports.getEvents = async () => {
         link: `https://tickettailor.com${link}`,
         source: url,
         hasTime: true,
-        poster: poster !== "" ? poster : undefined
+        poster: poster !== "" ? poster : undefined,
       }
     })
     .filter(e => e !== undefined)
