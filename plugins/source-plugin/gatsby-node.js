@@ -27,6 +27,7 @@ const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
 const starlake = require("./sources/starlake.js")
+const theforge = require("./sources/theforge.js")
 const thunderbird = require("./sources/thunderbird.js")
 const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
@@ -95,12 +96,13 @@ exports.sourceNodes = async ({
     spirit,
     stageae,
     starlake,
+    theforge,
     thunderbird,
     trace,
     warhol,
   ]
 
-  const devSources = [greenbeacon]
+  const devSources = [theforge]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
