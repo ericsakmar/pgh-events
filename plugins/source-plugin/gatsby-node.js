@@ -102,7 +102,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [theforge]
+  const devSources = [theforge, smalls]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

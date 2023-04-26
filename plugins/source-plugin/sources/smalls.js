@@ -27,7 +27,17 @@ exports.getEvents = async () => {
 
       const poster = n.find(".thumbnail").attr("src")?.trim()
 
-      return { title, date, location, link, source: url, hasTime: true, poster }
+      console.log(location, location === "")
+
+      return {
+        title,
+        date,
+        location: location === "" ? "Mr. Smalls Theatre" : location,
+        link,
+        source: url,
+        hasTime: true,
+        poster,
+      }
     })
 
   return events
