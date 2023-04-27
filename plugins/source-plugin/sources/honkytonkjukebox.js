@@ -1,7 +1,7 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 
-const url = "https://www.eventbrite.com/o/spring-alternative-44047427673"
+const url = "https://www.eventbrite.com/o/honky-tonk-jukebox-18877570422"
 exports.url = url
 
 exports.getEvents = async () => {
