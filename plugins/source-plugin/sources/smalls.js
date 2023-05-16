@@ -27,8 +27,6 @@ exports.getEvents = async () => {
 
       const poster = n.find(".thumbnail").attr("src")?.trim()
 
-      console.log(location, location === "")
-
       return {
         title,
         date,

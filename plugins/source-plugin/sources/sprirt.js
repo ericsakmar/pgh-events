@@ -1,8 +1,9 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { findTime } = require("./findTime")
 const { parseDate } = require("./parseDate")
 
-const url = "https://www.spiritpgh.com/events?view=list"
+const url = "https://www.spiritpgh.com/events"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,42 +11,45 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".eventlist-event")
+  const events = $(".summary-item")
     .toArray()
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".entry-title")
-        .text()
-        .trim()
+      const title = n.find(".summary-title").text().trim()
 
       const rawDate = n
-        .find(".eventlist-meta-date")
+        .find(".summary-metadata-item--date")
+        .first()
         .text()
         .trim()
 
-      const rawTime = n
-        .find(".event-time-12hr")
-        .text()
-        .trim()
-        .split(" ")[0]
+      const summaryNode = n
+        .find(".summary-excerpt-only p")
+        .contents()
+        .toArray()
+        .map(el => $(el).text())
+        .map(raw => raw.replace(/-\d+/, ""))
+        .map(raw => findTime(raw))
+        .filter(time => time !== null)
+
+      const rawTime = summaryNode[0]
 
       const date = parseDate(`${rawDate} ${rawTime}`)
 
-      const location = n
-        .find(".eventlist-meta-address strong")
+      const locationTag = n
+        .find(".summary-metadata-item--tags")
+        .first()
         .text()
         .trim()
 
-      const rawLink = n
-        .find(".main-image-wrapper a")
-        .attr("href")
-        .trim()
+      const location = `Spirit ${locationTag}`
+
+      const rawLink = n.find(".summary-thumbnail-container").attr("href").trim()
 
       const link = `https://spiritpgh.com${rawLink}`
 
-      const poster = n.find(".main-image img").attr("data-src")
+      const poster = n.find(".summary-thumbnail-image").attr("data-src")
 
       return {
         title,
@@ -54,7 +58,7 @@ exports.getEvents = async () => {
         link,
         source: url,
         hasTime: true,
-        poster: poster?.trim()
+        poster: poster?.trim(),
       }
     })
 
