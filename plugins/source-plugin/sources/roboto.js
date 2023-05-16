@@ -5,6 +5,20 @@ const { parseDate } = require("./parseDate")
 const url = "https://www.therobotoproject.com/calendar.html"
 exports.url = url
 
+const getPoster = async url => {
+  const data = await fetchPage.fetchPage(url)
+
+  const $ = cheerio.load(data)
+
+  const poster = $(
+    "html body div table tbody tr td table tbody tr td table tbody tr td.newbox table tbody tr td.newboxbottom table tbody tr td table tbody tr td center table tbody tr td img"
+  ).attr("src")
+
+  return poster === undefined
+    ? undefined
+    : `https://www.brownpapertickets.com${poster}`
+}
+
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
 
@@ -42,5 +56,12 @@ exports.getEvents = async () => {
       }
     })
 
-  return events
+  const posterTasks = events.map(async e => {
+    const poster = await getPoster(e.link)
+    return { ...e, poster }
+  })
+
+  const withPosters = await Promise.all(posterTasks)
+
+  return withPosters
 }
