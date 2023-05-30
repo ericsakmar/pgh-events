@@ -6,6 +6,10 @@ const url = "https://www.therobotoproject.com/calendar.html"
 exports.url = url
 
 const getPoster = async url => {
+  if (url === undefined) {
+    return undefined
+  }
+
   const data = await fetchPage.fetchPage(url)
 
   const $ = cheerio.load(data)
