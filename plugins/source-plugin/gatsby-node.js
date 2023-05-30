@@ -23,6 +23,7 @@ const oaks = require("./sources/oaks.js")
 const preserving = require("./sources/preserving.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
+const shredshed = require("./sources/shredshed.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
 const southsideworks = require("./sources/southsideworks.js")
@@ -95,6 +96,7 @@ exports.sourceNodes = async ({
     preserving,
     roboto,
     roxian,
+    shredshed,
     shsb,
     smalls,
     southsideworks,
@@ -108,7 +110,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [roboto]
+  const devSources = [shredshed]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
