@@ -110,7 +110,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [goldmark]
+  const devSources = [shredshed]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

@@ -1,13 +1,9 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
-const { parse } = require("date-fns")
+const { parseDate } = require("./parseDate")
 
 const url = "https://www.songkick.com/venues/4442159-shred-shed"
 exports.url = url
-
-// 2023-06-08T19:00:00-0400
-const parseDate = raw =>
-  parse(raw, "yyyy-MM-dd'T'HH:mm:ssxx", new Date()).toISOString()
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
@@ -23,15 +19,15 @@ exports.getEvents = async () => {
     })
     .flatMap(events => events)
     .map(event => {
-      const bands = event.performer.map(p => p.name).join(" / ")
+      const hasTime = event.startDate.includes("T")
 
       return {
-        title: bands,
+        title: event.name,
         date: parseDate(event.startDate),
         location: event.location.name,
         link: event.url,
         source: url,
-        hasTime: true,
+        hasTime,
         poster: `https://images.sk-static.com/images/${event.image}`,
       }
     })
