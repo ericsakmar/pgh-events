@@ -12,7 +12,12 @@ exports.findTime = text => {
     .entities()
     .filter(e => e.out(its.type) === "TIME")
     .out()
-    .filter(t => t.toUpperCase() !== "NIGHT" && t.toUpperCase() !== "EVENING")
+    .filter(
+      t =>
+        t.toUpperCase() !== "NIGHT" &&
+        t.toUpperCase() !== "EVENING" &&
+        t.toUpperCase() !== "AFTERNOON"
+    )
 
   return times.length > 0 ? times[0] : null
 }
