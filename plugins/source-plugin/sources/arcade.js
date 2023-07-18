@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://www.arcadecomedytheater.com/events"
+const url = "https://www.arcadecomedytheater.com/events/"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,39 +10,27 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".et_pb_row_inner")
+  const events = $(`script[type="application/ld+json"]`)
     .toArray()
     .map(el => {
-      const n = $(el)
-
-      const title = n.find(".et_pb_module_header").text().trim()
-
-      if (title === "") {
-        return undefined
-      }
-
-      // h3
-      const rawDate = n.find("h3:nth-child(2)").text().trim()
-
-      const date = parseDate(rawDate)
-
-      const location = "Arcade Comedy Theater"
-
-      const link = n.find(".et_pb_button").attr("href")?.trim()
-
-      const poster = n.find(".et_pb_image_wrap img").attr("src")
+      const ldJson = el.children[0].data
+      const json = JSON.parse(ldJson)
+      return json
+    })
+    .flatMap(events => events)
+    .map(event => {
+      const hasTime = event.startDate.includes("T")
 
       return {
-        title,
-        date,
-        location,
-        link: `https://tickettailor.com${link}`,
+        title: event.name,
+        date: parseDate(event.startDate),
+        location: event.location.name,
+        link: event.url,
         source: url,
-        hasTime: true,
-        poster: poster !== "" ? poster : undefined,
+        hasTime,
+        poster: event.image,
       }
     })
-    .filter(e => e !== undefined)
 
   return events
 }
