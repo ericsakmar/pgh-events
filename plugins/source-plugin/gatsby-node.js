@@ -6,6 +6,7 @@ const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cattivo = require("./sources/cattivo.js")
 const cityOfAsylum = require("./sources/cityOfAsylum.js")
+const cityWinery = require("./sources/cityWinery.js")
 const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const conAlmaEllsworth = require("./sources/conalmaEllsworth.js")
@@ -80,6 +81,7 @@ exports.sourceNodes = async ({
     carnegieHomestead,
     cattivo,
     cityOfAsylum,
+    cityWinery,
     clubcafe,
     conAlmaDowntown,
     conAlmaEllsworth,
@@ -112,7 +114,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [mixtape]
+  const devSources = [cityWinery]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
