@@ -18,6 +18,7 @@ const hartwood = require("./sources/hartwood.js")
 const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
+const mixtape = require("./sources/mixtape.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
 const preserving = require("./sources/preserving.js")
@@ -91,6 +92,7 @@ exports.sourceNodes = async ({
     honky,
     jergels,
     kingfly,
+    mixtape,
     newHazlett,
     oaks,
     preserving,
@@ -110,7 +112,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [arcade]
+  const devSources = [mixtape]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
