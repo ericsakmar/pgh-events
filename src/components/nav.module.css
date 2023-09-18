@@ -1,6 +1,7 @@
 .nav {
   text-align: center;
   margin-bottom: 2rem;
+  color: var(--accent);
 }
 
 .navLink {

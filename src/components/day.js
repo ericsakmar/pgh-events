@@ -4,7 +4,7 @@ import { format, parse } from "date-fns"
 import Event from "../components/event"
 import * as containerStyles from "./day.module.css"
 
-const getDayOfWeek = date => format(date, "EEEE")
+const getDayOfWeek = date => format(date, "EEE")
 const getDate = date => format(date, "MMM d")
 
 const Day = ({ date: rawDate, events }) => {
@@ -13,15 +13,14 @@ const Day = ({ date: rawDate, events }) => {
 
   return (
     <div className={containerStyles.day}>
-      <h2 className={containerStyles.dateContainer}>
+      <h2>
         <time dateTime={rawDate}>
           <span className="visuallyHidden">
             {date.toLocaleDateString(undefined, { dateStyle: "full" })}
           </span>
 
-          <div aria-hidden="true" className={containerStyles.date}>
-            <div>{getDayOfWeek(date)}</div>
-            <div className={containerStyles.actualDate}>{getDate(date)}</div>
+          <div aria-hidden="true">
+            {getDayOfWeek(date)}, {getDate(date)}
           </div>
         </time>
       </h2>

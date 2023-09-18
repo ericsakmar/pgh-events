@@ -1,3 +1,8 @@
+body {
+  background-color: #393e46;
+  color: #222831;
+}
+
 /* from https://kittygiraudel.com/snippets/sr-only-class/ */
 .visuallyHidden {
   border: 0 !important;
@@ -36,4 +41,38 @@
   width: 1rem;
   height: 1rem;
   margin-bottom: 1px;
+}
+
+:root {
+  --accent: #ffd369;
+  --light: #eeeeee;
+  --dark: #393e46;
+  --very-dark: #222831;
+  --header-font: Bevan, monospace;
+}
+
+h2 {
+  background-color: var(--dark);
+  border-bottom: 5px solid var(--very-dark);
+  color: var(--accent);
+  font-family: var(--header-font);
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+  margin-right: -1px;
+  padding-top: 1rem;
+  position: sticky;
+  text-shadow: 3px 3px var(--very-dark);
+  /* text-transform: lowercase; */
+  top: 0;
+  z-index: 10;
+}
+
+@media (min-width: 45rem) {
+  h2 {
+    line-height: 4.5rem;
+    font-size: 5rem;
+    text-shadow: 5px 5px var(--very-dark);
+  }
 }

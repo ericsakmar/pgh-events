@@ -1,6 +1,8 @@
 .search {
-  background-color: #ededed;
-  padding: 0.5rem;
+  padding: 1rem;
+  background-color: var(--light);
+  border: 5px solid var(--very-dark);
+  border-radius: 10px;
 }
 
 .field {
@@ -16,12 +18,5 @@
 }
 
 .extraActions {
-  flex-grow: 1;
-  text-align: right;
-}
-
-@media (min-width: 45rem) {
-  .field {
-    max-width: 10rem;
-  }
+  margin-left: auto;
 }

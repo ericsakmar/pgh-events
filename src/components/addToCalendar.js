@@ -19,7 +19,7 @@ const CalendarIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    class="feather feather-calendar"
+    className="feather feather-calendar"
     aria-hidden="true"
     focusable="false"
   >
