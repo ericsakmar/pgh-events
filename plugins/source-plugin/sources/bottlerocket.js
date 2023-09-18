@@ -1,8 +1,8 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { parseDate } = require("./parseDate")
 
-const url =
-  "https://www.eventbrite.com/o/bottlerocket-social-hall-52609586153#events"
+const url = "https://app.opendate.io/v/bottlerocket-social-hall-1260"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,24 +10,35 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $("script[type='application/ld+json']")
+  const events = $(".card")
     .toArray()
     .map(el => {
-      const ldJson = el.children[0].data
-      const json = JSON.parse(ldJson)
-      return json
+      const n = $(el)
+
+      const title = n.find(".card-body > p").first().text().trim()
+      console.log(title)
+
+      const rawDate = $(n.find(".card-body > p").get(1)).text().trim()
+      console.log(rawDate)
+
+      const date = parseDate(rawDate)
+
+      const location = "Bottlerocket Social Hall"
+
+      const link = n.find("a").attr("href").trim()
+
+      const poster = n.find("img").attr("src")?.trim()
+
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: true,
+        poster,
+      }
     })
-    .filter(data => Array.isArray(data))
-    .flatMap(data => data)
-    .map(data => ({
-      title: data.name,
-      date: data.startDate,
-      location: data.location.name,
-      link: data.url,
-      source: url,
-      hasTime: true,
-      poster: data.image,
-    }))
 
   return events
 }
