@@ -13,6 +13,8 @@ const Day = ({ date: rawDate, events }) => {
 
   return (
     <div className={containerStyles.day}>
+      <h1 className={containerStyles.header}>pgh.events</h1>
+
       <h2 className={containerStyles.dateContainer}>
         <time dateTime={rawDate}>
           <span className="visuallyHidden">
@@ -20,8 +22,7 @@ const Day = ({ date: rawDate, events }) => {
           </span>
 
           <div aria-hidden="true" className={containerStyles.date}>
-            <div>{getDayOfWeek(date)}</div>
-            <div className={containerStyles.actualDate}>{getDate(date)}</div>
+            {getDayOfWeek(date)}, {getDate(date)}
           </div>
         </time>
       </h2>

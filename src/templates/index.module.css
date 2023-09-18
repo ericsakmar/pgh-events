@@ -1,6 +1,14 @@
+body {
+  background-color: rosybrown;
+  background-color: #8b8373;
+}
+
 .content {
   display: flex;
   flex-direction: column;
+  max-width: 1470px;
+  margin: 0 auto;
+  gap: 2rem;
 }
 
 .events {
@@ -9,10 +17,16 @@
 
 .desktopSearch {
   display: none;
+  margin-top: 23rem;
 }
 
 .mobileSearch {
   margin-bottom: 1rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 45rem) {
@@ -27,6 +41,5 @@
 
   .desktopSearch {
     display: block;
-    margin-left: 1rem;
   }
 }

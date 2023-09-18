@@ -24,7 +24,9 @@ const Event = ({ event }) => {
   const link = useLink(event.link)
 
   return (
-    <div>
+    <div className={containerStyles.event}>
+      <div className={containerStyles.details}></div>
+
       {event.poster &&
         withLink(
           link,
@@ -36,17 +38,19 @@ const Event = ({ event }) => {
           />
         )}
 
-      <h3>{withLink(link, event.title)}</h3>
+      <div className={containerStyles.details}>
+        <h3>{withLink(link, event.title)}</h3>
 
-      <p>{event.location}</p>
+        <p>{event.location}</p>
 
-      <p>
-        <EventTime event={event} />
-      </p>
+        <p>
+          <EventTime event={event} />
+        </p>
 
-      <div className={containerStyles.actions}>
-        <AddToCalendar event={event} />
-        <WebShare event={event} />
+        <div className={containerStyles.actions}>
+          <AddToCalendar event={event} />
+          <WebShare event={event} />
+        </div>
       </div>
     </div>
   )

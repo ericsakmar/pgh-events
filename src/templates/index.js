@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 import "./global.css"
 import Layout from "../components/layout"
@@ -56,6 +57,11 @@ const IndexPage = ({ pageContext, location }) => {
             venue={params.venue}
             venues={venues}
           />
+
+          <div className={styles.menu}>
+            <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
+            <Link to="/about">about</Link>
+          </div>
         </div>
       </div>
 

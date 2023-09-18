@@ -2,51 +2,32 @@
   margin-bottom: 2rem;
 }
 
-.dateContainer {
-  border-bottom: 2px solid goldenrod;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  position: sticky;
-  top: -1px;
-  background-color: #fff;
-  z-index: 10;
-}
-
-.date {
-  display: flex;
-  gap: 1rem;
-}
-
 .actualDate {
   color: #686868;
 }
 
 .events {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  columns: 20rem;
+  column-gap: 2rem;
+  flex-grow: 1;
+}
+
+.header {
+  margin-top: 10rem;
 }
 
 @media (min-width: 45rem) {
   .day {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .dateContainer {
-    border-bottom: none;
-    border-right: 2px solid goldenrod;
-    flex: 0 0 10rem;
-    margin-bottom: 0;
-    padding-right: 1rem;
-    text-align: right;
   }
 
   .date {
-    display: block;
-    position: sticky;
-    top: 1rem;
+    line-height: 5rem;
+    font-size: 5rem;
+    margin-bottom: 5rem;
+    font-weight: 700;
+    color: white;
+    text-transform: lowercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 
   .actualDate {
