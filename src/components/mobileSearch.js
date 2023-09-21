@@ -27,24 +27,30 @@ const MobileSearch = props => {
 
   const toggleSearch = () => setShowSearch(!showSearch)
 
+  const fieldsStyles = showSearch
+    ? styles.searchFields
+    : [styles.searchFields, styles.hidden].join(" ")
+
+  const buttonStyles = showSearch
+    ? [styles.searchButton, styles.hidden].join(" ")
+    : styles.searchButton
+
   return (
     <div className={styles.search}>
-      {showSearch ? (
-        <div className={styles.searchFields}>
-          <Search
-            {...props}
-            extraActions={
-              <button onClick={toggleSearch} className="buttonLink">
-                hide search fields
-              </button>
-            }
-          />
-        </div>
-      ) : (
-        <button onClick={toggleSearch} className={styles.searchButton}>
-          <SearchIcon />
-        </button>
-      )}
+      <div className={fieldsStyles}>
+        <Search
+          {...props}
+          extraActions={
+            <button onClick={toggleSearch} className="buttonLink">
+              hide search fields
+            </button>
+          }
+        />
+      </div>
+
+      <button onClick={toggleSearch} className={buttonStyles}>
+        <SearchIcon />
+      </button>
     </div>
   )
 }

@@ -1,26 +1,44 @@
 .search {
-  text-align: right;
-  padding-bottom: 0.5rem;
-  margin-right: -0.5rem;
 }
 
 .searchFields {
   width: 300px;
   text-align: left;
   display: inline-block;
+  transition: all 200ms ease-in-out;
+  position: absolute;
+  right: -0.5rem;
+  bottom: 0.5rem;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .searchButton {
+  transition: all 200ms ease-in-out;
   background-color: #ffd369;
-  border: 3px solid #66542a;
+  border: 5px solid #222831;
   border-radius: 10px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   padding: 0.5rem;
+  position: absolute;
+  right: -0.5rem;
+  bottom: 0.5rem;
 }
 
 @media (min-width: 45rem) {
   .search {
-    margin-right: 1rem;
-    padding-bottom: 2rem;
+  }
+
+  .searchFields {
+    right: 1rem;
+    bottom: 3rem;
+  }
+
+  .searchButton {
+    right: 1rem;
+    bottom: 3rem;
   }
 }
