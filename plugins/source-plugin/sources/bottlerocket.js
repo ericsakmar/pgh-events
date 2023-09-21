@@ -16,10 +16,8 @@ exports.getEvents = async () => {
       const n = $(el)
 
       const title = n.find(".card-body > p").first().text().trim()
-      console.log(title)
 
       const rawDate = $(n.find(".card-body > p").get(1)).text().trim()
-      console.log(rawDate)
 
       const date = parseDate(rawDate)
 

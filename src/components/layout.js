@@ -8,7 +8,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 
-import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -17,11 +16,9 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: "50rem",
-          padding: `0 1rem 1rem`
+          padding: `0 1rem 1rem`,
         }}
       >
-        <Header />
         <main>{children}</main>
       </div>
     </>
@@ -29,7 +26,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

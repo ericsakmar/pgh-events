@@ -20,7 +20,7 @@ const ShareIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    class="feather feather-share-2"
+    className="feather feather-share-2"
     aria-hidden="true"
     focusable="false"
   >
@@ -41,7 +41,7 @@ const CopyIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    class="feather feather-copy"
+    className="feather feather-copy"
     aria-hidden="true"
     focusable="false"
   >
@@ -60,11 +60,9 @@ const WebShare = ({ event }) => {
 
   const date = parseISO(event.date)
 
-  const shareText = `Check out this show I found on https://pgh.events - \n${
-    event.title
-  } at ${event.location} on ${
-    event.hasTime ? formatDateTime(date) : formatDate(date)
-  }`
+  const shareText = `Check out this show I found on https://pgh.events - \n${event.title
+    } at ${event.location} on ${event.hasTime ? formatDateTime(date) : formatDate(date)
+    }`
 
   const handleClick = async () => {
     const shareData = { text: shareText }

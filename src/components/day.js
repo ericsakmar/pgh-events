@@ -20,8 +20,7 @@ const Day = ({ date: rawDate, events }) => {
           </span>
 
           <div aria-hidden="true" className={containerStyles.date}>
-            <div>{getDayOfWeek(date)}</div>
-            <div className={containerStyles.actualDate}>{getDate(date)}</div>
+            {getDayOfWeek(date)}, {getDate(date)}
           </div>
         </time>
       </h2>
