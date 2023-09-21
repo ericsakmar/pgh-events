@@ -7,7 +7,7 @@
 }
 
 .events {
-  columns: 20rem;
+  columns: 25rem;
   column-gap: 2rem;
   flex-grow: 1;
 }

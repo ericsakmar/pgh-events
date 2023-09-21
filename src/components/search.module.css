@@ -22,13 +22,3 @@
   flex-grow: 1;
   text-align: right;
 }
-
-@media (min-width: 45rem) {
-  .search {
-    box-shadow: none;
-  }
-
-  .field {
-    max-width: 10rem;
-  }
-}

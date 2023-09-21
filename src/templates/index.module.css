@@ -26,6 +26,7 @@ select {
   margin-bottom: 1rem;
   position: sticky;
   bottom: 0;
+  z-index: 100;
 }
 
 .header {
@@ -48,10 +49,6 @@ select {
   .content {
     flex-direction: row;
     align-items: flex-start;
-  }
-
-  .mobileSearch {
-    display: none;
   }
 
   .desktopSearch {

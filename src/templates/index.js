@@ -43,6 +43,7 @@ const IndexPage = ({ pageContext, location }) => {
           {content.length === 0 ? "no events" : content}
         </div>
 
+        {/*
         <div className={styles.desktopSearch}>
           <Search
             date={params.date}
@@ -56,6 +57,7 @@ const IndexPage = ({ pageContext, location }) => {
             <Link to="/about">about</Link>
           </div>
         </div>
+      */}
       </div>
 
       <div className={styles.mobileSearch}>
