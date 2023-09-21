@@ -1,6 +1,9 @@
 .search {
-  background-color: #ededed;
-  padding: 0.5rem;
+  padding: 1rem;
+  background-color: #eee;
+  border: 5px solid #222831;
+  border-radius: 10px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .field {
@@ -21,6 +24,10 @@
 }
 
 @media (min-width: 45rem) {
+  .search {
+    box-shadow: none;
+  }
+
   .field {
     max-width: 10rem;
   }

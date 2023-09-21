@@ -37,14 +37,7 @@ const IndexPage = ({ pageContext, location }) => {
       <Seo title="pgh.events" />
 
       <div className={styles.content}>
-        <div className={styles.mobileSearch}>
-          <MobileSearch
-            date={params.date}
-            keyword={params.keyword}
-            venue={params.venue}
-            venues={venues}
-          />
-        </div>
+        <h1 className={styles.header}>pgh.events</h1>
 
         <div className={styles.events}>
           {content.length === 0 ? "no events" : content}
@@ -63,6 +56,15 @@ const IndexPage = ({ pageContext, location }) => {
             <Link to="/about">about</Link>
           </div>
         </div>
+      </div>
+
+      <div className={styles.mobileSearch}>
+        <MobileSearch
+          date={params.date}
+          keyword={params.keyword}
+          venue={params.venue}
+          venues={venues}
+        />
       </div>
 
       {!isSearching ? (

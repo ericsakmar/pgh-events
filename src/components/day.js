@@ -13,8 +13,6 @@ const Day = ({ date: rawDate, events }) => {
 
   return (
     <div className={containerStyles.day}>
-      <h1 className={containerStyles.header}>pgh.events</h1>
-
       <h2 className={containerStyles.dateContainer}>
         <time dateTime={rawDate}>
           <span className="visuallyHidden">
