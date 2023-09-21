@@ -2,9 +2,12 @@
   margin-bottom: 2rem;
   break-inside: avoid-column;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.71);
-  box-shadow: none;
-  padding-top: 1rem;
+  box-shadow: 5px 5px 0 #ffd369;
+  /* box-shadow: none; */
+  padding: 1rem;
+  border: 5px solid #222831;
+  background-color: #eee;
+  border-radius: 10px;
 }
 
 .actions {
@@ -16,11 +19,10 @@
 .poster {
   max-height: 600px;
   width: 100%;
+  border: 5px solid #222831;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .details {
-  background-color: white;
-  padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }

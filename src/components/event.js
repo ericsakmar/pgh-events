@@ -25,8 +25,6 @@ const Event = ({ event }) => {
 
   return (
     <div className={containerStyles.event}>
-      <div className={containerStyles.details}></div>
-
       {event.poster &&
         withLink(
           link,
