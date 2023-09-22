@@ -25,7 +25,10 @@ const SearchIcon = () => (
 const MobileSearch = props => {
   const [showSearch, setShowSearch] = React.useState(false)
 
-  const toggleSearch = () => setShowSearch(!showSearch)
+  const toggleSearch = e => {
+    e.preventDefault()
+    setShowSearch(!showSearch)
+  }
 
   const fieldsStyles = showSearch
     ? styles.searchFields
@@ -36,13 +39,13 @@ const MobileSearch = props => {
     : styles.searchButton
 
   return (
-    <div className={styles.search}>
+    <>
       <div className={fieldsStyles}>
         <Search
           {...props}
           extraActions={
             <button onClick={toggleSearch} className="buttonLink">
-              hide search fields
+              close
             </button>
           }
         />
@@ -51,7 +54,7 @@ const MobileSearch = props => {
       <button onClick={toggleSearch} className={buttonStyles}>
         <SearchIcon />
       </button>
-    </div>
+    </>
   )
 }
 

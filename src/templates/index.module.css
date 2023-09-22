@@ -22,13 +22,6 @@ select {
   margin-top: 23rem;
 }
 
-.mobileSearch {
-  margin-bottom: 1rem;
-  position: sticky;
-  bottom: 0;
-  z-index: 100;
-}
-
 .header {
   color: #eee;
   text-shadow: 3px 3px var(--very-dark);

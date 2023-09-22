@@ -19,6 +19,5 @@
 }
 
 .extraActions {
-  flex-grow: 1;
-  text-align: right;
+  margin-left: auto;
 }
