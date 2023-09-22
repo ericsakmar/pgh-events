@@ -37,6 +37,9 @@
   text-transform: lowercase;
   border-bottom: 5px solid var(--very-dark);
   text-shadow: 3px 3px var(--very-dark);
+  font-family: "Caprasimo";
+  font-weight: normal;
+  margin-right: -2px;
 }
 
 @media (min-width: 45rem) {
@@ -49,7 +52,6 @@
   .date {
     line-height: 5rem;
     font-size: 5rem;
-    margin-bottom: 5rem;
   }
 
   .actualDate {

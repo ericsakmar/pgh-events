@@ -4,7 +4,7 @@ import { format, parse } from "date-fns"
 import Event from "../components/event"
 import * as containerStyles from "./day.module.css"
 
-const getDayOfWeek = date => format(date, "EEEE")
+const getDayOfWeek = date => format(date, "EEE")
 const getDate = date => format(date, "MMM d")
 
 const Day = ({ date: rawDate, events }) => {

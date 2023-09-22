@@ -26,6 +26,12 @@ select {
   color: #eee;
   text-shadow: 3px 3px var(--very-dark);
   margin-top: 2rem;
+  font-family: "Caprasimo";
+  font-weight: 400;
+  position: relative;
+  top: 1rem;
+  z-index: 100000;
+  font-size: 2rem;
 }
 
 .menu {
@@ -38,6 +44,9 @@ select {
   background-color: #eee;
   border-radius: 10px;
   box-shadow: 5px 5px 0 #ffd369;
+}
+
+.mobileSearch {
 }
 
 @media (min-width: 45rem) {
