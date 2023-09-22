@@ -1,12 +1,14 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 import * as styles from "./header.module.css"
 
 const Header = () => (
   <>
-    <h1 className={styles.header}>pgh.events / live</h1>
+    <Link to="/" style={{ textDecoration: "none", display: "inline-block" }}>
+      <h1 className={styles.header}>pgh.events</h1>
+    </Link>
+
     <div className={styles.menu}>
       <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
       <Link to="/about">about</Link>
