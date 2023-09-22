@@ -46,7 +46,7 @@ const IndexPage = ({ pageContext, location }) => {
 
       <Header />
 
-      <div>{content.length === 0 ? "no events" : content}</div>
+      <div>{content.length === 0 ? "no events!" : content}</div>
 
       {!isSearching ? (
         <Nav currentPage={currentPage} numPages={numPages} />
