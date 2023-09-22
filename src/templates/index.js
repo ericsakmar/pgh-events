@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
@@ -10,7 +9,6 @@ import Header from "../components/header"
 import useSearch from "../hooks/useSearch"
 
 import "./global.css"
-import * as styles from "./index.module.css"
 
 const IndexPage = ({ pageContext, location }) => {
   const { events, currentPage, numPages, allEvents } = pageContext
@@ -36,13 +34,9 @@ const IndexPage = ({ pageContext, location }) => {
     <Layout>
       <Seo title="pgh.events" />
 
-      <div className={styles.content}>
-        <Header />
+      <Header />
 
-        <div className={styles.events}>
-          {content.length === 0 ? "no events" : content}
-        </div>
-      </div>
+      <div>{content.length === 0 ? "no events" : content}</div>
 
       {!isSearching ? (
         <Nav currentPage={currentPage} numPages={numPages} />

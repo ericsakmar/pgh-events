@@ -1,4 +1,5 @@
 import * as React from "react"
+import Header from "../components/header"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -8,6 +9,8 @@ const AboutPage = () => {
   return (
     <Layout>
       <Seo title="pgh.events" />
+
+      <Header />
 
       <p className={styles.about}>
         pgh.events is an independent mashup of event calendars in Pittsburgh. It

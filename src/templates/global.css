@@ -7,6 +7,11 @@
   src: url(/fonts/ChunkFive-Regular.woff2) format("woff2");
 }
 
+body {
+  background-color: #393e46;
+  color: #222831;
+}
+
 /* from https://kittygiraudel.com/snippets/sr-only-class/ */
 .visuallyHidden {
   border: 0 !important;
