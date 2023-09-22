@@ -22,7 +22,6 @@ const SearchIcon = () => (
   </svg>
 )
 
-// TODO eventually just combine this with regular search
 const MobileSearch = props => {
   const [showSearch, setShowSearch] = React.useState(false)
 
