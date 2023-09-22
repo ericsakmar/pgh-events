@@ -11,20 +11,23 @@ const AboutPage = () => {
       <Seo title="pgh.events" />
 
       <Header />
+      <h2>about</h2>
 
-      <p className={styles.about}>
-        pgh.events is an independent mashup of event calendars in Pittsburgh. It
-        is an{" "}
-        <a href="https://github.com/ericsakmar/pgh-events">
-          open-source project
-        </a>{" "}
-        and was created by Eric Sakmar.
-      </p>
+      <div className={styles.about}>
+        <p>
+          pgh.events is an independent mashup of event calendars in Pittsburgh.
+          It is an{" "}
+          <a href="https://github.com/ericsakmar/pgh-events">
+            open-source project
+          </a>{" "}
+          and was created by Eric Sakmar.
+        </p>
 
-      <p className={styles.about}>
-        Questions or comments? Please contact{" "}
-        <a href="mailto:eric.sakmar@gmail.com">eric.sakmar@gmail.com</a>.
-      </p>
+        <p>
+          Questions or comments? Please contact{" "}
+          <a href="mailto:eric.sakmar@gmail.com">eric.sakmar@gmail.com</a>.
+        </p>
+      </div>
     </Layout>
   )
 }
