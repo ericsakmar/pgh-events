@@ -1,12 +1,10 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 import "./global.css"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
-import Search from "../components/search"
 import MobileSearch from "../components/mobileSearch"
 import useSearch from "../hooks/useSearch"
 

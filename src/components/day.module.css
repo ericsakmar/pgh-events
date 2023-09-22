@@ -16,8 +16,12 @@
   /* margin-top: 10rem; */
 }
 
+.name {
+  /* margin-top: 10rem; */
+}
+
 .dateContainer {
-  background-color: #393e46;
+  background-color: var(--dark);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -29,10 +33,10 @@
   font-size: 2rem;
   margin-bottom: 2rem;
   font-weight: 700;
-  color: #ffd369;
+  color: var(--accent);
   text-transform: lowercase;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  border-bottom: 5px solid #222831;
+  border-bottom: 5px solid var(--very-dark);
+  text-shadow: 3px 3px var(--very-dark);
 }
 
 @media (min-width: 45rem) {
@@ -40,7 +44,6 @@
   }
 
   .header {
-    margin-top: 10rem;
   }
 
   .date {

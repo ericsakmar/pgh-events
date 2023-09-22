@@ -31,6 +31,8 @@ select {
 
 .header {
   color: #eee;
+  text-shadow: 3px 3px var(--very-dark);
+  margin-top: 2rem;
 }
 
 .menu {
@@ -56,6 +58,5 @@ select {
   }
 
   .header {
-    margin-top: 10rem;
   }
 }

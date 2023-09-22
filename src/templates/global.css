@@ -37,3 +37,10 @@
   height: 1rem;
   margin-bottom: 1px;
 }
+
+:root {
+  --accent: #ffd369;
+  --light: #eeeeee;
+  --dark: #393e46;
+  --very-dark: #222831;
+}
