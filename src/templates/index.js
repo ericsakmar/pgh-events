@@ -35,7 +35,7 @@ const IndexPage = ({ pageContext, location }) => {
       <Seo title="pgh.events" />
 
       <div className={styles.content}>
-        <h1 className={styles.header}>pgh.events</h1>
+        <h1 className={styles.header}>pgh.events / live</h1>
 
         <div className={styles.events}>
           {content.length === 0 ? "no events" : content}

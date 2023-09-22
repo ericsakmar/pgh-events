@@ -37,7 +37,7 @@
   text-transform: lowercase;
   border-bottom: 5px solid var(--very-dark);
   text-shadow: 3px 3px var(--very-dark);
-  font-family: "Caprasimo";
+  font-family: var(--header-font);
   font-weight: normal;
   margin-right: -2px;
 }
@@ -50,7 +50,7 @@
   }
 
   .date {
-    line-height: 5rem;
+    line-height: 4.2rem;
     font-size: 5rem;
   }
 

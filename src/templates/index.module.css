@@ -26,7 +26,7 @@ select {
   color: #eee;
   text-shadow: 3px 3px var(--very-dark);
   margin-top: 2rem;
-  font-family: "Caprasimo";
+  font-family: var(--header-font);
   font-weight: 400;
   position: relative;
   top: 1rem;

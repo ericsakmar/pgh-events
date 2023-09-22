@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Chunk Five";
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url(/fonts/ChunkFive-Regular.woff2) format("woff2");
+}
+
 /* from https://kittygiraudel.com/snippets/sr-only-class/ */
 .visuallyHidden {
   border: 0 !important;
@@ -43,4 +52,5 @@
   --light: #eeeeee;
   --dark: #393e46;
   --very-dark: #222831;
+  --header-font: Bevan, monospace;
 }

@@ -57,6 +57,14 @@ module.exports = {
             name: `Caprasimo`,
             file: `https://fonts.googleapis.com/css2?family=Caprasimo&display=swap`,
           },
+          {
+            name: `Abril Fatface`,
+            file: `https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap`,
+          },
+          {
+            name: `Bevan`,
+            file: `https://fonts.googleapis.com/css2?family=Bevan&display=swap`,
+          },
         ],
       },
     },
