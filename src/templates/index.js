@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import "./global.css"
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Day from "../components/day"
@@ -8,6 +8,7 @@ import Nav from "../components/nav"
 import MobileSearch from "../components/mobileSearch"
 import useSearch from "../hooks/useSearch"
 
+import "./global.css"
 import * as styles from "./index.module.css"
 
 const IndexPage = ({ pageContext, location }) => {
@@ -36,26 +37,14 @@ const IndexPage = ({ pageContext, location }) => {
 
       <div className={styles.content}>
         <h1 className={styles.header}>pgh.events / live</h1>
+        <div className={styles.menu}>
+          <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
+          <Link to="/about">about</Link>
+        </div>
 
         <div className={styles.events}>
           {content.length === 0 ? "no events" : content}
         </div>
-
-        {/*
-        <div className={styles.desktopSearch}>
-          <Search
-            date={params.date}
-            keyword={params.keyword}
-            venue={params.venue}
-            venues={venues}
-          />
-
-          <div className={styles.menu}>
-            <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
-            <Link to="/about">about</Link>
-          </div>
-        </div>
-      */}
       </div>
 
       <div className={styles.mobileSearch}>

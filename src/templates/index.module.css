@@ -28,22 +28,14 @@ select {
   margin-top: 2rem;
   font-family: var(--header-font);
   font-weight: 400;
-  position: relative;
-  top: 1rem;
-  z-index: 100000;
   font-size: 2rem;
 }
 
 .menu {
   display: flex;
-  flex-direction: column;
-
-  margin-top: 2rem;
-  padding: 1rem;
-  border: 5px solid #222831;
-  background-color: #eee;
-  border-radius: 10px;
-  box-shadow: 5px 5px 0 #ffd369;
+  color: #eeeeeeaa;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .mobileSearch {
