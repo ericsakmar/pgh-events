@@ -89,9 +89,11 @@ const Search = ({
 
         <div className={containerStyles.actions}>
           <button type="submit">search</button>
+
           <button onClick={handleClear} className="buttonLink">
             clear
           </button>
+
           <div className={containerStyles.extraActions}>{extraActions}</div>
         </div>
       </div>

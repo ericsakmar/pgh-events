@@ -47,14 +47,12 @@ const IndexPage = ({ pageContext, location }) => {
         </div>
       </div>
 
-      <div className={styles.mobileSearch}>
-        <MobileSearch
-          date={params.date}
-          keyword={params.keyword}
-          venue={params.venue}
-          venues={venues}
-        />
-      </div>
+      <MobileSearch
+        date={params.date}
+        keyword={params.keyword}
+        venue={params.venue}
+        venues={venues}
+      />
 
       {!isSearching ? (
         <Nav currentPage={currentPage} numPages={numPages} />

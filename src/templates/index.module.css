@@ -38,9 +38,6 @@ select {
   margin-bottom: 2rem;
 }
 
-.mobileSearch {
-}
-
 @media (min-width: 45rem) {
   .content {
     flex-direction: row;
