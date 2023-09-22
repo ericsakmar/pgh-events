@@ -8,7 +8,8 @@ const Search = ({
   keyword: initialKeyword,
   venue: initialVenue,
   venues,
-  extraActions
+  extraActions,
+  onSearch,
 }) => {
   const [date, setDate] = React.useState(initialDate)
   const [keyword, setKeyword] = React.useState(initialKeyword)
@@ -35,11 +36,13 @@ const Search = ({
         keyword
       )}&v=${encodeURIComponent(venue)}`
     )
+    onSearch()
   }
 
   const handleClear = evt => {
     evt.preventDefault()
     navigate("/")
+    onSearch()
   }
 
   return (

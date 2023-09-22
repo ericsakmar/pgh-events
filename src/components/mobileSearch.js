@@ -22,6 +22,7 @@ const SearchIcon = () => (
   </svg>
 )
 
+// TODO eventually just combine this with regular search
 const MobileSearch = props => {
   const [showSearch, setShowSearch] = React.useState(false)
 
@@ -43,6 +44,9 @@ const MobileSearch = props => {
       <div className={fieldsStyles}>
         <Search
           {...props}
+          onSearch={() => {
+            setShowSearch(false)
+          }}
           extraActions={
             <button onClick={toggleSearch} className="buttonLink">
               close
