@@ -9,7 +9,14 @@
 
 .menu {
   display: flex;
+  flex-wrap: wrap;
   color: #eeeeeeaa;
-  gap: 1rem;
+  gap: 0rem 1rem;
+
   margin-bottom: 2rem;
+}
+
+.newChip {
+  color: #c0ff69;
+  text-decoration: none;
 }

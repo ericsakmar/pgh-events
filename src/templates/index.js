@@ -6,10 +6,10 @@ import Day from "../components/day"
 import Nav from "../components/nav"
 import MobileSearch from "../components/mobileSearch"
 import Header from "../components/header"
+import Venue from "../components/venue"
 import useSearch from "../hooks/useSearch"
 
 import "./global.css"
-import Venue from "../components/venue"
 
 const IndexPage = ({ pageContext, location }) => {
   const { events, currentPage, numPages, allEvents } = pageContext

@@ -1,0 +1,26 @@
+.event {
+  margin-right: 5px;
+  box-shadow: 5px 5px 0 #ffd369;
+  padding: 1rem;
+  border: 5px solid #222831;
+  background-color: #eee;
+  border-radius: 10px;
+  flex-basis: 15rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.tags {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.poster {
+  max-height: 600px;
+  width: 100%;
+  border: 5px solid #222831;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.details {
+}

@@ -1,7 +1,7 @@
 import * as React from "react"
-import Header from "../components/header"
 
 import Layout from "../components/layout"
+import Header from "../components/header"
 import Seo from "../components/seo"
 import * as styles from "./about.module.css"
 

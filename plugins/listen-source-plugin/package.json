@@ -1,0 +1,23 @@
+{
+  "name": "listen-source-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gatsby-node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "abort-controller": "^3.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^2.0.0",
+    "node-fetch": "^2.6.9",
+    "rss-parser": "^3.13.0"
+  }
+}
