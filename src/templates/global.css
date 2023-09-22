@@ -69,18 +69,19 @@ h2 {
   font-weight: normal;
   line-height: 2rem;
   margin-bottom: 2rem;
-  margin-right: -2px;
+  margin-right: -1px;
   padding-top: 1rem;
   position: sticky;
   text-shadow: 3px 3px var(--very-dark);
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
   top: 0;
   z-index: 10;
 }
 
 @media (min-width: 45rem) {
   h2 {
-    line-height: 4.2rem;
+    line-height: 4.5rem;
     font-size: 5rem;
+    text-shadow: 5px 5px var(--very-dark);
   }
 }

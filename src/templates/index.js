@@ -9,6 +9,7 @@ import Header from "../components/header"
 import useSearch from "../hooks/useSearch"
 
 import "./global.css"
+import Venue from "../components/venue"
 
 const IndexPage = ({ pageContext, location }) => {
   const { events, currentPage, numPages, allEvents } = pageContext
@@ -26,9 +27,18 @@ const IndexPage = ({ pageContext, location }) => {
     isSearching,
   } = useSearch(location.search, events, allEvents)
 
-  const content = Object.entries(eventsForDisplay).map(([date, events]) => (
-    <Day key={date} date={date} events={events} />
-  ))
+  const isVenue = params.venue !== ""
+
+  const content = isVenue ? (
+    <Venue
+      name={params.venue}
+      events={Object.values(eventsForDisplay).flatMap(events => events)}
+    />
+  ) : (
+    Object.entries(eventsForDisplay).map(([date, events]) => (
+      <Day key={date} date={date} events={events} />
+    ))
+  )
 
   return (
     <Layout>

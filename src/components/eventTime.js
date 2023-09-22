@@ -5,7 +5,9 @@ import { formatInTimeZone } from "date-fns-tz"
 const format = (date, dateFormat) =>
   formatInTimeZone(date, "America/New_York", dateFormat)
 
-const formatTime = date => format(date, "h:mm aaa")
+const formatDisplayDate = date => format(date, "EEE, MMM d")
+
+const formatDisplayDateTime = date => format(date, "EEE, MMM d 'at' h:mm aaa")
 
 const formatDateTime = date => format(date, "yyyy-MM-dd'T'HH:mm:ssXX")
 
@@ -26,8 +28,10 @@ const EventTime = ({ event }) => {
       </span>
 
       {event.hasTime ? (
-        <span aria-hidden="true">{formatTime(date)}</span>
-      ) : null}
+        <span aria-hidden="true">{formatDisplayDateTime(date)}</span>
+      ) : (
+        <span aria-hidden="true">{formatDisplayDate(date)}</span>
+      )}
     </time>
   )
 }
