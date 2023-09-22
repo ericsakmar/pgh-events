@@ -13,13 +13,13 @@ const Day = ({ date: rawDate, events }) => {
 
   return (
     <div className={containerStyles.day}>
-      <h2 className={containerStyles.dateContainer}>
+      <h2>
         <time dateTime={rawDate}>
           <span className="visuallyHidden">
             {date.toLocaleDateString(undefined, { dateStyle: "full" })}
           </span>
 
-          <div aria-hidden="true" className={containerStyles.date}>
+          <div aria-hidden="true">
             {getDayOfWeek(date)}, {getDate(date)}
           </div>
         </time>

@@ -2,22 +2,10 @@
   margin-bottom: 2rem;
 }
 
-.actualDate {
-  color: #686868;
-}
-
 .events {
   columns: 25rem;
   column-gap: 2rem;
   flex-grow: 1;
-}
-
-.header {
-  /* margin-top: 10rem; */
-}
-
-.name {
-  /* margin-top: 10rem; */
 }
 
 .dateContainer {
@@ -26,9 +14,7 @@
   top: 0;
   z-index: 10;
   padding-top: 1rem;
-}
 
-.date {
   line-height: 2rem;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -43,18 +29,8 @@
 }
 
 @media (min-width: 45rem) {
-  .day {
-  }
-
-  .header {
-  }
-
-  .date {
+  .dateContainer {
     line-height: 4.2rem;
     font-size: 5rem;
-  }
-
-  .actualDate {
-    font-size: 0.8rem;
   }
 }
