@@ -3,10 +3,6 @@ body {
   color: #222831;
 }
 
-select {
-  /* background-color: #fff; */
-}
-
 .content {
   max-width: 1470px;
   margin: 0 auto;
@@ -17,37 +13,9 @@ select {
   flex-grow: 1;
 }
 
-.desktopSearch {
-  display: none;
-  margin-top: 23rem;
-}
-
-.header {
-  color: #eee;
-  text-shadow: 3px 3px var(--very-dark);
-  margin-top: 2rem;
-  font-family: var(--header-font);
-  font-weight: 400;
-  font-size: 2rem;
-}
-
-.menu {
-  display: flex;
-  color: #eeeeeeaa;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
 @media (min-width: 45rem) {
   .content {
     flex-direction: row;
     align-items: flex-start;
-  }
-
-  .desktopSearch {
-    display: block;
-  }
-
-  .header {
   }
 }

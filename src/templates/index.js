@@ -6,6 +6,7 @@ import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
 import MobileSearch from "../components/mobileSearch"
+import Header from "../components/header"
 import useSearch from "../hooks/useSearch"
 
 import "./global.css"
@@ -36,16 +37,16 @@ const IndexPage = ({ pageContext, location }) => {
       <Seo title="pgh.events" />
 
       <div className={styles.content}>
-        <h1 className={styles.header}>pgh.events / live</h1>
-        <div className={styles.menu}>
-          <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
-          <Link to="/about">about</Link>
-        </div>
+        <Header />
 
         <div className={styles.events}>
           {content.length === 0 ? "no events" : content}
         </div>
       </div>
+
+      {!isSearching ? (
+        <Nav currentPage={currentPage} numPages={numPages} />
+      ) : null}
 
       <MobileSearch
         date={params.date}
@@ -53,10 +54,6 @@ const IndexPage = ({ pageContext, location }) => {
         venue={params.venue}
         venues={venues}
       />
-
-      {!isSearching ? (
-        <Nav currentPage={currentPage} numPages={numPages} />
-      ) : null}
     </Layout>
   )
 }
