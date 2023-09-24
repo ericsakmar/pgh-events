@@ -1,5 +1,6 @@
 const boredinpittsburgh = require("./feeds/boredinpittsburgh")
 const cruelnoise = require("./feeds/cruelnoise")
+const cazart = require("./feeds/cazart")
 const pghmusictracker = require("./feeds/pghmusictracker")
 const startthebeat = require("./feeds/startthebeat")
 
@@ -35,7 +36,13 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions
 
-  const feeds = [boredinpittsburgh, cruelnoise, pghmusictracker, startthebeat]
+  const feeds = [
+    boredinpittsburgh,
+    cazart,
+    cruelnoise,
+    pghmusictracker,
+    startthebeat,
+  ]
 
   const results = await Promise.all(feeds.map(s => getLinks(s)))
 
