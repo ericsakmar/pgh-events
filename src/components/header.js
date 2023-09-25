@@ -10,15 +10,20 @@ const Header = () => (
     </Link>
 
     <div className={styles.menu}>
-      <Link to="/">live events</Link>
+      <Link to="/">events</Link>
+
+      <div>/</div>
 
       <div>
-        <span className={styles.newChip}>(new!)</span>{" "}
-        <Link to="/listen">playlists and podcasts</Link>
+        <Link to="/listen">
+          feeds <span className={styles.newChip}>(new!)</span>
+        </Link>
       </div>
 
+      <div>/</div>
       <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
 
+      <div>/</div>
       <Link to="/about">about</Link>
     </div>
   </>

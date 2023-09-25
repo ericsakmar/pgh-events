@@ -17,7 +17,7 @@ const ListenPage = ({ data }) => {
   return (
     <Layout>
       <Header />
-      <h2>Playlists & Podcasts</h2>
+      <h2>Feeds</h2>
 
       {filtered.length === 0 ? (
         <p>there's nothing here!</p>
@@ -36,7 +36,7 @@ export default ListenPage
 
 export const query = graphql`
   query MyQuery {
-    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 50) {
+    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 110) {
       nodes {
         id
         tags

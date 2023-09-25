@@ -8,12 +8,13 @@
 }
 
 .menu {
+  text-shadow: 3px 3px var(--very-dark);
   display: flex;
   flex-wrap: wrap;
-  color: #eeeeeeaa;
+  color: #eeeeeedd;
   gap: 0rem 1rem;
-
   margin-bottom: 2rem;
+  font-weight: 300;
 }
 
 .newChip {
