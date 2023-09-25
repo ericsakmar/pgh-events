@@ -15,7 +15,7 @@ const Header = () => (
       </Link>
 
       <div>
-        <Link to="/listen">
+        <Link to="/feeds">
           feeds <span className={styles.newChip}>(new!)</span>
         </Link>
       </div>
