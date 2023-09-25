@@ -17,7 +17,7 @@ const withLink = (link, content) =>
   link ? <a href={link}>{content}</a> : content
 
 const Playlist = ({ playlist }) => {
-  const link = useLink(playlist.link)
+  const link = useLink(playlist.url)
 
   return (
     <div className={containerStyles.event}>
