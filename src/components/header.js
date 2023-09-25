@@ -10,9 +10,9 @@ const Header = () => (
     </Link>
 
     <div className={styles.menu}>
-      <Link to="/">events</Link>
-
-      <div>/</div>
+      <Link to="/">
+        <span>events</span>
+      </Link>
 
       <div>
         <Link to="/listen">
@@ -20,10 +20,8 @@ const Header = () => (
         </Link>
       </div>
 
-      <div>/</div>
       <a href="https://forms.gle/3rAUbTXAW5ei4Jp68">add an event</a>
 
-      <div>/</div>
       <Link to="/about">about</Link>
     </div>
   </>
