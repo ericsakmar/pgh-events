@@ -37,4 +37,4 @@ exports.getLinks = async () => {
   return [...blogLinks, ...podcastLinks]
 }
 
-exports.name = "bored in pittsburgh"
+exports.name = "the cazart chronicles"

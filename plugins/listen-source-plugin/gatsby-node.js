@@ -1,6 +1,7 @@
 const boredinpittsburgh = require("./feeds/boredinpittsburgh")
-const cruelnoise = require("./feeds/cruelnoise")
 const cazart = require("./feeds/cazart")
+const cruelnoise = require("./feeds/cruelnoise")
+const modestdirector = require("./feeds/modestdirector")
 const pghmusictracker = require("./feeds/pghmusictracker")
 const startthebeat = require("./feeds/startthebeat")
 
@@ -40,6 +41,7 @@ exports.sourceNodes = async ({
     boredinpittsburgh,
     cazart,
     cruelnoise,
+    modestdirector,
     pghmusictracker,
     startthebeat,
   ]
