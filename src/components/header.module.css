@@ -7,10 +7,14 @@
   font-size: 2rem;
 }
 
+.description {
+  color: #eeeeeedd;
+  margin-bottom: 1rem;
+}
+
 .menu {
   display: flex;
   flex-wrap: wrap;
-  color: #eeeeeedd;
   gap: 0rem 2rem;
   margin-bottom: 2rem;
 }
@@ -18,4 +22,9 @@
 .newChip {
   color: #c0ff69;
   text-decoration: none;
+}
+
+.link,
+.link:visited {
+  color: var(--light);
 }

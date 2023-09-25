@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `pgh.events`,
-    description: `pgh.events is a mashup of venue calendars in Pittsburgh.`,
+    description: `pgh.events is a music-focused collection of events, playlists, podcasts, youtube channels and blogs in Pittsburgh, Pennsylvania.`,
     author: `https://github.com/ericsakmar`,
     siteUrl: `https://pgh.events`,
   },
@@ -26,9 +26,10 @@ module.exports = {
       options: {
         name: `pgh.events`,
         short_name: `pgh.events`,
+        description: `pgh.events is a music-focused collection of events, playlists, podcasts, youtube channels and blogs in Pittsburgh, Pennsylvania.`,
         start_url: `/`,
         background_color: `#daa520`,
-        theme_color: `#daa520`,
+        theme_color: `#222831`,
         display: `minimal-ui`,
         icon: `src/images/pgh-events.png`, // This path is relative to the root of the site.
         icon_options: {
