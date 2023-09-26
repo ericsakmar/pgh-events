@@ -35,8 +35,8 @@ const IndexPage = ({ pageContext, location }) => {
       events={Object.values(eventsForDisplay).flatMap(events => events)}
     />
   ) : (
-    Object.entries(eventsForDisplay).map(([date, events]) => (
-      <Day key={date} date={date} events={events} />
+    Object.entries(eventsForDisplay).map(([date, events], i) => (
+      <Day key={date} date={date} events={events} index={i} />
     ))
   )
 
