@@ -10,17 +10,23 @@ const getDate = date => format(date, "MMM d")
 function useOnScreen(ref) {
   const [isIntersecting, setIntersecting] = React.useState(false)
 
-  const observer = React.useMemo(
-    () =>
-      new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          setIntersecting(true)
-        }
-      }),
-    []
-  )
+  const observer = React.useMemo(() => {
+    if (!window.IntersectionObserver) {
+      return undefined
+    }
+
+    return new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIntersecting(true)
+      }
+    })
+  }, [])
 
   React.useEffect(() => {
+    if (observer === undefined) {
+      return undefined
+    }
+
     observer.observe(ref.current)
     return () => observer.disconnect()
   }, [observer, ref])
