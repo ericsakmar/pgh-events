@@ -11,7 +11,8 @@ function useOnScreen(ref) {
   const [isIntersecting, setIntersecting] = React.useState(false)
 
   const observer = React.useMemo(() => {
-    if (!window.IntersectionObserver) {
+    const hasIt = window && window.IntersectionObserver
+    if (!hasIt) {
       return undefined
     }
 
