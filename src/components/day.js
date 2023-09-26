@@ -7,30 +7,22 @@ import * as containerStyles from "./day.module.css"
 const getDayOfWeek = date => format(date, "EEE")
 const getDate = date => format(date, "MMM d")
 
-function useOnScreen(ref) {
+const useOnScreen = ref => {
   const [isIntersecting, setIntersecting] = React.useState(false)
 
-  const observer = React.useMemo(() => {
-    const hasIt = window && window.IntersectionObserver
-    if (!hasIt) {
-      return undefined
-    }
-
-    return new IntersectionObserver(([entry]) => {
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIntersecting(true)
       }
     })
-  }, [])
-
-  React.useEffect(() => {
-    if (observer === undefined) {
-      return undefined
-    }
 
     observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [observer, ref])
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [ref])
 
   return isIntersecting
 }
