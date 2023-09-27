@@ -33,7 +33,7 @@ const Day = ({ date: rawDate, events, index }) => {
   const date = parse(rawDate, "yyyy-MM-dd", new Date())
   const state = events && events.length > 0 ? "DEFAULT" : "EMPTY"
 
-  const renderEvents = index < 2 ? true : isOnScreen
+  const renderEvents = index === 0 ? true : isOnScreen
 
   return (
     <div className={containerStyles.day} ref={ref}>

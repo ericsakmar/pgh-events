@@ -16,18 +16,26 @@ const useLink = link => {
 const withLink = (link, content) =>
   link ? <a href={link}>{content}</a> : content
 
-const Playlist = ({ playlist }) => {
+const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
   const link = useLink(playlist.url)
+  const [showImage, setShowImage] = React.useState(!lazy)
+
+  React.useImperativeHandle(ref, () => ({
+    el: ref.current,
+    showImage: () => {
+      setShowImage(true)
+    },
+  }))
 
   return (
-    <div className={containerStyles.event}>
+    <div className={containerStyles.event} ref={ref} id={link}>
       {playlist.image &&
+        showImage &&
         withLink(
           link,
           <img
             src={playlist.image}
-            alt="event poster"
-            loading="lazy"
+            alt={`${playlist.title} thumbnail`}
             className={containerStyles.poster}
           />
         )}
@@ -40,6 +48,6 @@ const Playlist = ({ playlist }) => {
       </div>
     </div>
   )
-}
+})
 
 export default Playlist
