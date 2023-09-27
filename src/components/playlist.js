@@ -41,7 +41,9 @@ const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
         )}
 
       <div className={containerStyles.details}>
-        <h3>{withLink(link, playlist.title)}</h3>
+        <h3 className={containerStyles.title}>
+          {withLink(link, playlist.title)}
+        </h3>
         <p>{playlist.subtitle}</p>
         <p>{playlist.timestamp}</p>
         <p className={containerStyles.tags}>{playlist.tags.join(", ")}</p>

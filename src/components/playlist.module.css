@@ -31,3 +31,7 @@
 
 .details {
 }
+
+.title {
+  word-break: break-all;
+}
