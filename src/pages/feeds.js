@@ -72,7 +72,7 @@ export default ListenPage
 
 export const query = graphql`
   query MyQuery {
-    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 110) {
+    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 125) {
       nodes {
         id
         tags
