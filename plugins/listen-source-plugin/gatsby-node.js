@@ -5,6 +5,7 @@ const modestdirector = require("./feeds/modestdirector")
 const pghmusictracker = require("./feeds/pghmusictracker")
 const startthebeat = require("./feeds/startthebeat")
 const iquit = require("./feeds/iquit")
+const wyep = require("./feeds/wyep")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -46,6 +47,7 @@ exports.sourceNodes = async ({
     pghmusictracker,
     startthebeat,
     iquit,
+    wyep,
   ]
 
   const results = await Promise.all(feeds.map(s => getLinks(s)))
