@@ -52,14 +52,13 @@ body {
   cursor: pointer;
   align-items: center;
   gap: 0.2rem;
-  opacity: 0.7;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .buttonLink-tight {
 }
 
 .buttonLink:hover {
-  color: #54400d;
 }
 
 .buttonIcon {

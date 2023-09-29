@@ -12,7 +12,8 @@ exports.getLinks = async () => {
     url: i.link,
     timestamp: new Date(i.isoDate),
     tags: ["podcast"],
-    image: i.itunes.image,
+    image:
+      "https://ssl-static.libsyn.com/p/assets/c/5/b/0/c5b017eeb31e690e/cruel_podcast_new.jpg",
   }))
 
   return links
