@@ -112,7 +112,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [preserving, cityWinery]
+  const devSources = [mixtape]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

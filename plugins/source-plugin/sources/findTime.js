@@ -21,3 +21,14 @@ exports.findTime = text => {
 
   return times.length > 0 ? times[0] : null
 }
+
+exports.findDate = text => {
+  const doc = nlp.readDoc(text)
+
+  const times = doc
+    .entities()
+    .filter(e => e.out(its.type) === "DATE")
+    .out()
+
+  return times.length > 0 ? times.join(" ") : null
+}
