@@ -18,7 +18,7 @@ exports.getEvents = async () => {
 
       const title = n.find(`[data-hook="title"]`).text().trim()
 
-      const rawDate = n.find(`[data-hook="date"]`).text().trim()
+      const rawDate = n.find(`[data-hook="date"]`).first().text().trim()
 
       const date = parseDate(rawDate)
 
@@ -26,7 +26,7 @@ exports.getEvents = async () => {
 
       const link = n.find(`[data-hook="title"] a`).attr("href").trim()
 
-      const poster = n.find("wow-image img").attr("src").trim()
+      const poster = n.find("wow-image").get(1).attribs["data-src"]
 
       return {
         title,
