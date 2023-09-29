@@ -54,7 +54,11 @@ const MobileSearch = props => {
         />
       </div>
 
-      <button onClick={toggleSearch} className={buttonStyles}>
+      <button
+        aria-label="show search fields"
+        onClick={toggleSearch}
+        className={buttonStyles}
+      >
         <SearchIcon />
       </button>
     </>

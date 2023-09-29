@@ -1,6 +1,31 @@
+@font-face {
+  font-family: "Bevan";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/Bevan-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Pontano Sans";
+  font-style: light;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/fonts/PontanoSans-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Pontano Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/PontanoSans-Medium.ttf) format("truetype");
+}
+
 body {
   background-color: #393e46;
   color: #222831;
+  font-family: "Pontano Sans";
 }
 
 /* from https://kittygiraudel.com/snippets/sr-only-class/ */
