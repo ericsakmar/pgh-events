@@ -51,7 +51,7 @@ const ListenPage = ({ data }) => {
       {items.length === 0 ? (
         <p>there's nothing here!</p>
       ) : (
-        <div className={styles.playlists}>
+        <ol className={styles.playlists}>
           {items.map((l, i) => (
             <Playlist
               ref={imgRefs.current.get(l.url)}
@@ -60,7 +60,7 @@ const ListenPage = ({ data }) => {
               lazy={i > 15}
             />
           ))}
-        </div>
+        </ol>
       )}
     </Layout>
   )

@@ -13,9 +13,6 @@ const useLink = link => {
   return stateLink
 }
 
-const withLink = (link, content) =>
-  link ? <a href={link}>{content}</a> : content
-
 const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
   const link = useLink(playlist.url)
   const [showImage, setShowImage] = React.useState(!lazy)
@@ -28,27 +25,25 @@ const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
   }))
 
   return (
-    <div className={containerStyles.event} ref={ref} id={link}>
-      {playlist.image &&
-        showImage &&
-        withLink(
-          link,
+    <li className={containerStyles.event} ref={ref} id={link}>
+      <a href={link} className={containerStyles.bigLink}>
+        {playlist.image && showImage && (
           <img
+            role="presentation"
             src={playlist.image}
             alt={`${playlist.title} thumbnail`}
             className={containerStyles.poster}
           />
         )}
 
-      <div className={containerStyles.details}>
-        <h3 className={containerStyles.title}>
-          {withLink(link, playlist.title)}
-        </h3>
-        <p>{playlist.subtitle}</p>
-        <p>{playlist.timestamp}</p>
-        <p className={containerStyles.tags}>{playlist.tags.join(", ")}</p>
-      </div>
-    </div>
+        <div className={containerStyles.details}>
+          <h3 className={containerStyles.title}>{playlist.title}</h3>
+          {playlist.subtitle && <p>{playlist.subtitle}</p>}
+          <p>{playlist.timestamp}</p>
+          <p className={containerStyles.tags}>{playlist.tags.join(", ")}</p>
+        </div>
+      </a>
+    </li>
   )
 })
 

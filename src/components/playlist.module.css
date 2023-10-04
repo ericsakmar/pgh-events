@@ -31,6 +31,11 @@
 .details {
 }
 
+.bigLink {
+  text-decoration: none;
+}
+
 .title {
   word-break: break-word;
+  text-decoration: underline;
 }
