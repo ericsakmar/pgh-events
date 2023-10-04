@@ -1,7 +1,6 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
-const { findTime, findDate } = require("./findTime")
 
 const url = "https://www.mixtapepgh.com/"
 exports.url = url
@@ -18,10 +17,22 @@ exports.getEvents = async () => {
 
       const title = n.find(".list-item-content__title").text().trim()
 
-      const description = n.find(".list-item-content__description").text()
-      const rawDate = findDate(description)
-      const rawTime = findTime(description)
-      const date = parseDate(`${rawDate} at ${rawTime}`)
+      const rawDate = n
+        .find(".list-item-content__description p")
+        .first()
+        .find("br")
+        .replaceWith("\n")
+        .end()
+        .text()
+        .split("\n")[0]
+      const date = parseDate(rawDate)
+
+      const hasTime = !date.endsWith("16:00:00.000Z") // it defaults to noon if it didn't find a time
+
+      // const description = n.find(".list-item-content__description").text()
+      // const rawDate = findDate(description)
+      // const rawTime = findTime(description)
+      // const date = parseDate(`${rawDate} at ${rawTime}`)
 
       const location = "Mixtape"
 
@@ -35,7 +46,7 @@ exports.getEvents = async () => {
         location,
         link,
         source: url,
-        hasTime: true,
+        hasTime,
         poster,
       }
     })
