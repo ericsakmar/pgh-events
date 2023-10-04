@@ -53,6 +53,7 @@ body {
   align-items: center;
   gap: 0.2rem;
   color: rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .buttonLink-tight {

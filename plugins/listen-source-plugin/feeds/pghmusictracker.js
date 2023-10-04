@@ -18,6 +18,7 @@ const PLAYLIST_IDS = [
   "1K9xAkp4Va6PfG1xoQIUaQ", // march 2023
   "6OWbvpOwHQpy4u9UcZVH1Q", // feb 2023
   "0W1YYPBd5HPjYovgqm8glh", // jan 2023
+  "1sBJKNiMU9T64fZd3sq3jZ", // sept 20230
 ]
 
 const getToken = async () => {

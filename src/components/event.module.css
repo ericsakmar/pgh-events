@@ -8,11 +8,13 @@
   background-color: #eee;
   border-radius: 10px;
   transition: all 100ms ease-in-out;
+
+  position: relative;
 }
 
 .event:focus-within {
-  transform: translate(-5px, -5px);
-  box-shadow: 10px 10px 0px 0px var(--accent) !important;
+  /* transform: translate(-5px, -5px); */
+  /* box-shadow: 10px 10px 0px 0px var(--accent) !important; */
 }
 
 .actions {
@@ -30,6 +32,16 @@
 }
 
 .details {
+}
+
+/* https://inclusive-components.design/cards/ */
+.mainLink::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 @media (min-width: 45rem) {

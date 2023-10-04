@@ -17,40 +17,42 @@ const useLink = link => {
   return stateLink
 }
 
-const withLink = (link, content) =>
-  link ? <a href={link}>{content}</a> : content
-
 const Event = ({ event }) => {
   const link = useLink(event.link)
 
   return (
-    <div className={containerStyles.event}>
-      {event.poster &&
-        withLink(
-          link,
-          <img
-            src={event.poster}
-            alt="event poster"
-            loading="lazy"
-            className={containerStyles.poster}
-          />
+    <li className={containerStyles.event}>
+      {event.poster && (
+        <img
+          role="presentation"
+          src={event.poster}
+          alt="event poster"
+          loading="lazy"
+          className={containerStyles.poster}
+        />
+      )}
+
+      <h3>
+        {link ? (
+          <a href={link} className={containerStyles.mainLink}>
+            {event.title}
+          </a>
+        ) : (
+          event.title
         )}
+      </h3>
 
-      <div className={containerStyles.details}>
-        <h3>{withLink(link, event.title)}</h3>
+      <p>{event.location}</p>
 
-        <p>{event.location}</p>
+      <p>
+        <EventTime event={event} />
+      </p>
 
-        <p>
-          <EventTime event={event} />
-        </p>
-
-        <div className={containerStyles.actions}>
-          <AddToCalendar event={event} />
-          <WebShare event={event} />
-        </div>
+      <div className={containerStyles.actions}>
+        <AddToCalendar event={event} />
+        <WebShare event={event} />
       </div>
-    </div>
+    </li>
   )
 }
 

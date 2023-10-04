@@ -74,7 +74,7 @@ const WebShare = ({ event }) => {
     }
   }
 
-  const handleCopy = () => {
+  const handleCopy = e => {
     navigator.clipboard.writeText(shareText)
   }
 

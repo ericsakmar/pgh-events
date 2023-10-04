@@ -10,15 +10,15 @@ const Venue = ({ name, events }) => {
     <section>
       <h2>{name}</h2>
 
-      <div className={containerStyles.events}>
-        {state === "EMPTY" ? (
-          <h3>no events!</h3>
-        ) : (
-          events.map(e => (
+      {state === "EMPTY" ? (
+        <h3>no events!</h3>
+      ) : (
+        <ol className={containerStyles.events}>
+          {events.map(e => (
             <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
-          ))
-        )}
-      </div>
+          ))}
+        </ol>
+      )}
     </section>
   )
 }
