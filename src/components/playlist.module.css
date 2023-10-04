@@ -11,7 +11,6 @@
   transition: all 100ms ease-in-out;
 }
 
-.event:hover,
 .event:focus-within {
   transform: translate(-5px, -5px);
   box-shadow: 10px 10px 0px 0px var(--accent) !important;

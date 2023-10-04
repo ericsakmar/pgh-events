@@ -2,7 +2,6 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { format, parseISO } from "date-fns"
 import Layout from "../components/layout"
-import Header from "../components/header"
 import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./feeds.module.css"
@@ -47,7 +46,6 @@ const ListenPage = ({ data }) => {
   return (
     <Layout>
       <Seo title="pgh.events/feeds" />
-      <Header />
       <h2>Feeds</h2>
 
       {items.length === 0 ? (

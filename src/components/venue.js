@@ -7,7 +7,7 @@ const Venue = ({ name, events }) => {
   const state = events && events.length > 0 ? "DEFAULT" : "EMPTY"
 
   return (
-    <div>
+    <section>
       <h2>{name}</h2>
 
       <div className={containerStyles.events}>
@@ -19,7 +19,7 @@ const Venue = ({ name, events }) => {
           ))
         )}
       </div>
-    </div>
+    </section>
   )
 }
 

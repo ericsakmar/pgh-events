@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import * as styles from "./header.module.css"
 
 const Header = () => (
-  <>
+  <header>
     <Link
       to="/"
       style={{
@@ -22,16 +22,14 @@ const Header = () => (
     </p>
     */}
 
-    <div className={styles.menu}>
+    <nav className={styles.menu}>
       <Link to="/" className={styles.link}>
         <span>events</span>
       </Link>
 
-      <div>
-        <Link to="/feeds" className={styles.link}>
-          feeds <span className={styles.newChip}>(new!)</span>
-        </Link>
-      </div>
+      <Link to="/feeds" className={styles.link}>
+        feeds <span className={styles.newChip}>(new!)</span>
+      </Link>
 
       <a href="https://forms.gle/3rAUbTXAW5ei4Jp68" className={styles.link}>
         add an event
@@ -40,8 +38,8 @@ const Header = () => (
       <Link to="/about" className={styles.link}>
         about
       </Link>
-    </div>
-  </>
+    </nav>
+  </header>
 )
 
 export default Header

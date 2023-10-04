@@ -5,7 +5,6 @@ import Seo from "../components/seo"
 import Day from "../components/day"
 import Nav from "../components/nav"
 import MobileSearch from "../components/mobileSearch"
-import Header from "../components/header"
 import Venue from "../components/venue"
 import useSearch from "../hooks/useSearch"
 
@@ -43,8 +42,6 @@ const IndexPage = ({ pageContext, location }) => {
   return (
     <Layout>
       <Seo title="pgh.events" />
-
-      <Header />
 
       <div>{content.length === 0 ? "no events!" : content}</div>
 

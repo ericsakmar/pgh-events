@@ -36,7 +36,7 @@ const Day = ({ date: rawDate, events, index }) => {
   const renderEvents = index === 0 ? true : isOnScreen
 
   return (
-    <div className={containerStyles.day} ref={ref}>
+    <section className={containerStyles.day} ref={ref}>
       <h2>
         <time dateTime={rawDate}>
           <span className="visuallyHidden">
@@ -60,7 +60,7 @@ const Day = ({ date: rawDate, events, index }) => {
           )}
         </div>
       )}
-    </div>
+    </section>
   )
 }
 

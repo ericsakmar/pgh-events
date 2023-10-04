@@ -9,6 +9,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 
 import "./layout.css"
+import Header from "./header"
 
 const Layout = ({ children }) => {
   return (
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
           maxWidth: "1470px",
         }}
       >
+        <Header />
         <main>{children}</main>
       </div>
     </>
