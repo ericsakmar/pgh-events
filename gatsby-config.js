@@ -28,7 +28,7 @@ module.exports = {
         short_name: `pgh.events`,
         description: `pgh.events is a music-focused collection of events, playlists, podcasts, youtube channels and blogs in Pittsburgh, Pennsylvania.`,
         start_url: `/`,
-        background_color: `#daa520`,
+        background_color: `#ffd369`,
         theme_color: `#222831`,
         display: `minimal-ui`,
         icon: `src/images/icon-2023.png`, // This path is relative to the root of the site.
