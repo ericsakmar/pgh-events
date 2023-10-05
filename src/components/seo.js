@@ -22,7 +22,7 @@ function Seo({ description, lang, meta, title }) {
           }
         }
 
-        ogImageDefault: file(relativePath: { eq: "card.png" }) {
+        ogImageDefault: file(relativePath: { eq: "card-2023.png" }) {
           childImageSharp {
             fixed(height: 1200, width: 1200) {
               src
@@ -39,50 +39,50 @@ function Seo({ description, lang, meta, title }) {
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
       title={title}
       meta={[
         {
           name: `description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title
+          content: title,
         },
         {
           property: `og:description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:type`,
-          content: `website`
+          content: `website`,
         },
         {
           property: `og:image`,
-          content: cardImageSrc
+          content: cardImageSrc,
         },
         {
           name: `twitter:card`,
-          content: `summary`
+          content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``
+          content: site.siteMetadata?.author || ``,
         },
         {
           name: `twitter:title`,
-          content: title
+          content: title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           name: `twitter:image`,
-          content: cardImageSrc
-        }
+          content: cardImageSrc,
+        },
       ].concat(meta)}
     />
   )
@@ -91,14 +91,14 @@ function Seo({ description, lang, meta, title }) {
 Seo.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``
+  description: ``,
 }
 
 Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 }
 
 export default Seo

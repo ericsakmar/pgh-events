@@ -31,7 +31,7 @@ module.exports = {
         background_color: `#daa520`,
         theme_color: `#222831`,
         display: `minimal-ui`,
-        icon: `src/images/pgh-events.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon-2023.png`, // This path is relative to the root of the site.
         icon_options: {
           purpose: `any maskable`,
         },

@@ -8,12 +8,12 @@
   flex-basis: 15rem;
   flex-grow: 1;
   flex-shrink: 1;
-  transition: all 100ms ease-in-out;
+  /* transition: all 100ms ease-in-out; */
 }
 
 .event:focus-within {
-  transform: translate(-5px, -5px);
-  box-shadow: 10px 10px 0px 0px var(--accent) !important;
+  /* transform: translate(-5px, -5px); */
+  /* box-shadow: 10px 10px 0px 0px var(--accent) !important; */
 }
 
 .tags {
