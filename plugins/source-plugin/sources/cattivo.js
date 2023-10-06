@@ -1,9 +1,8 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
-const { findTime } = require("./findTime")
 
-const url = "https://cattivopgh.com/events"
+const url = "https://www.songkick.com/venues/1236981-cattivo"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -11,39 +10,25 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(`[data-ux="ContentCard"]`)
+  const events = $(`#calendar-summary script[type="application/ld+json"]`)
     .toArray()
     .map(el => {
-      const n = $(el)
-
-      const title = n.find("h4").first().text().trim()
-
-      // TODO find a more reliable way to get this
-      const rawDate = title.split(" ")[0]
-
-      const description = n.find(`[data-ux="ContentCardText"]`).text().trim()
-      const time = findTime(description)
-      const hasTime = time !== null
-
-      const date = parseDate(hasTime ? `${rawDate} at ${time}` : rawDate)
-
-      const location = "Cattivo"
-
-      const link = "https://cattivopgh.com/events"
-
-      const poster = n
-        .find(`[data-ux="ContentCardWrapperImage"] img`)
-        .attr("data-srclazy")
-        .trim()
+      const ldJson = el.children[0].data
+      const json = JSON.parse(ldJson)
+      return json
+    })
+    .flatMap(events => events)
+    .map(event => {
+      const hasTime = event.startDate.includes("T")
 
       return {
-        title,
-        date,
-        location,
-        link,
+        title: event.name,
+        date: parseDate(event.startDate),
+        location: event.location.name,
+        link: event.url,
         source: url,
         hasTime,
-        poster: `https:${poster}`,
+        poster: `https://images.sk-static.com/images/${event.image}`,
       }
     })
 
