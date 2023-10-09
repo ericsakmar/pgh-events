@@ -5,4 +5,6 @@
 .events {
   columns: 25rem;
   column-gap: 2rem;
+  list-style-type: none;
+  padding: 0;
 }

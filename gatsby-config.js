@@ -40,6 +40,6 @@ module.exports = {
     // `gatsby-plugin-offline`,
     "gatsby-plugin-remove-serviceworker",
     "source-plugin",
-    // "listen-source-plugin",
+    "listen-source-plugin",
   ],
 }
