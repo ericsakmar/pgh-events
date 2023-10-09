@@ -27,7 +27,7 @@ const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
-const southsideworks = require("./sources/southsideworks.js")
+// const southsideworks = require("./sources/southsideworks.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
@@ -101,7 +101,6 @@ exports.sourceNodes = async ({
     shredshed,
     shsb,
     smalls,
-    southsideworks,
     spaceupstairs,
     spirit,
     stageae,
@@ -112,7 +111,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [greenbeacon, cattivo]
+  const devSources = [roxian, starlake]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

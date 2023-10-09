@@ -11,7 +11,7 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(`head script[type="application/ld+json"]`)
+  const events = $(`script[type="application/ld+json"]`)
     .toArray()
     .map(el => {
       const ldJson = el.children[0].data
@@ -26,7 +26,7 @@ exports.getEvents = async () => {
       link: event.url,
       source: url,
       hasTime: true,
-      poster: event.image
+      poster: event.image,
     }))
 
   return events
