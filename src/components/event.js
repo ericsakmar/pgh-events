@@ -17,12 +17,14 @@ const useLink = link => {
   return stateLink
 }
 
-const Event = ({ event }) => {
+const Event = ({ event, isOnScreen }) => {
   const link = useLink(event.link)
+
+  const renderPoster = isOnScreen && event.poster !== undefined
 
   return (
     <li className={containerStyles.event}>
-      {event.poster && (
+      {renderPoster && (
         <img
           role="presentation"
           src={event.poster}

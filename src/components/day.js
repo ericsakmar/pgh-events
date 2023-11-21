@@ -49,16 +49,19 @@ const Day = ({ date: rawDate, events, index }) => {
         </time>
       </h2>
 
-      {renderEvents &&
-        (state === "EMPTY" ? (
-          <h3>no events!</h3>
-        ) : (
-          <ol className={containerStyles.events}>
-            {events.map(e => (
-              <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
-            ))}
-          </ol>
-        ))}
+      {state === "EMPTY" ? (
+        <h3>no events!</h3>
+      ) : (
+        <ol className={containerStyles.events}>
+          {events.map(e => (
+            <Event
+              key={`${e.title}-${e.location}-${e.date}`}
+              event={e}
+              isOnScreen={renderEvents}
+            />
+          ))}
+        </ol>
+      )}
     </section>
   )
 }

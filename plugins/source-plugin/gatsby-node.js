@@ -111,7 +111,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [roxian, starlake]
+  const devSources = [crafthouse]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
