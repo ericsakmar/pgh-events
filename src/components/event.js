@@ -20,7 +20,8 @@ const useLink = link => {
 const Event = ({ event, isOnScreen }) => {
   const link = useLink(event.link)
 
-  const renderPoster = isOnScreen && event.poster !== undefined
+  const renderPoster =
+    isOnScreen && event.poster !== undefined && event.poster !== null
 
   return (
     <li className={containerStyles.event}>
