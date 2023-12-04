@@ -83,7 +83,7 @@ exports.sourceNodes = async ({
     cityWinery,
     clubcafe,
     conAlmaDowntown,
-    crafthouse,
+    // crafthouse,
     csv,
     goldmark,
     governmentCenter,
