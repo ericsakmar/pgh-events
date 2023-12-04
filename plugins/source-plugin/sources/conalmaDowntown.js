@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://www.conalmapgh.com/events"
+const url = "https://www.conalmapgh.com/jazz"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -19,13 +19,15 @@ exports.getEvents = async () => {
 
       const rawDate = n.find(".eventlist-meta-date").text().trim()
 
-      const rawTime = n.find(".event-time-12hr-start").text().trim()
+      const rawTime = n.find(".event-time-localized-start").text().trim()
 
       const date = parseDate(`${rawDate} ${rawTime}`)
 
       const location = "Con Alma"
 
       const link = n.find(".eventlist-title-link").attr("href").trim()
+
+      const poster = n.find("img").attr("data-src")?.trim()
 
       return {
         title,
@@ -34,6 +36,7 @@ exports.getEvents = async () => {
         link: `https://www.conalmapgh.com${link}`,
         source: url,
         hasTime: true,
+        poster,
       }
     })
 
