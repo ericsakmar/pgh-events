@@ -18,7 +18,10 @@ const PLAYLIST_IDS = [
   "1K9xAkp4Va6PfG1xoQIUaQ", // march 2023
   "6OWbvpOwHQpy4u9UcZVH1Q", // feb 2023
   "0W1YYPBd5HPjYovgqm8glh", // jan 2023
-  "1sBJKNiMU9T64fZd3sq3jZ", // sept 20230
+  "1sBJKNiMU9T64fZd3sq3jZ", // sept 2023
+  "4mWg8wKCCyyT1CwOn65ZA6", // oct 2023
+  "2eq1x3erjh0YO3eNJ5IWdp", // nov 2023
+  "2FdCATcA4vY34267lIRsLY", // up next at gov center
 ]
 
 const getToken = async () => {
