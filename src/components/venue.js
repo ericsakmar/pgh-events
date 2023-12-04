@@ -15,7 +15,11 @@ const Venue = ({ name, events }) => {
       ) : (
         <ol className={containerStyles.events}>
           {events.map(e => (
-            <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
+            <Event
+              key={`${e.title}-${e.location}-${e.date}`}
+              event={e}
+              isOnScreen
+            />
           ))}
         </ol>
       )}
