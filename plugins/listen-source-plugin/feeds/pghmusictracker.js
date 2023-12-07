@@ -24,6 +24,10 @@ const PLAYLIST_IDS = [
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
 ]
 
+const SHOW_IDS = [
+  "4JZQQui0EI2SS1glrSYXuE", // dog with a mullet
+]
+
 const getToken = async () => {
   const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -66,9 +70,27 @@ const getLastUpdated = tracks => {
   return lastAdded.added_at
 }
 
+const getShows = async token => {
+  const detailRequests = SHOW_IDS.map(
+    id => `https://api.spotify.com/v1/shows/${id}/episodes`
+  ).map(p =>
+    fetch(p, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  )
+
+  const detailRes = await Promise.all(detailRequests)
+  const details = await Promise.all(detailRes.map(d => d.json()))
+
+  return details
+}
 exports.getLinks = async () => {
   const token = await getToken()
   const playlists = await getPlaylists(token)
+  const shows = await getShows(token)
 
   const links = playlists.map(p => ({
     title: p.name,
@@ -79,7 +101,18 @@ exports.getLinks = async () => {
     image: p.images[0].url,
   }))
 
-  return links
+  const show_links = shows
+    .flatMap(s => s.items)
+    .map(s => ({
+      title: s.name,
+      subtitle: "Dog With A Mullet", // TODO change names if you ever add more
+      url: s.external_urls.spotify,
+      timestamp: dateFns.parse(s.release_date, "yyyy-MM-dd", new Date()),
+      tags: ["spotify show"],
+      image: s.images[0].url,
+    }))
+
+  return [...links, ...show_links]
 }
 
-exports.name = "pgh local music tracker"
+exports.name = "spotify"
