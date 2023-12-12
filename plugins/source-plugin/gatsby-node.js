@@ -1,3 +1,4 @@
+// const southsideworks = require("./sources/southsideworks.js")
 const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
 const bottlerocket = require("./sources/bottlerocket.js")
@@ -21,13 +22,13 @@ const kingfly = require("./sources/kingfly.js")
 const mixtape = require("./sources/mixtape.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
+const poetry = require("./sources/poetry.js")
 const preserving = require("./sources/preserving.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
-// const southsideworks = require("./sources/southsideworks.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
@@ -72,6 +73,7 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
+    crafthouse,
     arcade,
     belvederes,
     bottlerocket,
@@ -83,7 +85,6 @@ exports.sourceNodes = async ({
     cityWinery,
     clubcafe,
     conAlmaDowntown,
-    // crafthouse,
     csv,
     goldmark,
     governmentCenter,
@@ -95,6 +96,7 @@ exports.sourceNodes = async ({
     mixtape,
     newHazlett,
     oaks,
+    poetry,
     preserving,
     roboto,
     roxian,
@@ -111,7 +113,7 @@ exports.sourceNodes = async ({
     warhol,
   ]
 
-  const devSources = [conAlmaDowntown, crafthouse]
+  const devSources = [crafthouse, poetry]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
