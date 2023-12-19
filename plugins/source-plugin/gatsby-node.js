@@ -16,7 +16,7 @@ const fatcat = require("./sources/fatcat.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
-const hartwood = require("./sources/hartwood.js")
+// const hartwood = require("./sources/hartwood.js")
 const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
@@ -91,7 +91,7 @@ exports.sourceNodes = async ({
     goldmark,
     governmentCenter,
     greenbeacon,
-    hartwood,
+    // hartwood,
     honky,
     jergels,
     kingfly,

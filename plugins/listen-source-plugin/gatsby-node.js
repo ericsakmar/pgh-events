@@ -1,12 +1,14 @@
+const agaveparty = require("./feeds/agaveparty")
 const boredinpittsburgh = require("./feeds/boredinpittsburgh")
 const cazart = require("./feeds/cazart")
 const cruelnoise = require("./feeds/cruelnoise")
+const iquit = require("./feeds/iquit")
+const michitapes = require("./feeds/michitapes")
 const modestdirector = require("./feeds/modestdirector")
 const pghmusictracker = require("./feeds/pghmusictracker")
 const startthebeat = require("./feeds/startthebeat")
-const iquit = require("./feeds/iquit")
-const michitapes = require("./feeds/michitapes")
 const vibevote = require("./feeds/vibevote")
+const wyep = require("./feeds/wyep")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -41,15 +43,17 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const feeds = [
+    agaveparty,
     boredinpittsburgh,
     cazart,
     cruelnoise,
+    iquit,
+    michitapes,
     modestdirector,
     pghmusictracker,
     startthebeat,
-    iquit,
-    michitapes,
     vibevote,
+    wyep,
   ]
 
   const results = await Promise.all(feeds.map(s => getLinks(s)))
