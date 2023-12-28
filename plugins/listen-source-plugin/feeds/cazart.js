@@ -18,7 +18,9 @@ exports.getLinks = async () => {
       url: i.link,
       timestamp: new Date(i.isoDate),
       tags: ["blog"],
-      image: i.thumbnail["$"].url.replace(/s72\-c/, "s400"),
+      image: i.thumbnail
+        ? i.thumbnail["$"].url.replace(/s72\-c/, "s400")
+        : undefined,
     }))
 
   const podcastFeed = await parser.parseURL(

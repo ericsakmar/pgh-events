@@ -11,7 +11,7 @@ exports.getLinks = async () => {
     url: i.url,
     timestamp: new Date(i.created_time),
     tags: ["podcast"],
-    image: i.pictures.medium,
+    image: i.pictures.large,
   }))
 
   return links

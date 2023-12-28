@@ -3,7 +3,7 @@ const parser = new Parser()
 
 exports.getLinks = async () => {
   const feed = await parser.parseURL(
-    "https://wyep.org/category/music-features/pittsburgh-artist-of-the-week/feed/"
+    "https://www.wyep.org/tags/pittsburgh-artist-of-the-week.rss"
   )
 
   const links = feed.items.map(i => ({
