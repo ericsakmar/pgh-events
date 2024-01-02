@@ -48,26 +48,21 @@ const Next = () => (
   </svg>
 )
 
-const Nav = ({ currentPage, numPages }) => {
-  const showNext = currentPage < numPages
-  const showPrevious = currentPage > 1
-  const nextPage = currentPage + 1
-  const previousPage = currentPage - 1
+const Nav = ({ next, previous }) => {
+  const showNext = next !== undefined
+  const showPrevious = previous !== undefined
 
   return (
     <div className={containerStyles.nav}>
       {showPrevious ? (
-        <Link
-          className={containerStyles.navLink}
-          to={previousPage === 1 ? "/" : `/${previousPage}`}
-        >
+        <Link className={containerStyles.navLink} to={`/${previous}`}>
           <Previous />
           <span className="visuallyHidden">Previous Page</span>
         </Link>
       ) : null}
 
       {showNext ? (
-        <Link className={containerStyles.navLink} to={`/${nextPage}`}>
+        <Link className={containerStyles.navLink} to={`/${next}`}>
           <Next />
           <span className="visuallyHidden">Next Page</span>
         </Link>

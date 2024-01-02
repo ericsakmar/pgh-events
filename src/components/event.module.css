@@ -1,5 +1,5 @@
 .event {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-right: 5px;
   break-inside: avoid-column;
   box-shadow: 5px 5px 0 #ffd369;
@@ -19,8 +19,10 @@
 
 .actions {
   display: flex;
-  gap: 1rem;
+  gap: 0 1rem;
   color: rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
 }
 
 .poster {

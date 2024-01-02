@@ -1,5 +1,11 @@
 const path = require("path")
-const { isAfter, startOfDay, compareAsc } = require("date-fns")
+const {
+  isAfter,
+  startOfDay,
+  compareAsc,
+  eachDayOfInterval,
+  add,
+} = require("date-fns")
 const {
   formatInTimeZone,
   utcToZonedTime,
@@ -9,8 +15,18 @@ const { decode } = require("html-entities")
 
 const TIME_ZONE = "America/New_York"
 
+const formatDay = d => formatInTimeZone(d, TIME_ZONE, "yyyy-MM-dd")
+
+// from https://www.slingacademy.com/article/javascript-how-to-convert-a-string-to-a-url-slug/
+const toSlug = v =>
+  v
+    .trim()
+    .toLowerCase()
+    .replace(/[\W_]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   const date = new Date()
   const serverDate = zonedTimeToUtc(date, TIME_ZONE)
@@ -37,12 +53,40 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors) {
+  const venueResult = await graphql(
+    `
+      query MyQuery {
+        allEvent {
+          distinct(field: location)
+        }
+      }
+    `
+  )
+
+  const feedsResult = await graphql(
+    `
+      query MyQuery {
+        allListenlink(sort: { fields: timestamp, order: DESC }, limit: 10) {
+          nodes {
+            id
+            tags
+            timestamp
+            title
+            url
+            image
+            subtitle
+          }
+        }
+      }
+    `
+  )
+
+  if (result.errors || venueResult.errors || feedsResult.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
 
-  const grouped = result.data.allEvent.edges
+  const allEvents = result.data.allEvent.edges
     .map(e => e.node)
     .map(e => {
       const d1 = new Date(e.date)
@@ -52,35 +96,87 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     .filter(e => e.title !== "")
     .concat()
     .sort((a, b) => compareAsc(a.date, b.date))
-    .reduce((groups, e) => {
-      const key = formatInTimeZone(e.date, TIME_ZONE, "yyyy-MM-dd")
-      const events = groups[key] ?? []
 
-      return {
-        ...groups,
-        [key]: [...events, e],
-      }
-    }, {})
+  // grouped by date
+  const grouped = allEvents.reduce((groups, e) => {
+    const key = formatDay(e.date)
+    const events = groups[key] ?? []
 
-  const dates = Object.keys(grouped).sort()
+    return {
+      ...groups,
+      [key]: [...events, e],
+    }
+  }, {})
 
-  const totalCount = dates.length
-  const perPage = 14
-  const numPages = Math.ceil(totalCount / perPage)
+  const groupedByVenue = allEvents.reduce((groups, e) => {
+    const key = toSlug(e.location)
+    const events = groups[key] ?? []
 
-  Array.from({ length: numPages }).forEach((_, i) => {
-    const eventsForPage = dates
-      .slice(i * perPage, (i + 1) * perPage)
-      .reduce((acc, d) => ({ ...acc, [d]: grouped[d] }), {})
+    return {
+      ...groups,
+      [key]: [...events, e],
+    }
+  }, {})
+
+  const venues = venueResult.data.allEvent.distinct.map(v => ({
+    name: v,
+    slug: toSlug(v),
+  }))
+
+  const dates = eachDayOfInterval({
+    start: today,
+    end: add(today, {
+      months: 3,
+    }),
+  })
+
+  const minDate = formatDay(dates[0])
+  const maxDate = formatDay(dates[dates.length - 1])
+  const feeds = feedsResult.data.allListenlink.nodes
+
+  dates.forEach((d, i) => {
+    const key = formatDay(d)
+    const events = grouped[key]
+    const previous = i > 0 ? formatDay(dates[i - 1]) : undefined
+    const next = i < dates.length - 1 ? formatDay(dates[i + 1]) : undefined
 
     createPage({
-      path: i === 0 ? `/` : `/${i + 1}`,
+      path: `/${key}`,
       component: path.resolve("./src/templates/index.js"),
       context: {
-        numPages,
-        currentPage: i + 1,
-        events: eventsForPage,
-        allEvents: grouped,
+        date: key,
+        events,
+        previous,
+        next,
+        venues,
+        feeds,
+        minDate,
+        maxDate,
+      },
+    })
+  })
+
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/${formatDay(dates[0])}`,
+    exactPath: true,
+    isPermanent: false,
+    redirectInBrowser: true,
+  })
+
+  venues.forEach(venue => {
+    const events = groupedByVenue[venue.slug]
+
+    createPage({
+      path: `/v/${venue.slug}`,
+      component: path.resolve("./src/templates/index.js"),
+      context: {
+        events,
+        venues,
+        feeds,
+        venue,
+        minDate,
+        maxDate,
       },
     })
   })

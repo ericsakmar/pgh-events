@@ -5,23 +5,8 @@ import AddToCalendar from "./addToCalendar"
 import WebShare from "./webshare"
 import EventTime from "./eventTime"
 
-// see https://github.com/gatsbyjs/gatsby/issues/22948
-// and https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/
-const useLink = link => {
-  const [stateLink, setStateLink] = React.useState("")
-
-  React.useEffect(() => {
-    setStateLink(link)
-  }, [link])
-
-  return stateLink
-}
-
-const Event = ({ event, isOnScreen }) => {
-  const link = useLink(event.link)
-
-  const renderPoster =
-    isOnScreen && event.poster !== undefined && event.poster !== null
+const Event = ({ event }) => {
+  const renderPoster = event.poster !== undefined && event.poster !== null
 
   return (
     <li className={containerStyles.event}>
@@ -36,8 +21,13 @@ const Event = ({ event, isOnScreen }) => {
       )}
 
       <h3>
-        {link ? (
-          <a href={link} className={containerStyles.mainLink}>
+        {event.link ? (
+          <a
+            href={event.link}
+            className={containerStyles.mainLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {event.title}
           </a>
         ) : (

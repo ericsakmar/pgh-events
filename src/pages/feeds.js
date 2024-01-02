@@ -1,10 +1,14 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { format, parseISO } from "date-fns"
-import Layout from "../components/layout"
 import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./feeds.module.css"
+import Layout from "../components/layout"
+
+export function Head() {
+  return <Seo title="pgh.events/feeds" />
+}
 
 const useLazy = items => {
   const imgRefs = React.useRef(
@@ -45,7 +49,6 @@ const ListenPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="pgh.events/feeds" />
       <h2>Feeds</h2>
 
       {items.length === 0 ? (
