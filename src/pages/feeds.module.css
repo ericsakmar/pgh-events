@@ -1,9 +1,36 @@
 .playlists {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 
   /* list stuff  */
   list-style-type: none;
   padding: 0;
+}
+
+.page {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.side {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 15rem;
+  color: var(--light);
+}
+
+@media (max-width: 600px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .side {
+    max-width: unset;
+  }
 }

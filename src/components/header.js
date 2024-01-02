@@ -9,35 +9,47 @@ const Header = () => (
       to="/"
       style={{
         textDecoration: "none",
-        display: "inline-block",
+        display: "block",
       }}
     >
       <h1 className={styles.header}>pgh.events</h1>
     </Link>
 
-    {/*
     <p className={styles.description}>
       a music-focused collection of events, playlists, podcasts, youtube
       channels and blogs in Pittsburgh, Pennsylvania.
     </p>
-    */}
 
     <nav className={styles.menu}>
-      <Link to="/" className={styles.link}>
-        <span>events</span>
-      </Link>
+      <ul className={styles.links}>
+        <li className={styles.emojiLink}>
+          <span>🎟️</span>
+          <Link to="/" className={styles.link}>
+            Events
+          </Link>
+        </li>
 
-      <Link to="/feeds" className={styles.link}>
-        feeds <span className={styles.newChip}>(new!)</span>
-      </Link>
+        <li className={styles.emojiLink}>
+          <span>▶️</span>
+          <Link to="/feeds" className={styles.link}>
+            Feeds
+          </Link>
+        </li>
 
-      <a href="https://forms.gle/3rAUbTXAW5ei4Jp68" className={styles.link}>
-        add an event
-      </a>
+        <li className={styles.emojiLink}>
+          <span>✉️</span>
+          <a href="https://forms.gle/3rAUbTXAW5ei4Jp68" className={styles.link}>
+            Add an Event
+          </a>
+        </li>
 
-      <Link to="/about" className={styles.link}>
-        about
-      </Link>
+        <li className={styles.emojiLink}>
+          <span>ℹ️</span>
+          <Link to="/about" className={styles.link}>
+            About
+          </Link>
+        </li>
+      </ul>
     </nav>
   </header>
 )

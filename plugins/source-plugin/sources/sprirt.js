@@ -37,13 +37,13 @@ exports.getEvents = async () => {
 
       const date = parseDate(`${rawDate} ${rawTime}`)
 
-      const locationTag = n
-        .find(".summary-metadata-item--tags")
-        .first()
-        .text()
-        .trim()
+      // const locationTag = n
+      //   .find(".summary-metadata-item--tags")
+      //   .first()
+      //   .text()
+      //   .trim()
 
-      const location = `Spirit ${locationTag}`
+      const location = `Spirit`
 
       const rawLink = n.find(".summary-thumbnail-container").attr("href").trim()
 

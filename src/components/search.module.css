@@ -1,8 +1,4 @@
 .search {
-  padding: 1rem;
-  background-color: var(--light);
-  border: 5px solid var(--very-dark);
-  border-radius: 10px;
 }
 
 .field {
@@ -19,4 +15,35 @@
 
 .extraActions {
   margin-left: auto;
+}
+
+.input {
+  border: 2px solid var(--very-dark);
+  border-radius: 5px;
+  height: 35px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.header {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: var(--light);
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .search {
+    display: flex;
+    gap: 0 1rem;
+    flex-wrap: wrap;
+  }
+
+  .field {
+    flex-grow: 1;
+    flex-basis: 200px;
+  }
 }

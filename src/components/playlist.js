@@ -26,7 +26,12 @@ const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
 
   return (
     <li className={containerStyles.event} ref={ref} id={link}>
-      <a href={link} className={containerStyles.bigLink}>
+      <a
+        href={link}
+        className={containerStyles.bigLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {playlist.image && showImage && (
           <img
             role="presentation"

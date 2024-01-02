@@ -1,10 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { format, parseISO } from "date-fns"
-import Layout from "../components/layout"
 import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./feeds.module.css"
+import Layout from "../components/layout"
+import EventsSummary from "../components/eventsSummary"
+
+export function Head() {
+  return <Seo title="pgh.events/feeds" />
+}
 
 const useLazy = items => {
   const imgRefs = React.useRef(
@@ -41,11 +46,12 @@ const ListenPage = ({ data }) => {
     timestamp: format(parseISO(l.timestamp), "E, LLL d"),
   }))
 
+  const events = data.allEvent.edges.map(e => e.node)
+
   const imgRefs = useLazy(items)
 
   return (
-    <Layout>
-      <Seo title="pgh.events/feeds" />
+    <Layout sidebar={<EventsSummary events={events} />}>
       <h2>Feeds</h2>
 
       {items.length === 0 ? (
@@ -70,7 +76,7 @@ export default ListenPage
 
 export const query = graphql`
   query MyQuery {
-    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 125) {
+    allListenlink(sort: { fields: timestamp, order: DESC }, limit: 60) {
       nodes {
         id
         tags
@@ -79,6 +85,14 @@ export const query = graphql`
         url
         image
         subtitle
+      }
+    }
+    allEvent(sort: { fields: date, order: ASC }, limit: 10) {
+      edges {
+        node {
+          title
+          link
+        }
       }
     }
   }

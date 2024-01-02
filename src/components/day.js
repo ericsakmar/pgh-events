@@ -7,46 +7,28 @@ import * as containerStyles from "./day.module.css"
 const getDayOfWeek = date => format(date, "EEE")
 const getDate = date => format(date, "MMM d")
 
-const useOnScreen = ref => {
-  const [isIntersecting, setIntersecting] = React.useState(false)
+const Day = ({ date: rawDate, events, venue }) => {
+  const date =
+    rawDate !== undefined ? parse(rawDate, "yyyy-MM-dd", new Date()) : undefined
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIntersecting(true)
-      }
-    })
-
-    observer.observe(ref.current)
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [ref])
-
-  return isIntersecting
-}
-
-const Day = ({ date: rawDate, events, index }) => {
-  const ref = React.useRef()
-  const isOnScreen = useOnScreen(ref)
-  const date = parse(rawDate, "yyyy-MM-dd", new Date())
   const state = events && events.length > 0 ? "DEFAULT" : "EMPTY"
 
-  const renderEvents = index === 0 ? true : isOnScreen
-
   return (
-    <section className={containerStyles.day} ref={ref}>
+    <section className={containerStyles.day}>
       <h2>
-        <time dateTime={rawDate}>
-          <span className="visuallyHidden">
-            {date.toLocaleDateString(undefined, { dateStyle: "full" })}
-          </span>
+        {venue === undefined ? (
+          <time dateTime={rawDate}>
+            <span className="visuallyHidden">
+              {date.toLocaleDateString(undefined, { dateStyle: "full" })}
+            </span>
 
-          <div aria-hidden="true">
-            {getDayOfWeek(date)}, {getDate(date)}
-          </div>
-        </time>
+            <div aria-hidden="true">
+              {getDayOfWeek(date)}, {getDate(date)}
+            </div>
+          </time>
+        ) : (
+          venue.name
+        )}
       </h2>
 
       {state === "EMPTY" ? (
@@ -54,11 +36,7 @@ const Day = ({ date: rawDate, events, index }) => {
       ) : (
         <ol className={containerStyles.events}>
           {events.map(e => (
-            <Event
-              key={`${e.title}-${e.location}-${e.date}`}
-              event={e}
-              isOnScreen={renderEvents}
-            />
+            <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
           ))}
         </ol>
       )}
