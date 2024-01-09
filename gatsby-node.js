@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const venueResult = await graphql(
     `
       query MyQuery {
-        allEvent {
+        allEvent(filter: { date: { gte: "${formatDay(today)}" } }) {
           distinct(field: location)
         }
       }

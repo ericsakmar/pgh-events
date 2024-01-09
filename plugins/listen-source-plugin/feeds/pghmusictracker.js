@@ -23,6 +23,7 @@ const PLAYLIST_IDS = [
   "2eq1x3erjh0YO3eNJ5IWdp", // nov 2023
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
   "2O2RY3sbREWT4cz0HZoAvW", // pghmt top 9
+  "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
 ]
 
 const SHOW_IDS = [
