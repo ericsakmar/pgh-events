@@ -3,6 +3,7 @@ import * as React from "react"
 import Event from "../components/event"
 import * as containerStyles from "./venue.module.css"
 
+// TODO delete??
 const Venue = ({ name, events }) => {
   const state = events && events.length > 0 ? "DEFAULT" : "EMPTY"
 
@@ -15,11 +16,7 @@ const Venue = ({ name, events }) => {
       ) : (
         <ol className={containerStyles.events}>
           {events.map(e => (
-            <Event
-              key={`${e.title}-${e.location}-${e.date}`}
-              event={e}
-              isOnScreen
-            />
+            <Event key={`${e.title}-${e.location}-${e.date}`} event={e} />
           ))}
         </ol>
       )}

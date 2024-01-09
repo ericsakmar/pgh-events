@@ -1,30 +1,31 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
 import PropTypes from "prop-types"
 
+import * as styles from "./layout.module.css"
 import "./layout.css"
+import "../templates/global.css"
 import Header from "./header"
 
-const Layout = ({ children }) => {
+const Layout = ({ sidebar, children, footer }) => {
   return (
-    <>
-      <div
-        style={{
-          margin: `0 auto`,
-          padding: `0 1rem 1rem`,
-          maxWidth: "1470px",
-        }}
-      >
-        <Header />
-        <main>{children}</main>
+    <div
+      style={{
+        margin: `0 auto`,
+        padding: `0 1rem 1rem`,
+        maxWidth: "1200px",
+      }}
+    >
+      <div className={styles.page}>
+        <div className={styles.side}>
+          <Header />
+          {sidebar}
+        </div>
+
+        <main className={styles.main}>{children}</main>
       </div>
-    </>
+
+      {footer}
+    </div>
   )
 }
 

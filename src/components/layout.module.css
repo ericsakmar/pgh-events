@@ -9,9 +9,12 @@
 }
 
 .side {
-  flex-grow: 1;
-  max-width: 15rem;
+  width: 15rem;
+  flex-shrink: 0;
   color: var(--light);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media (max-width: 600px) {
@@ -20,6 +23,7 @@
   }
 
   .side {
-    max-width: unset;
+    flex-grow: 1;
+    width: unset;
   }
 }

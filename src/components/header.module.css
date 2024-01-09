@@ -1,10 +1,12 @@
 .header {
   color: #eee;
   text-shadow: 3px 3px var(--very-dark);
-  margin-top: 2rem;
   font-family: var(--header-font);
-  font-weight: 400;
+  font-weight: normal;
   font-size: 2rem;
+  border-bottom: 5px solid var(--very-dark);
+  margin-bottom: 1rem;
+  line-height: 2rem;
 }
 
 .description {
@@ -13,18 +15,28 @@
 }
 
 .menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0rem 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-.newChip {
-  color: #c0ff69;
-  text-decoration: none;
+.links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.emojiLink {
+  display: flex;
+  gap: 0.25rem;
 }
 
 .link,
 .link:visited {
   color: var(--light);
+}
+
+@media (max-width: 600px) {
+  .links {
+    display: flex;
+    gap: 0 1rem;
+    flex-wrap: wrap;
+  }
 }
