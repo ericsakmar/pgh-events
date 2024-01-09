@@ -53,15 +53,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  const venueResult = await graphql(
-    `
-      query MyQuery {
-        allEvent(filter: { date: { gte: "${formatDay(today)}" } }) {
-          distinct(field: location)
-        }
-      }
-    `
-  )
+  // const venueResult = await graphql(
+  //   `
+  //     query MyQuery {
+  //       allEvent(filter: { date: { gte: "${formatDay(today)}" } }) {
+  //         distinct(field: location)
+  //       }
+  //     }
+  //   `
+  // )
 
   const feedsResult = await graphql(
     `
@@ -81,7 +81,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors || venueResult.errors || feedsResult.errors) {
+  if (result.errors || feedsResult.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
@@ -118,10 +118,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   }, {})
 
-  const venues = venueResult.data.allEvent.distinct.map(v => ({
-    name: v,
-    slug: toSlug(v),
-  }))
+  // const venues = venueResult.data.allEvent.distinct.map(v => ({
+  //   name: v,
+  //   slug: toSlug(v),
+  // }))
 
   const dates = eachDayOfInterval({
     start: today,
@@ -148,7 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         events,
         previous,
         next,
-        venues,
+        // venues,
         feeds,
         minDate,
         maxDate,
@@ -156,6 +156,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  // TODO i'm not sure if this works or not
   createRedirect({
     fromPath: `/`,
     toPath: `/${formatDay(dates[0])}`,
@@ -164,20 +165,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     redirectInBrowser: true,
   })
 
-  venues.forEach(venue => {
-    const events = groupedByVenue[venue.slug]
-
-    createPage({
-      path: `/v/${venue.slug}`,
-      component: path.resolve("./src/templates/index.js"),
-      context: {
-        events,
-        venues,
-        feeds,
-        venue,
-        minDate,
-        maxDate,
-      },
-    })
-  })
+  // venues.forEach(venue => {
+  //   const events = groupedByVenue[venue.slug]
+  //
+  //   createPage({
+  //     path: `/v/${venue.slug}`,
+  //     component: path.resolve("./src/templates/index.js"),
+  //     context: {
+  //       events,
+  //       venues,
+  //       feeds,
+  //       venue,
+  //       minDate,
+  //       maxDate,
+  //     },
+  //   })
+  // })
 }

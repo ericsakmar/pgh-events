@@ -39,9 +39,9 @@ const IndexPage = ({ pageContext }) => {
           <FeedSummary feeds={feeds} />
         </>
       }
-      footer={<Nav previous={previous} next={next} />}
     >
       <Day date={date} venue={venue} events={events} />
+      <Nav previous={previous} next={next} />
     </Layout>
   )
 }

@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 
 import * as containerStyles from "./search.module.css"
 
-const Search = ({ date, venues, venue, extraActions, minDate, maxDate }) => {
+const Search = ({ date, venue, extraActions, minDate, maxDate }) => {
   const handleChange = evt => {
     if (evt.target.name === "d") {
       const date = evt.target.value
@@ -36,6 +36,7 @@ const Search = ({ date, venues, venue, extraActions, minDate, maxDate }) => {
           />
         </div>
 
+        {/*
         <div className={containerStyles.field}>
           <label htmlFor="venue" className={containerStyles.label}>
             Venue:
@@ -55,6 +56,7 @@ const Search = ({ date, venues, venue, extraActions, minDate, maxDate }) => {
             ))}
           </select>
         </div>
+      */}
 
         {extraActions !== undefined ? (
           <div className={containerStyles.actions}>
