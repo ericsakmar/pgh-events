@@ -128,7 +128,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     end: add(today, {
       months: 3,
     }),
-  })
+  }).map(d => utcToZonedTime(d, TIME_ZONE))
 
   const minDate = formatDay(dates[0])
   const maxDate = formatDay(dates[dates.length - 1])
