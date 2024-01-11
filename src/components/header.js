@@ -30,7 +30,7 @@ const Header = () => (
         </li>
 
         <li className={styles.emojiLink}>
-          <span>🎧</span>
+          <span>▶️</span>
           <Link to="/feeds" className={styles.link}>
             Feeds
           </Link>
