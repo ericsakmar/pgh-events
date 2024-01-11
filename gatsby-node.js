@@ -17,14 +17,6 @@ const TIME_ZONE = "America/New_York"
 
 const formatDay = d => formatInTimeZone(d, TIME_ZONE, "yyyy-MM-dd")
 
-// from https://www.slingacademy.com/article/javascript-how-to-convert-a-string-to-a-url-slug/
-const toSlug = v =>
-  v
-    .trim()
-    .toLowerCase()
-    .replace(/[\W_]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage, createRedirect } = actions
 
@@ -52,16 +44,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   )
-
-  // const venueResult = await graphql(
-  //   `
-  //     query MyQuery {
-  //       allEvent(filter: { date: { gte: "${formatDay(today)}" } }) {
-  //         distinct(field: location)
-  //       }
-  //     }
-  //   `
-  // )
 
   const feedsResult = await graphql(
     `
@@ -108,21 +90,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   }, {})
 
-  const groupedByVenue = allEvents.reduce((groups, e) => {
-    const key = toSlug(e.location)
-    const events = groups[key] ?? []
-
-    return {
-      ...groups,
-      [key]: [...events, e],
-    }
-  }, {})
-
-  // const venues = venueResult.data.allEvent.distinct.map(v => ({
-  //   name: v,
-  //   slug: toSlug(v),
-  // }))
-
   const dates = eachDayOfInterval({
     start: today,
     end: add(today, {
@@ -134,15 +101,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const maxDate = formatDay(dates[dates.length - 1])
   const feeds = feedsResult.data.allListenlink.nodes
 
-  console.log("------")
-  console.log("date", date)
-  console.log("serverDate", serverDate)
-  console.log("localToday", localToday)
-  console.log("today", today)
-  console.log("minDate", minDate)
-  console.log("maxDate", maxDate)
-  console.log("dates[0]", dates[0])
-  console.log("------")
+  // console.log("------")
+  // console.log("date", date)
+  // console.log("serverDate", serverDate)
+  // console.log("localToday", localToday)
+  // console.log("today", today)
+  // console.log("minDate", minDate)
+  // console.log("maxDate", maxDate)
+  // console.log("dates[0]", dates[0])
+  // console.log("------")
 
   dates.forEach((d, i) => {
     const key = formatDay(d)
@@ -151,14 +118,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const next = i < dates.length - 1 ? formatDay(dates[i + 1]) : undefined
 
     createPage({
-      path: `/${key}`,
+      path: i === 0 ? "/" : `/${key}`,
       component: path.resolve("./src/templates/index.js"),
       context: {
         date: key,
         events,
         previous,
         next,
-        // venues,
         feeds,
         minDate,
         maxDate,
@@ -166,29 +132,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // TODO i'm not sure if this works or not
   createRedirect({
-    fromPath: `/`,
-    toPath: `/${formatDay(dates[0])}`,
+    toPath: `/`,
+    fromPath: `/${formatDay(dates[0])}`,
     exactPath: true,
     isPermanent: false,
     redirectInBrowser: true,
   })
-
-  // venues.forEach(venue => {
-  //   const events = groupedByVenue[venue.slug]
-  //
-  //   createPage({
-  //     path: `/v/${venue.slug}`,
-  //     component: path.resolve("./src/templates/index.js"),
-  //     context: {
-  //       events,
-  //       venues,
-  //       feeds,
-  //       venue,
-  //       minDate,
-  //       maxDate,
-  //     },
-  //   })
-  // })
 }
