@@ -134,6 +134,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const maxDate = formatDay(dates[dates.length - 1])
   const feeds = feedsResult.data.allListenlink.nodes
 
+  console.log("------")
+  console.log("date", date)
+  console.log("serverDate", serverDate)
+  console.log("localToday", localToday)
+  console.log("today", today)
+  console.log("minDate", minDate)
+  console.log("maxDate", maxDate)
+  console.log("------")
+
   dates.forEach((d, i) => {
     const key = formatDay(d)
     const events = grouped[key]
