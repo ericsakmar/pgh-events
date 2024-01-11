@@ -141,6 +141,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   console.log("today", today)
   console.log("minDate", minDate)
   console.log("maxDate", maxDate)
+  console.log("dates[0]", dates[0])
   console.log("------")
 
   dates.forEach((d, i) => {
