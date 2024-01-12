@@ -5,7 +5,6 @@ import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./feeds.module.css"
 import Layout from "../components/layout"
-import EventsSummary from "../components/eventsSummary"
 
 export function Head() {
   return <Seo title="pgh.events/feeds" />
@@ -46,14 +45,11 @@ const ListenPage = ({ data }) => {
     timestamp: format(parseISO(l.timestamp), "E, LLL d"),
   }))
 
-  const events = data.allEvent.edges.map(e => e.node)
-
   const imgRefs = useLazy(items)
 
   return (
-    <Layout sidebar={<EventsSummary events={events} />}>
+    <Layout>
       <h2>Feeds</h2>
-
       {items.length === 0 ? (
         <p>there's nothing here!</p>
       ) : (
@@ -85,14 +81,6 @@ export const query = graphql`
         url
         image
         subtitle
-      }
-    }
-    allEvent(sort: { fields: date, order: ASC }, limit: 10) {
-      edges {
-        node {
-          title
-          link
-        }
       }
     }
   }

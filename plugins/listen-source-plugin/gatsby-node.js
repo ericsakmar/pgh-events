@@ -9,6 +9,7 @@ const pghmusictracker = require("./feeds/pghmusictracker")
 const startthebeat = require("./feeds/startthebeat")
 const vibevote = require("./feeds/vibevote")
 const wyep = require("./feeds/wyep")
+const wpts = require("./feeds/wpts")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -42,7 +43,7 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions
 
-  const feeds = [
+  const prodSources = [
     agaveparty,
     boredinpittsburgh,
     cazart,
@@ -54,9 +55,15 @@ exports.sourceNodes = async ({
     startthebeat,
     vibevote,
     wyep,
+    wpts,
   ]
 
-  const results = await Promise.all(feeds.map(s => getLinks(s)))
+  const devSources = [cruelnoise, wpts]
+
+  const sources =
+    process.env.NODE_ENV === "development" ? devSources : prodSources
+
+  const results = await Promise.all(sources.map(s => getLinks(s)))
 
   const links = results.flatMap(r => r)
 
