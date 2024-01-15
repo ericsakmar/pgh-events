@@ -13,6 +13,7 @@ const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
+const donttell = require("./sources/donttell.js")
 const fatcat = require("./sources/fatcat.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
@@ -75,6 +76,7 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
+    // hartwood,
     arcade,
     belvederes,
     bottlerocket,
@@ -88,11 +90,11 @@ exports.sourceNodes = async ({
     conAlmaDowntown,
     crafthouse,
     csv,
+    donttell,
     fatcat,
     goldmark,
     governmentCenter,
     greenbeacon,
-    // hartwood,
     honky,
     jergels,
     kingfly,
@@ -117,7 +119,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [spirit, winery, thunderbird]
+  const devSources = [winery, donttell]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

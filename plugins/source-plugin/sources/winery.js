@@ -44,6 +44,7 @@ const getTastingRoomEvents = async () => {
 
   return events
 }
+
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
   const $ = cheerio.load(data)
