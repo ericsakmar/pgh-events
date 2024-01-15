@@ -58,7 +58,7 @@ exports.sourceNodes = async ({
     wpts,
   ]
 
-  const devSources = [cruelnoise, wpts]
+  const devSources = [pghmusictracker]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

@@ -1,3 +1,4 @@
+// const hartwood = require("./sources/hartwood.js")
 // const southsideworks = require("./sources/southsideworks.js")
 const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
@@ -16,7 +17,6 @@ const fatcat = require("./sources/fatcat.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
-// const hartwood = require("./sources/hartwood.js")
 const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
@@ -38,6 +38,7 @@ const theforge = require("./sources/theforge.js")
 const thunderbird = require("./sources/thunderbird.js")
 const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
+const winery = require("./sources/winery.js")
 
 const POST_NODE_TYPE = `Event`
 const MAX_RETRIES = 3
@@ -113,9 +114,10 @@ exports.sourceNodes = async ({
     thunderbird,
     trace,
     warhol,
+    winery,
   ]
 
-  const devSources = [spirit, fatcat, smalls, csv]
+  const devSources = [spirit, winery, thunderbird]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

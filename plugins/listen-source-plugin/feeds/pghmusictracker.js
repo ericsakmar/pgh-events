@@ -24,6 +24,8 @@ const PLAYLIST_IDS = [
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
   "2O2RY3sbREWT4cz0HZoAvW", // pghmt top 9
   "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
+  "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
+  "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
 ]
 
 const SHOW_IDS = [
