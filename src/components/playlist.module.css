@@ -21,11 +21,12 @@
 }
 
 .poster {
-  max-height: 600px;
+  max-height: 160px;
   width: 100%;
   border: 5px solid #222831;
   border-radius: 10px;
   margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .details {

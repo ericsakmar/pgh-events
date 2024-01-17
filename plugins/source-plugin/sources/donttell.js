@@ -21,8 +21,6 @@ exports.getEvents = async () => {
       const link = n.find("a").first().attr("href")?.trim()
       const poster = undefined
 
-      console.log(n.find("a").first().attr("href"))
-
       return {
         title,
         date,

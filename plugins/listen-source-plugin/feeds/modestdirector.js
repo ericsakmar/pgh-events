@@ -10,16 +10,18 @@ exports.getLinks = async () => {
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCj05itdKFi1F93TbZrHlpRA"
   )
 
-  // console.log(JSON.stringify(feed, null, 2))
-
-  const links = feed.items.map(i => ({
-    title: i.title,
-    subtitle: "Modest Director",
-    url: i.link,
-    timestamp: new Date(i.isoDate),
-    tags: ["youtube channel"],
-    image: i.media["media:thumbnail"][0]["$"].url,
-  }))
+  const links = feed.items
+    .map(i => ({
+      title: i.title,
+      subtitle: "Modest Director",
+      url: i.link,
+      timestamp: new Date(i.isoDate),
+      tags: ["youtube channel"],
+      image: i.media["media:thumbnail"][0]["$"].url,
+      isShort: i.media["media:description"][0] === "", // shorts dont have a description
+    }))
+    .filter(l => !l.isShort)
+    .map(({ isShort, ...l }) => l)
 
   return links
 }
