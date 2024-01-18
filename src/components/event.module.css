@@ -12,6 +12,23 @@
   position: relative;
 }
 
+.event:target {
+  animation-duration: 0.5s;
+  animation-name: highlight;
+  animation-iteration-count: 3;
+  animation-direction: alternate;
+}
+
+@keyframes highlight {
+  from {
+    background-color: var(--light);
+  }
+
+  to {
+    background-color: #ffe29c;
+  }
+}
+
 .event:focus-within {
   /* transform: translate(-5px, -5px); */
   /* box-shadow: 10px 10px 0px 0px var(--accent) !important; */

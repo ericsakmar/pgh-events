@@ -9,7 +9,7 @@ const Event = ({ event }) => {
   const renderPoster = event.poster !== undefined && event.poster !== null
 
   return (
-    <li className={containerStyles.event}>
+    <li className={containerStyles.event} id={event.id}>
       {renderPoster && (
         <img
           role="presentation"

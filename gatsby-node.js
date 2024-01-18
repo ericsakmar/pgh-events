@@ -31,6 +31,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allEvent {
           edges {
             node {
+              id
               title
               date
               location
