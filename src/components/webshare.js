@@ -62,7 +62,7 @@ const WebShare = ({ event }) => {
 
   const date = parseISO(event.date)
 
-  const link = `https://pgh.events/${formatLinkDate(date)}/${event.id}`
+  const link = `https://pgh.events/${formatLinkDate(date)}#${event.id}`
 
   const shareText = `${event.title} at ${event.location} on ${
     event.hasTime ? formatDateTime(date) : formatDate(date)
