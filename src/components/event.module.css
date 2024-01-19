@@ -13,19 +13,18 @@
 }
 
 .event:target {
-  animation-duration: 0.5s;
+  animation-duration: 5s;
   animation-name: highlight;
-  animation-iteration-count: 3;
-  animation-direction: alternate;
+  animation-iteration-count: 1;
 }
 
 @keyframes highlight {
   from {
-    background-color: var(--light);
+    background-color: #ffe29c;
   }
 
   to {
-    background-color: #ffe29c;
+    background-color: var(--light);
   }
 }
 

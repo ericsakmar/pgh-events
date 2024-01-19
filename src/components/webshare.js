@@ -9,6 +9,8 @@ const formatDateTime = date => format(date, "MMMM d 'at' h:mm aa")
 
 const formatDate = date => format(date, "MMMM d, yyyy")
 
+const formatLinkDate = date => format(date, "yyyy-MM-dd")
+
 // from https://feathericons.com/
 // and https://kittygiraudel.com/2020/12/10/accessible-icon-links/
 const ShareIcon = () => (
@@ -60,9 +62,11 @@ const WebShare = ({ event }) => {
 
   const date = parseISO(event.date)
 
-  const shareText = `Check out this show I found on https://pgh.events - \n${event.title
-    } at ${event.location} on ${event.hasTime ? formatDateTime(date) : formatDate(date)
-    }`
+  const link = `https://pgh.events/${formatLinkDate(date)}/${event.id}`
+
+  const shareText = `${event.title} at ${event.location} on ${
+    event.hasTime ? formatDateTime(date) : formatDate(date)
+  }\n\n${link}`
 
   const handleClick = async () => {
     const shareData = { text: shareText }
