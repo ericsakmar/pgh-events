@@ -6,10 +6,11 @@ const iquit = require("./feeds/iquit")
 const michitapes = require("./feeds/michitapes")
 const modestdirector = require("./feeds/modestdirector")
 const pghmusictracker = require("./feeds/pghmusictracker")
+const pittsburghindependent = require("./feeds/pittsburghindependent")
 const startthebeat = require("./feeds/startthebeat")
 const vibevote = require("./feeds/vibevote")
-const wyep = require("./feeds/wyep")
 const wpts = require("./feeds/wpts")
+const wyep = require("./feeds/wyep")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -52,13 +53,14 @@ exports.sourceNodes = async ({
     michitapes,
     modestdirector,
     pghmusictracker,
+    pittsburghindependent,
     startthebeat,
     vibevote,
-    wyep,
     wpts,
+    wyep,
   ]
 
-  const devSources = [modestdirector, cazart]
+  const devSources = [modestdirector, cazart, pittsburghindependent]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

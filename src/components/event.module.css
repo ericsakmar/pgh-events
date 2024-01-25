@@ -12,6 +12,7 @@
   position: relative;
 }
 
+/* TODO give it a little delay? */
 .event:target {
   animation-duration: 5s;
   animation-name: highlight;

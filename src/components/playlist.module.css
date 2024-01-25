@@ -45,3 +45,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@media (max-width: 600px) {
+  .poster {
+    max-height: unset;
+  }
+}
