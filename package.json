@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@fast-csv/parse": "^4.3.6",
+    "@netlify/functions": "^2.5.1",
     "abort-controller": "^3.0.0",
     "cheerio": "^1.0.0-rc.10",
     "chrono-node": "^2.3.8",

@@ -6,8 +6,6 @@ exports.getLinks = async () => {
     "https://pghindependent.com/category/music/feed/"
   )
 
-  console.log(feed)
-
   const links = feed.items.map(i => ({
     title: i.title,
     subtitle: "Pittsburgh Independent",
