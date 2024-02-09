@@ -1,5 +1,5 @@
-const donttell = require("./sources/donttell.js")
+const source = require("./sources/preserving.js")
 
-donttell.getEvents().then(e => {
-  console.log("done")
+source.getEvents().then(e => {
+  // console.log(JSON.stringify(e, null, 2))
 })

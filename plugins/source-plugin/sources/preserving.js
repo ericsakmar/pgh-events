@@ -26,7 +26,7 @@ exports.getEvents = async () => {
 
       const link = n.find(`[data-hook="title"] a`).attr("href").trim()
 
-      const poster = n.find("wow-image").get(1).attribs["data-src"]
+      const poster = n.find("wow-image").get(1)?.attribs["data-src"]
 
       return {
         title,
