@@ -9,27 +9,30 @@ const PLAYLIST_IDS = [
   "3bHROgTxhHazGaKYSdXTV7", // pittsburgh indie
   "1s3veNWm04XXIKjSblDZov", // bottle rocket coming attrtactions
   "7v17EhPkbct20cz98FAa3O", // bottle rocket staff picks
-  "5eKoG1OFuYETjAx2Y1Fqjy", // aug 2023 releases
-  "7quJArVJjL6yvvJnpZr5Fh", // july 2023 releases
+  "2FdCATcA4vY34267lIRsLY", // up next at gov center
+  "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
+
+  // these are probably too old to ever show up
+  // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
+  // "6OWbvpOwHQpy4u9UcZVH1Q", // feb 2023
+  // "1K9xAkp4Va6PfG1xoQIUaQ", // march 2023
+  // "4scGQSuzlV5cOAtaAQrWBJ", // april 2023
+  // "1wvQsJkINFsa865GHeERuP", // may 2023 releases
   "7jol0T5btFPApxh8a0eZAs", // june 2023 releases
-  "1wvQsJkINFsa865GHeERuP", // may 2023 releases
-  "1wvQsJkINFsa865GHeERuP", // may 2023 releases
-  "4scGQSuzlV5cOAtaAQrWBJ", // april 2023
-  "1K9xAkp4Va6PfG1xoQIUaQ", // march 2023
-  "6OWbvpOwHQpy4u9UcZVH1Q", // feb 2023
-  "0W1YYPBd5HPjYovgqm8glh", // jan 2023
+  "7quJArVJjL6yvvJnpZr5Fh", // july 2023 releases
+  "5eKoG1OFuYETjAx2Y1Fqjy", // aug 2023 releases
   "1sBJKNiMU9T64fZd3sq3jZ", // sept 2023
   "4mWg8wKCCyyT1CwOn65ZA6", // oct 2023
   "2eq1x3erjh0YO3eNJ5IWdp", // nov 2023
-  "2FdCATcA4vY34267lIRsLY", // up next at gov center
+  "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
   "2O2RY3sbREWT4cz0HZoAvW", // pghmt top 9
   "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
-  "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
-  "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
 ]
 
 const SHOW_IDS = [
   "4JZQQui0EI2SS1glrSYXuE", // dog with a mullet
+  "4Z37CsR7DEIv1fPQjocgzd", // yinz world
+  "0r8E0rY07DP3USUsHsOxcs", // qool hand podcast
 ]
 
 const getToken = async () => {
@@ -112,7 +115,7 @@ exports.getLinks = async () => {
       subtitle: "Dog With A Mullet", // TODO change names if you ever add more
       url: s.external_urls.spotify,
       timestamp: dateFns.parse(s.release_date, "yyyy-MM-dd", new Date()),
-      tags: ["spotify show"],
+      tags: ["podcast"],
       image: s.images[0].url,
     }))
 
