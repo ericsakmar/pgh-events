@@ -1,8 +1,7 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 
-const url =
-  "https://www.bandsintown.com/v/10386165-fat-cat-eats-drinks-and-music"
+const url = "https://www.eventbrite.com/o/scratching-post-pgh-76410585003"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -19,11 +18,10 @@ exports.getEvents = async () => {
     })
     .filter(data => Array.isArray(data))
     .flatMap(data => data)
-    .filter(data => data["@type"] === "MusicEvent")
     .map(data => ({
-      title: data.description,
+      title: data.name,
       date: data.startDate,
-      location: data.location.name,
+      location: "Fat Cat",
       link: data.url,
       source: url,
       hasTime: true,

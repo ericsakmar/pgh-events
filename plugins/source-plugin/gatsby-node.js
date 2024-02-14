@@ -119,7 +119,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [winery, donttell]
+  const devSources = [fatcat]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
