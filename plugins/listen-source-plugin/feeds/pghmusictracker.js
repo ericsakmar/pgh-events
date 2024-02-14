@@ -30,9 +30,9 @@ const PLAYLIST_IDS = [
 ]
 
 const SHOW_IDS = [
-  "4JZQQui0EI2SS1glrSYXuE", // dog with a mullet
-  "4Z37CsR7DEIv1fPQjocgzd", // yinz world
-  "0r8E0rY07DP3USUsHsOxcs", // qool hand podcast
+  { id: "4JZQQui0EI2SS1glrSYXuE", name: "Dog With A Mullet" },
+  { id: "4Z37CsR7DEIv1fPQjocgzd", name: "Yinz World" },
+  { id: "0r8E0rY07DP3USUsHsOxcs", name: "Qool Hand Podcast" },
 ]
 
 const getToken = async () => {
@@ -79,7 +79,7 @@ const getLastUpdated = tracks => {
 
 const getShows = async token => {
   const detailRequests = SHOW_IDS.map(
-    id => `https://api.spotify.com/v1/shows/${id}/episodes`
+    show => `https://api.spotify.com/v1/shows/${show.id}/episodes`
   ).map(p =>
     fetch(p, {
       method: "GET",
@@ -108,16 +108,16 @@ exports.getLinks = async () => {
     image: p.images[0].url,
   }))
 
-  const show_links = shows
-    .flatMap(s => s.items)
-    .map(s => ({
-      title: s.name,
-      subtitle: "Dog With A Mullet", // TODO change names if you ever add more
-      url: s.external_urls.spotify,
-      timestamp: dateFns.parse(s.release_date, "yyyy-MM-dd", new Date()),
+  const show_links = shows.flatMap((show, i) =>
+    show.items.map(episode => ({
+      title: episode.name,
+      subtitle: SHOW_IDS[i].name,
+      url: episode.external_urls.spotify,
+      timestamp: dateFns.parse(episode.release_date, "yyyy-MM-dd", new Date()),
       tags: ["podcast"],
-      image: s.images[0].url,
+      image: episode.images[0].url,
     }))
+  )
 
   return [...links, ...show_links]
 }
