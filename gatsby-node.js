@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const feedsResult = await graphql(
     `
       query MyQuery {
-        allListenlink(sort: { fields: timestamp, order: DESC }, limit: 10) {
+        allListenlink(sort: { fields: timestamp, order: DESC }, limit: 6) {
           nodes {
             id
             tags

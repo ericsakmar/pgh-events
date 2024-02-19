@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import Search from "../components/search"
 import FeedSummary from "../components/feedSummary"
 import Layout from "../components/layout"
+import Links from "../components/links"
 
 export function Head() {
   return <Seo title="pgh.events" />
@@ -36,7 +37,7 @@ const IndexPage = ({ pageContext }) => {
             minDate={minDate}
             maxDate={maxDate}
           />
-          <FeedSummary feeds={feeds} />
+          <Links />
         </>
       }
     >

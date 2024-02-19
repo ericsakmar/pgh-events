@@ -5,6 +5,7 @@ import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./feeds.module.css"
 import Layout from "../components/layout"
+import Links from "../components/links"
 
 export function Head() {
   return <Seo title="pgh.events/feeds" />
@@ -48,7 +49,7 @@ const ListenPage = ({ data }) => {
   const imgRefs = useLazy(items)
 
   return (
-    <Layout>
+    <Layout sidebar={<Links />}>
       <h2>Playlists, Podcasts, Videos and Blogs</h2>
       {items.length === 0 ? (
         <p>there's nothing here!</p>

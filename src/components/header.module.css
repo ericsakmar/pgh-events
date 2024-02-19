@@ -33,11 +33,3 @@
   color: var(--light);
   line-height: 1.3rem;
 }
-
-@media (max-width: 600px) {
-  .links {
-    display: flex;
-    gap: 0 1rem;
-    flex-wrap: wrap;
-  }
-}

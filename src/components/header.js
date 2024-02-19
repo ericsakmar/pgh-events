@@ -50,20 +50,6 @@ const Header = () => (
             Add an Event
           </a>
         </li>
-
-        <li className={styles.emojiLink}>
-          <span>ℹ️</span>
-          <Link to="/about" className={styles.link}>
-            About
-          </Link>
-        </li>
-
-        <li className={styles.emojiLink}>
-          <span>📊</span>
-          <Link to="/stats" className={styles.link}>
-            Stats
-          </Link>
-        </li>
       </ul>
     </nav>
   </header>
