@@ -25,6 +25,7 @@ const PLAYLIST_IDS = [
   "4mWg8wKCCyyT1CwOn65ZA6", // oct 2023
   "2eq1x3erjh0YO3eNJ5IWdp", // nov 2023
   "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
+  "5APiXrsu6velNLKUNYT0zZ", // feb 2024
   "2O2RY3sbREWT4cz0HZoAvW", // pghmt top 9
   "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
 ]
