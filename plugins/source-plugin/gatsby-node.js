@@ -3,7 +3,6 @@
 const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
 const bottlerocket = require("./sources/bottlerocket.js")
-const bridge = require("./sources/bridge.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cattivo = require("./sources/cattivo.js")
@@ -26,6 +25,7 @@ const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
 const poetry = require("./sources/poetry.js")
 const preserving = require("./sources/preserving.js")
+const remedy = require("./sources/remedy.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
@@ -80,7 +80,6 @@ exports.sourceNodes = async ({
     arcade,
     belvederes,
     bottlerocket,
-    bridge,
     brillo,
     carnegieHomestead,
     cattivo,
@@ -103,6 +102,7 @@ exports.sourceNodes = async ({
     oaks,
     poetry,
     preserving,
+    remedy,
     roboto,
     roxian,
     shredshed,
@@ -119,7 +119,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [fatcat]
+  const devSources = [fatcat, remedy]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
