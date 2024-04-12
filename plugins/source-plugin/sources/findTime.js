@@ -5,7 +5,7 @@ const model = require("wink-eng-lite-model")
 
 const nlp = winkNLP(model)
 
-exports.findTime = text => {
+exports.findTimes = text => {
   const doc = nlp.readDoc(text)
 
   const times = doc
@@ -19,6 +19,11 @@ exports.findTime = text => {
         t.toUpperCase() !== "AFTERNOON"
     )
 
+  return times
+}
+
+exports.findTime = text => {
+  const times = exports.findTimes(text)
   return times.length > 0 ? times[0] : null
 }
 

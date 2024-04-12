@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { findTimes } = require("./findTime")
 const { parseDate } = require("./parseDate")
 
 const url = "https://app.opendate.io/v/bottlerocket-social-hall-1260"
@@ -18,8 +19,13 @@ exports.getEvents = async () => {
       const title = n.find(".card-body > p").first().text().trim()
 
       const rawDate = $(n.find(".card-body > p").get(1)).text().trim()
+      const rawTime = $(n.find(".card-body > p").get(2)).text().trim()
 
-      const date = parseDate(rawDate)
+      const times = findTimes(rawTime)
+
+      const rawDateTime = times[1] ? `${rawDate} at ${times[1]} ` : rawDate
+
+      const date = parseDate(rawDateTime)
 
       const location = "Bottlerocket Social Hall"
 
