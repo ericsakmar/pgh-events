@@ -6,7 +6,7 @@ const url = "https://www.therobotoproject.com/calendar.html"
 exports.url = url
 
 const getPoster = async url => {
-  if (url === undefined) {
+  if (url === undefined || !url.includes("ticketleap")) {
     return undefined
   }
 
@@ -14,13 +14,16 @@ const getPoster = async url => {
 
   const $ = cheerio.load(data)
 
-  const poster = $(
-    "html body div table tbody tr td table tbody tr td table tbody tr td.newbox table tbody tr td.newboxbottom table tbody tr td table tbody tr td center table tbody tr td img"
-  ).attr("src")
+  const eventData = $("script[type='application/ld+json']")
+    .toArray()
+    .map(el => {
+      const ldJson = el.children[0].data
+      const json = JSON.parse(ldJson)
+      return json
+    })
 
-  return poster === undefined
-    ? undefined
-    : `https://www.brownpapertickets.com${poster}`
+  const image = eventData[0][0]?.image
+  return image
 }
 
 exports.getEvents = async () => {
@@ -60,9 +63,13 @@ exports.getEvents = async () => {
       }
     })
 
-  const posterTasks = events.map(async e => {
-    const poster = await getPoster(e.link)
-    return { ...e, poster }
+  const posterTasks = events.map(async event => {
+    try {
+      const poster = await getPoster(event.link)
+      return { ...event, poster }
+    } catch (e) {
+      return event
+    }
   })
 
   const withPosters = await Promise.all(posterTasks)
