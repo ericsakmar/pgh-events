@@ -29,6 +29,7 @@ const PLAYLIST_IDS = [
   "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
   "5APiXrsu6velNLKUNYT0zZ", // feb 2024
   "1Rk6bDxe1VuAXWxpMX55O0", // march 2024
+  "6OmBgf8Jna7Emh4RaEb0FE", // april 2024
 ]
 
 const SHOW_IDS = [

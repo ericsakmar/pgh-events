@@ -117,7 +117,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [bottlerocket]
+  const devSources = [greenbeacon]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
