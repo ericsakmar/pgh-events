@@ -54,7 +54,7 @@ exports.sourceNodes = async ({
     youtube,
   ]
 
-  const devSources = [pghmusictracker, youtube]
+  const devSources = [pghmusictracker, boredinpittsburgh]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

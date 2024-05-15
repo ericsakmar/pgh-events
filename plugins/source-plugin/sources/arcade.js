@@ -24,7 +24,7 @@ exports.getEvents = async () => {
       return {
         title: event.name,
         date: parseDate(event.startDate),
-        location: event.location.name,
+        location: "Arcade Comedy Theater",
         link: event.url,
         source: url,
         hasTime,

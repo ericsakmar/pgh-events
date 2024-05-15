@@ -11,6 +11,7 @@ const PLAYLIST_IDS = [
   "7v17EhPkbct20cz98FAa3O", // bottle rocket staff picks
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
   "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
+  "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
@@ -30,6 +31,7 @@ const PLAYLIST_IDS = [
   "5APiXrsu6velNLKUNYT0zZ", // feb 2024
   "1Rk6bDxe1VuAXWxpMX55O0", // march 2024
   "6OmBgf8Jna7Emh4RaEb0FE", // april 2024
+  "3XUR9QOI4hhpspGvaanCrj", // may 2024
 ]
 
 const SHOW_IDS = [
