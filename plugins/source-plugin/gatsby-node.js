@@ -19,6 +19,7 @@ const greenbeacon = require("./sources/greenbeacon.js")
 const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
+const mattress = require("./sources/mattress.js")
 const mixtape = require("./sources/mixtape.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
@@ -95,6 +96,7 @@ exports.sourceNodes = async ({
     honky,
     jergels,
     kingfly,
+    mattress,
     mixtape,
     newHazlett,
     oaks,
@@ -117,7 +119,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [roboto, starlake]
+  const devSources = [roboto, mattress, starlake]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
