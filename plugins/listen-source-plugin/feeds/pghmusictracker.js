@@ -12,6 +12,7 @@ const PLAYLIST_IDS = [
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
   "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
   "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
+  "1PzjrC63GyglMJ6EpHCTj8", // ruggers radio
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
@@ -32,6 +33,8 @@ const PLAYLIST_IDS = [
   "1Rk6bDxe1VuAXWxpMX55O0", // march 2024
   "6OmBgf8Jna7Emh4RaEb0FE", // april 2024
   "3XUR9QOI4hhpspGvaanCrj", // may 2024
+  "6hYU5NQxxsrc8e3sduFH3E", // june 2024
+  "4JzUbsUgJEv6r35kiPJvTB", // july 2024
 ]
 
 const SHOW_IDS = [
