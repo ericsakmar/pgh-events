@@ -1,0 +1,33 @@
+.section {
+  margin-bottom: 6rem;
+}
+
+.summary {
+  color: var(--light);
+  font-size: 2rem;
+  line-height: 2.333rem;
+}
+
+.big {
+  color: #fff;
+  text-shadow: 3px 3px var(--very-dark);
+  font-family: var(--header-font);
+  font-weight: normal;
+}
+
+.mid {
+  color: #fff;
+  text-shadow: 3px 3px var(--very-dark);
+  font-family: var(--header-font);
+  font-weight: normal;
+}
+
+.highlight {
+  color: var(--accent) !important;
+}
+
+.chart-header {
+  margin-top: 2rem;
+  color: var(--light);
+  font-weight: bold;
+}

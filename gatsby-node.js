@@ -102,16 +102,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const maxDate = formatDay(dates[dates.length - 1])
   const feeds = feedsResult.data.allListenlink.nodes
 
-  // console.log("------")
-  // console.log("date", date)
-  // console.log("serverDate", serverDate)
-  // console.log("localToday", localToday)
-  // console.log("today", today)
-  // console.log("minDate", minDate)
-  // console.log("maxDate", maxDate)
-  // console.log("dates[0]", dates[0])
-  // console.log("------")
-
   dates.forEach((d, i) => {
     const key = formatDay(d)
     const events = grouped[key]
@@ -139,5 +129,93 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     exactPath: true,
     isPermanent: false,
     redirectInBrowser: true,
+  })
+
+  // TODO consider pulling this from the query you already have? and maybe make that one better?
+  const statsResult = await graphql(`
+    query MyQuery {
+      allEvent(filter: { date: { gte: "${minDate}", lte: "${maxDate}" } }) {
+        group(field: location) {
+          fieldValue
+          totalCount
+          distinct(field: source)
+        }
+        totalCount
+      }
+      allListenlink(sort: { fields: timestamp, order: DESC }, limit: 60) {
+        nodes {
+          id
+          tags
+          timestamp
+          title
+          url
+          image
+          subtitle
+        }
+        min(field: timestamp)
+        max(field: timestamp)
+      }
+    }
+  `)
+
+  const eventCountsByVenue = statsResult.data.allEvent.group
+    .map(v => ({
+      totalCount: v.totalCount,
+      name: v.fieldValue,
+      url: v.distinct[0], // TODO test with csv
+    }))
+    .slice()
+    .sort((a, b) => b.totalCount - a.totalCount)
+
+  const allEventsCount = statsResult.data.allEvent.totalCount
+  const allVenuesCount = statsResult.data.allEvent.group.length
+
+  const eventCountsByDate = dates.map(d => {
+    const key = formatDay(d)
+    const events = grouped[key]
+    return { date: key, count: events ? events.length : 0 }
+  })
+
+  const allFeedsCount = statsResult.data.allListenlink.nodes.length
+  const feedsMinDate = statsResult.data.allListenlink.min
+  const feedsMaxDate = statsResult.data.allListenlink.max
+  const feedCounts = statsResult.data.allListenlink.nodes.reduce(
+    (acc, node) => {
+      return {
+        podcasts: node.tags.includes("podcast")
+          ? acc.podcasts + 1
+          : acc.podcasts,
+        playlists: node.tags.includes("spotify playlist")
+          ? acc.playlists + 1
+          : acc.playlists,
+        blogs: node.tags.includes("blog") ? acc.blogs + 1 : acc.blogs,
+        videos: node.tags.includes("youtube channel")
+          ? acc.videos + 1
+          : acc.videos,
+      }
+    },
+    {
+      podcasts: 0,
+      playlists: 0,
+      blogs: 0,
+      videos: 0,
+    }
+  )
+
+  createPage({
+    path: "/stats",
+    component: path.resolve("./src/templates/stats.js"),
+    context: {
+      minDate,
+      maxDate,
+      eventCountsByVenue,
+      eventCountsByDate,
+      allEventsCount,
+      allVenuesCount,
+      allFeedsCount,
+      feedCounts,
+      feedsMinDate,
+      feedsMaxDate,
+    },
   })
 }

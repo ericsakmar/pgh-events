@@ -19,7 +19,7 @@ const parse = data =>
         date: parseDate(`${row.Date} at ${row.Time}`),
         location: row.Location,
         link: undefinedIfBlank(row.Link),
-        source: url,
+        source: "csv",
         hasTime: true,
         poster: undefinedIfBlank(row.Poster),
         approved: row.Approved,

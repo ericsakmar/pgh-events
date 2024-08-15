@@ -12,7 +12,7 @@ const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
-const donttell = require("./sources/donttell.js")
+// const donttell = require("./sources/donttell.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
@@ -29,6 +29,7 @@ const remedy = require("./sources/remedy.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
+const ormsby = require("./sources/ormsby.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
@@ -89,7 +90,7 @@ exports.sourceNodes = async ({
     conAlmaDowntown,
     crafthouse,
     csv,
-    donttell,
+    // donttell,
     goldmark,
     governmentCenter,
     greenbeacon,
@@ -106,6 +107,7 @@ exports.sourceNodes = async ({
     roboto,
     roxian,
     shredshed,
+    ormsby,
     shsb,
     smalls,
     spaceupstairs,
@@ -119,7 +121,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [roboto, mattress, starlake]
+  const devSources = [roboto, mattress, starlake, ormsby, csv]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

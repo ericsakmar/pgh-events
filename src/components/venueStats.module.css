@@ -1,0 +1,33 @@
+.container {
+  margin-top: 0.5rem;
+}
+
+.venues {
+  color: var(--light);
+  columns: 250px;
+  column-gap: 3rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.venue {
+  margin-bottom: 0.33rem;
+  font-size: 0.77rem;
+  break-inside: avoid;
+}
+
+.venue:hover {
+  color: dodgerblue;
+}
+
+.label {
+  display: flex;
+}
+
+.count {
+  margin-left: auto;
+}
+
+.actions {
+  margin-top: 1rem;
+}
