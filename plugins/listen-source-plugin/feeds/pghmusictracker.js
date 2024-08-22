@@ -13,6 +13,8 @@ const PLAYLIST_IDS = [
   "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
   "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
   "1PzjrC63GyglMJ6EpHCTj8", // ruggers radio
+  "0FFYMRnIs3bveFloqw6G2R", // dltsgdom upcoming
+  "5jSmjHBRxmBU4F6kS3nn2R", // dltsgdom now playing
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
