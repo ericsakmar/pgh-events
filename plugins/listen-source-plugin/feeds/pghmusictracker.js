@@ -9,6 +9,7 @@ const PLAYLIST_IDS = [
   "3bHROgTxhHazGaKYSdXTV7", // pittsburgh indie
   "1s3veNWm04XXIKjSblDZov", // bottle rocket coming attrtactions
   "7v17EhPkbct20cz98FAa3O", // bottle rocket staff picks
+  "6Iw5wOtMbK8yNS0OspzbI6", // another bottle rocket coming attractions
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
   "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
   "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
