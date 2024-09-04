@@ -49,6 +49,13 @@ const Header = () => (
             About
           </Link>
         </li>
+
+        <li className={styles.emojiLink}>
+          <span>📊</span>
+          <Link to="/stats" className={styles.link}>
+            Stats
+          </Link>
+        </li>
       </ul>
     </nav>
   </header>

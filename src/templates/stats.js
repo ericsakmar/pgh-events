@@ -4,7 +4,7 @@ import * as styles from "./stats.module.css"
 import Layout from "../components/layout"
 import { formatInTimeZone } from "date-fns-tz"
 import VenueStats from "../components/venueStats"
-import EventCountsByDay from "../components/eventCountsByDay"
+import EventCountsByMonth from "../components/eventCountsByMonth"
 
 export function Head() {
   return <Seo title="pgh.events/stats" />
@@ -52,8 +52,7 @@ const StatsPage = ({ pageContext }) => {
           <span className={styles.mid}>{end}</span>.
         </p>
 
-        <h3 className={styles.chartHeader}>Event Counts by Day</h3>
-        <EventCountsByDay counts={eventCountsByDate} />
+        <EventCountsByMonth counts={eventCountsByDate} />
 
         <h3 className={styles.chartHeader}>Event Counts by Venue</h3>
         <VenueStats venues={eventCountsByVenue} />

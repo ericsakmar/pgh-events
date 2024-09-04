@@ -20,8 +20,9 @@ const VenueStats = ({ venues: allVenues }) => {
     return (
       <div className={styles.venue}>
         <div className={styles.label}>
-          <div>{venue.name}</div>
-          <div className={styles.count}>{venue.totalCount}</div>
+          <div>
+            {venue.name} ({venue.totalCount})
+          </div>
         </div>
 
         <svg width={width} height={height}>

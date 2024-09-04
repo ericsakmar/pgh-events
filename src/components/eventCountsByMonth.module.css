@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.header {
+  color: var(--light);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}

@@ -20,14 +20,6 @@
   color: dodgerblue;
 }
 
-.label {
-  display: flex;
-}
-
-.count {
-  margin-left: auto;
-}
-
 .actions {
   margin-top: 1rem;
 }
