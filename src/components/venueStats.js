@@ -19,7 +19,7 @@ const VenueStats = ({ venues: allVenues }) => {
   const getContent = venue => {
     return (
       <div className={styles.venue}>
-        <div className={styles.label}>
+        <div>
           <div>
             {venue.name} ({venue.totalCount})
           </div>

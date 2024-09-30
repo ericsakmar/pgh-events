@@ -16,6 +16,7 @@ const PLAYLIST_IDS = [
   "1PzjrC63GyglMJ6EpHCTj8", // ruggers radio
   "0FFYMRnIs3bveFloqw6G2R", // dltsgdom upcoming
   "5jSmjHBRxmBU4F6kS3nn2R", // dltsgdom now playing
+  "39wtmUHDbA9XbZePrSJg1t", // steel city violence
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
@@ -38,6 +39,8 @@ const PLAYLIST_IDS = [
   "3XUR9QOI4hhpspGvaanCrj", // may 2024
   "6hYU5NQxxsrc8e3sduFH3E", // june 2024
   "4JzUbsUgJEv6r35kiPJvTB", // july 2024
+  "1t7n414TAhMBCetDROOyPn", // aug 2024
+  "0xK3imK2fC1ZR3n7VaXlGZ", // sept 2024
 ]
 
 const SHOW_IDS = [
