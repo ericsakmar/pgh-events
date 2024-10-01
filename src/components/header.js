@@ -16,8 +16,8 @@ const Header = () => (
     </Link>
 
     <p className={styles.description}>
-      a music-focused collection of events, playlists, podcasts, youtube
-      channels and blogs in Pittsburgh, Pennsylvania.
+      a music-focused collection of events, playlists, podcasts, videos and
+      blogs in Pittsburgh, Pennsylvania.
     </p>
 
     <nav className={styles.menu}>
@@ -32,7 +32,7 @@ const Header = () => (
         <li className={styles.emojiLink}>
           <span>▶️</span>
           <Link to="/feeds" className={styles.link}>
-            Feeds
+            Playlists, Podcasts, Videos and Blogs
           </Link>
         </li>
 

@@ -31,6 +31,7 @@
 .link,
 .link:visited {
   color: var(--light);
+  line-height: 1.3rem;
 }
 
 @media (max-width: 600px) {

@@ -16,8 +16,7 @@ const AboutPage = () => {
       <div className={styles.about}>
         <p>
           pgh.events is a music-focused collection of events, playlists,
-          podcasts, youtube channels and blogs in Pittsburgh, Pennsylvania. It
-          is an{" "}
+          podcasts, videos and blogs in Pittsburgh, Pennsylvania. It is an{" "}
           <a href="https://github.com/ericsakmar/pgh-events">
             open-source project
           </a>{" "}

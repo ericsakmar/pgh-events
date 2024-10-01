@@ -49,7 +49,7 @@ const ListenPage = ({ data }) => {
 
   return (
     <Layout>
-      <h2>Feeds</h2>
+      <h2>Playlists, Podcasts, Videos and Blogs</h2>
       {items.length === 0 ? (
         <p>there's nothing here!</p>
       ) : (
