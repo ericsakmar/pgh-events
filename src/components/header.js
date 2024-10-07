@@ -3,6 +3,14 @@ import { Link } from "gatsby"
 
 import * as styles from "./header.module.css"
 
+// ideas for links:
+// https://www.pittsburghsoundpreserve.org/calendar
+// arcane city
+// pgh music tracker ig
+// dltsgdom patreon
+// cruel noise patreon
+// carnegie library stacks
+
 const Header = () => (
   <header>
     <Link
