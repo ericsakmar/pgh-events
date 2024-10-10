@@ -59,13 +59,6 @@ const Links = () => {
             About pgh.events
           </Link>
         </li>
-
-        <li className={styles.listItem}>
-          <span>📊</span>
-          <Link to="/stats" className={styles.link}>
-            Stats
-          </Link>
-        </li>
       </ul>
     </aside>
   )

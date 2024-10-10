@@ -1,3 +1,16 @@
+.about {
+  margin-bottom: 2rem;
+  margin-right: 5px;
+  box-shadow: 5px 5px 0 #ffd369;
+  padding: 1rem;
+  border: 5px solid #222831;
+  background-color: #eee;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .section {
   margin-bottom: 6rem;
 }

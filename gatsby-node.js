@@ -203,8 +203,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
 
   createPage({
-    path: "/stats",
-    component: path.resolve("./src/templates/stats.js"),
+    path: "/about",
+    component: path.resolve("./src/templates/about.js"),
     context: {
       minDate,
       maxDate,

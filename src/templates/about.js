@@ -1,16 +1,17 @@
 import * as React from "react"
-import Seo from "../components/seo"
-import * as styles from "./stats.module.css"
+
 import Layout from "../components/layout"
+import Seo from "../components/seo"
+import * as styles from "./about.module.css"
 import { formatInTimeZone } from "date-fns-tz"
 import VenueStats from "../components/venueStats"
 import EventCountsByMonth from "../components/eventCountsByMonth"
 
 export function Head() {
-  return <Seo title="pgh.events/stats" />
+  return <Seo title="pgh.events/about" />
 }
 
-const StatsPage = ({ pageContext }) => {
+const AboutPage = ({ pageContext }) => {
   const {
     minDate,
     maxDate,
@@ -33,9 +34,26 @@ const StatsPage = ({ pageContext }) => {
   )
 
   const feedEnd = formatInTimeZone(feedsMaxDate, "America/New_York", "LLLL do")
-
   return (
     <Layout>
+      <h2>About</h2>
+
+      <div className={styles.about}>
+        <p>
+          pgh.events is a music-focused collection of events, playlists,
+          podcasts, videos and blogs in Pittsburgh, Pennsylvania. It is an{" "}
+          <a href="https://github.com/ericsakmar/pgh-events">
+            open-source project
+          </a>{" "}
+          and was created by Eric Sakmar. pgh.events launched on May 1, 2022.
+        </p>
+
+        <p>
+          Questions or comments? Please contact{" "}
+          <a href="mailto:eric.sakmar@gmail.com">eric.sakmar@gmail.com</a>.
+        </p>
+      </div>
+
       <h2>Stats</h2>
 
       <section className={styles.section}>
@@ -79,4 +97,4 @@ const StatsPage = ({ pageContext }) => {
   )
 }
 
-export default StatsPage
+export default AboutPage
