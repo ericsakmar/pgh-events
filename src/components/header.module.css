@@ -33,3 +33,22 @@
   color: var(--light);
   line-height: 1.3rem;
 }
+
+.linkList {
+  margin-top: 1rem;
+  display: none;
+}
+
+.showMore {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .showMore {
+    display: flex;
+  }
+
+  .linkList {
+    display: block;
+  }
+}

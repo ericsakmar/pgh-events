@@ -12,23 +12,8 @@
   margin-bottom: 1rem;
 }
 
-.list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.list-item {
-  margin-bottom: 0.5rem;
-  line-height: 1.1rem;
-  display: flex;
-  gap: 0.5rem;
-}
-
 @media (max-width: 600px) {
   .links {
-  }
-
-  .list {
-    columns: 2;
+    display: none;
   }
 }
