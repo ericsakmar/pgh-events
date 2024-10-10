@@ -37,6 +37,7 @@ const IndexPage = ({ pageContext }) => {
             minDate={minDate}
             maxDate={maxDate}
           />
+          <FeedSummary feeds={feeds} />
           <Links />
         </>
       }

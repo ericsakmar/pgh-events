@@ -27,18 +27,8 @@
   overflow: hidden;
 }
 
-.shortList {
-  display: none;
-  list-style-type: none;
-  padding: 0;
-}
-
 @media (max-width: 600px) {
-  .list {
+  .feedSummary {
     display: none;
-  }
-
-  .shortList {
-    display: block;
   }
 }
