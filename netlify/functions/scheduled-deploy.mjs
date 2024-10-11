@@ -12,11 +12,15 @@ export default async () => {
   const doIt = shouldBuild(now, lastDeployDate)
 
   if (doIt) {
-    fetch(BUILD_HOOK, {
+    console.log("sending request to build hook")
+    const response = await fetch(BUILD_HOOK, {
       method: "POST",
-    }).then(response => {
-      console.log("Build hook response:", response.json())
     })
+
+    const json = await response.text()
+    console.log("Build hook response:", json)
+  } else {
+    console.log("skipping build")
   }
 
   return new Response("ok")
