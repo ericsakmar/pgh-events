@@ -7,7 +7,6 @@
   "dependencies": {
     "@fast-csv/parse": "^4.3.6",
     "@netlify/functions": "^2.5.1",
-    "@netlify/open-api": "^2.34.0",
     "@visx/axis": "^3.10.1",
     "@visx/grid": "^3.5.0",
     "@visx/group": "^3.3.0",
@@ -29,7 +28,6 @@
     "gatsby-transformer-sharp": "^4.24.0",
     "html-entities": "^2.3.3",
     "ical": "^0.8.0",
-    "netlify": "^13.1.21",
     "node-fetch": "^2.6.7",
     "prop-types": "^15.8.1",
     "puppeteer": "^13.7.0",
