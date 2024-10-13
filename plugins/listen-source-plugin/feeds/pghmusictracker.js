@@ -17,6 +17,7 @@ const PLAYLIST_IDS = [
   "0FFYMRnIs3bveFloqw6G2R", // dltsgdom upcoming
   "5jSmjHBRxmBU4F6kS3nn2R", // dltsgdom now playing
   "39wtmUHDbA9XbZePrSJg1t", // steel city violence
+  "0cCxsYg3qd7W3FHDrJlspC", // crafted sounds
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
