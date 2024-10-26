@@ -44,6 +44,11 @@ const LinkList = () => {
 
       <li className={styles.listItem}>
         <span>💵</span>
+        <a href="https://www.patreon.com/DiamondBeach">Diamond Beach Patreon</a>
+      </li>
+
+      <li className={styles.listItem}>
+        <span>💵</span>
         <a href="https://www.patreon.com/mrrobotoproject">Roboto Patreon</a>
       </li>
 
