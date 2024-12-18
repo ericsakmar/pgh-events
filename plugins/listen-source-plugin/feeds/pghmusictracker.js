@@ -5,19 +5,21 @@ const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
 
 const PLAYLIST_IDS = [
-  "2v8KFDYiqLvBCIxTfNGmbz", // pittsburgh rock mix
   "3bHROgTxhHazGaKYSdXTV7", // pittsburgh indie
   "1s3veNWm04XXIKjSblDZov", // bottle rocket coming attrtactions
   "7v17EhPkbct20cz98FAa3O", // bottle rocket staff picks
   "6Iw5wOtMbK8yNS0OspzbI6", // another bottle rocket coming attractions
   "2FdCATcA4vY34267lIRsLY", // up next at gov center
-  "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
-  "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
-  "1PzjrC63GyglMJ6EpHCTj8", // ruggers radio
   "0FFYMRnIs3bveFloqw6G2R", // dltsgdom upcoming
   "5jSmjHBRxmBU4F6kS3nn2R", // dltsgdom now playing
   "39wtmUHDbA9XbZePrSJg1t", // steel city violence
   "0cCxsYg3qd7W3FHDrJlspC", // crafted sounds
+
+  // these haven't updated for a while
+  // "1PzjrC63GyglMJ6EpHCTj8", // ruggers radio
+  // "2v8KFDYiqLvBCIxTfNGmbz", // pittsburgh rock mix
+  // "53EE3XgQr2Fl96SNXNx5rY", // guy in the hat
+  // "27JMK3L5Tq7eqovZRgh8j7", // pgh & beyond
 
   // these are probably too old to ever show up
   // "0W1YYPBd5HPjYovgqm8glh", // jan 2023
@@ -32,17 +34,18 @@ const PLAYLIST_IDS = [
   // "4mWg8wKCCyyT1CwOn65ZA6", // oct 2023
   // "2eq1x3erjh0YO3eNJ5IWdp", // nov 2023
   // "2O2RY3sbREWT4cz0HZoAvW", // pghmt top 9
-  "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
-  "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
-  "5APiXrsu6velNLKUNYT0zZ", // feb 2024
-  "1Rk6bDxe1VuAXWxpMX55O0", // march 2024
-  "6OmBgf8Jna7Emh4RaEb0FE", // april 2024
-  "3XUR9QOI4hhpspGvaanCrj", // may 2024
+  // "7lSqt0N4Ev1I8FMyfK59T0", // pghmt best of 2023
+  // "08aECbl8KLM4Ln5aWUO5dO", // jan 2024
+  // "5APiXrsu6velNLKUNYT0zZ", // feb 2024
+  // "1Rk6bDxe1VuAXWxpMX55O0", // march 2024
+  // "6OmBgf8Jna7Emh4RaEb0FE", // april 2024
+  // "3XUR9QOI4hhpspGvaanCrj", // may 2024
   "6hYU5NQxxsrc8e3sduFH3E", // june 2024
   "4JzUbsUgJEv6r35kiPJvTB", // july 2024
   "1t7n414TAhMBCetDROOyPn", // aug 2024
   "0xK3imK2fC1ZR3n7VaXlGZ", // sept 2024
   "75pofC1gWEi3HirOrt8LmQ", // oct 2024
+  "0HVqC2QA4Er6gxb8ix8pom", // nov 2024
 ]
 
 const SHOW_IDS = [
