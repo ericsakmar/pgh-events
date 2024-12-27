@@ -1,3 +1,4 @@
+// const donttell = require("./sources/donttell.js")
 // const hartwood = require("./sources/hartwood.js")
 // const southsideworks = require("./sources/southsideworks.js")
 const arcade = require("./sources/arcade.js")
@@ -12,7 +13,7 @@ const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
-// const donttell = require("./sources/donttell.js")
+const glitterbox = require("./sources/glitterbox.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
@@ -23,13 +24,13 @@ const mattress = require("./sources/mattress.js")
 const mixtape = require("./sources/mixtape.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
+const ormsby = require("./sources/ormsby.js")
 const poetry = require("./sources/poetry.js")
 const preserving = require("./sources/preserving.js")
 const remedy = require("./sources/remedy.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
-const ormsby = require("./sources/ormsby.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
 const smalls = require("./sources/smalls.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
@@ -77,6 +78,7 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
+    // donttell,
     // hartwood,
     arcade,
     belvederes,
@@ -90,7 +92,7 @@ exports.sourceNodes = async ({
     conAlmaDowntown,
     crafthouse,
     csv,
-    // donttell,
+    glitterbox,
     goldmark,
     governmentCenter,
     greenbeacon,
@@ -101,13 +103,13 @@ exports.sourceNodes = async ({
     mixtape,
     newHazlett,
     oaks,
+    ormsby,
     poetry,
     preserving,
     remedy,
     roboto,
     roxian,
     shredshed,
-    ormsby,
     shsb,
     smalls,
     spaceupstairs,
@@ -121,7 +123,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [roboto, mattress, starlake, ormsby, csv]
+  const devSources = [roboto, glitterbox]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
