@@ -2,8 +2,7 @@ const cheerio = require("cheerio")
 const chrono = require("chrono-node")
 const { fetchPage } = require("./fetchPage")
 
-const parseDate = rawDate =>
-  chrono.parseDate(rawDate, { timezone: "EST" })?.toISOString()
+const parseDate = rawDate => chrono.parseDate(rawDate, { timezone: "EST" })
 
 exports.getLinks = async () => {
   const data = await fetchPage(
@@ -22,8 +21,6 @@ exports.getLinks = async () => {
       const date = parseDate(rawDate)
       const link = n.find("a").first().attr("href").trim()
       const image = n.find(".image-cover").attr("src")?.trim()
-
-      console.log(title, date, link, image)
 
       return {
         title,
