@@ -1,20 +1,40 @@
-const Parser = require("rss-parser")
-const parser = new Parser()
+const cheerio = require("cheerio")
+const chrono = require("chrono-node")
+const { fetchPage } = require("./fetchPage")
+
+const parseDate = rawDate =>
+  chrono.parseDate(rawDate, { timezone: "EST" })?.toISOString()
 
 exports.getLinks = async () => {
-  const feed = await parser.parseURL(
-    "https://pghindependent.com/category/music/feed/"
+  const data = await fetchPage(
+    "https://www.pghindependent.com/post-category/music"
   )
+  const $ = cheerio.load(data)
 
-  const links = feed.items.map(i => ({
-    title: i.title,
-    subtitle: "Pittsburgh Independent",
-    url: i.link,
-    timestamp: new Date(i.isoDate),
-    tags: ["blog"],
-    image:
-      "https://pghindependent.com/wp-content/uploads/2022/04/cropped-Pittsburgh-Independent-Logo-512-300x300.jpg",
-  }))
+  const links = $(".w-dyn-item")
+    .toArray()
+    .map(el => {
+      const n = $(el)
+
+      const title = n.find("h2").text().trim()
+      const postInfo = n.find(".post-info-box").text().trim()
+      const [_, rawDate] = postInfo.split("•")
+      const date = parseDate(rawDate)
+      const link = n.find("a").first().attr("href").trim()
+      const image = n.find(".image-cover").attr("src")?.trim()
+
+      console.log(title, date, link, image)
+
+      return {
+        title,
+        subtitle: "Pittsburgh Independent",
+        url: `https://www.pghindependent.com${link}`,
+        timestamp: date,
+        tags: ["blog"],
+        image,
+      }
+    })
+    .filter(l => l.title !== "")
 
   return links
 }

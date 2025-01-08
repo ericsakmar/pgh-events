@@ -47,14 +47,14 @@ exports.sourceNodes = async ({
     cazart,
     cruelnoise,
     pghmusictracker,
-    // pittsburghindependent,
+    pittsburghindependent,
     startthebeat,
     wpts,
     wyep,
     youtube,
   ]
 
-  const devSources = [boredinpittsburgh]
+  const devSources = [boredinpittsburgh, pittsburghindependent]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
