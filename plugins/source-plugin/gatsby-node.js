@@ -6,10 +6,10 @@ const belvederes = require("./sources/belvederes.js")
 const bottlerocket = require("./sources/bottlerocket.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
-const cattivo = require("./sources/cattivo.js")
+// const cattivo = require("./sources/cattivo.js")
 const cityOfAsylum = require("./sources/cityOfAsylum.js")
 const cityWinery = require("./sources/cityWinery.js")
-const clubcafe = require("./sources/clubcafe.js")
+// const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
@@ -17,6 +17,7 @@ const glitterbox = require("./sources/glitterbox.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
+const haven = require("./sources/haven.js")
 const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
@@ -85,10 +86,10 @@ exports.sourceNodes = async ({
     bottlerocket,
     brillo,
     carnegieHomestead,
-    cattivo,
+    // cattivo,
     cityOfAsylum,
     cityWinery,
-    clubcafe,
+    // clubcafe,
     conAlmaDowntown,
     crafthouse,
     csv,
@@ -96,6 +97,7 @@ exports.sourceNodes = async ({
     goldmark,
     governmentCenter,
     greenbeacon,
+    haven,
     honky,
     jergels,
     kingfly,
@@ -123,7 +125,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [roboto, glitterbox]
+  const devSources = [roboto, glitterbox, haven]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
