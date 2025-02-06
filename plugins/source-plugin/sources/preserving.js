@@ -18,15 +18,15 @@ exports.getEvents = async () => {
 
       const title = n.find(`[data-hook="title"]`).text().trim()
 
-      const rawDate = n.find(`[data-hook="date"]`).first().text().trim()
+      const rawDate = n.find(`[data-hook="short-date"]`).first().text().trim()
 
       const date = parseDate(rawDate)
 
       const location = "Preserving Underground"
 
-      const link = n.find(`[data-hook="title"] a`).attr("href").trim()
+      const link = n.find(`[data-hook="title"]`).attr("href").trim()
 
-      const poster = n.find("wow-image").get(1)?.attribs["data-src"]
+      const poster = n.find("wow-image img").eq(1).attr("src")?.trim()
 
       return {
         title,
@@ -34,7 +34,7 @@ exports.getEvents = async () => {
         location,
         link,
         source: url,
-        hasTime: true,
+        hasTime: false,
         poster,
       }
     })
