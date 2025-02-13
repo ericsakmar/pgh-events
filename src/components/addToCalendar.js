@@ -10,7 +10,7 @@ const formatAllDayCalendarDate = date => format(date, "yyyyMMdd")
 
 // from https://feathericons.com/
 // and https://kittygiraudel.com/2020/12/10/accessible-icon-links/
-const CalendarIcon = () => (
+export const CalendarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"

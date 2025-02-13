@@ -47,6 +47,8 @@ const PLAYLIST_IDS = [
   "75pofC1gWEi3HirOrt8LmQ", // oct 2024
   "0HVqC2QA4Er6gxb8ix8pom", // nov 2024
   "5afIUX6ZXAs0UCxr73rjbO", // dec 2024
+  // I can't find Jan 2025
+  "0HIZbrCQmf0ea6rUaQAvkc", // feb 2025
 ]
 
 const SHOW_IDS = [

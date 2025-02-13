@@ -9,3 +9,14 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.icon {
+  width: 0.8rem;
+  opacity: 0.8;
+}
+
+.icon-weird {
+  width: 0.8rem;
+  opacity: 0.8;
+  margin-top: 0.1rem;
+}
