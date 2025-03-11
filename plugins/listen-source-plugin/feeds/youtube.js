@@ -12,6 +12,7 @@ const CHANNEL_IDS = [
   "UCj05itdKFi1F93TbZrHlpRA", // modest director
   "UCy7GWS2r7d-dPhWNSC5ri9A", // vibe vote
   "UC1j_mioKL69rn_8P821iehA", // little giant
+  "UCGd9HYAFcmULiyoSsNEZLWw", // thunderbird
 ]
 
 const getChannel = async id => {

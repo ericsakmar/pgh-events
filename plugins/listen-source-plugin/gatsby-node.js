@@ -2,7 +2,7 @@ const agaveparty = require("./feeds/agaveparty")
 const boredinpittsburgh = require("./feeds/boredinpittsburgh")
 const cazart = require("./feeds/cazart")
 const cruelnoise = require("./feeds/cruelnoise")
-const pghmusictracker = require("./feeds/pghmusictracker")
+const spotify = require("./feeds/spotify")
 const pittsburghindependent = require("./feeds/pittsburghindependent")
 const startthebeat = require("./feeds/startthebeat")
 const wpts = require("./feeds/wpts")
@@ -46,7 +46,7 @@ exports.sourceNodes = async ({
     boredinpittsburgh,
     cazart,
     cruelnoise,
-    pghmusictracker,
+    spotify,
     pittsburghindependent,
     startthebeat,
     wpts,
@@ -54,7 +54,7 @@ exports.sourceNodes = async ({
     youtube,
   ]
 
-  const devSources = [boredinpittsburgh, pittsburghindependent]
+  const devSources = [spotify, youtube]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
