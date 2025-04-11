@@ -1,12 +1,13 @@
 const cheerio = require("cheerio")
-const fetchPage = require("./fetchPage")
+const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
 const url = "https://havenvenue.com/events.html"
+const waitForSelector = ".event-card"
 exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
+  const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)
 
   const $ = cheerio.load(data)
 
@@ -31,7 +32,7 @@ exports.getEvents = async () => {
         link,
         source: url,
         hasTime: true,
-        poster: poster ? `https://havenvenue.com/${poster}` : null,
+        poster: poster,
       }
     })
 

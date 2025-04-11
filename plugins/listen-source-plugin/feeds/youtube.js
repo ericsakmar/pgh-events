@@ -13,6 +13,7 @@ const CHANNEL_IDS = [
   "UCy7GWS2r7d-dPhWNSC5ri9A", // vibe vote
   "UC1j_mioKL69rn_8P821iehA", // little giant
   "UCGd9HYAFcmULiyoSsNEZLWw", // thunderbird
+  "UCfsmz7-5_Gw2UlPmCn1LMjQ", // enjoy wrestling
 ]
 
 const getChannel = async id => {
