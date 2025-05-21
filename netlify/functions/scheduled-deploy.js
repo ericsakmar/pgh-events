@@ -6,20 +6,26 @@ const SITE_ID = process.env.SITE_ID
 const HOUR_IN_MS = 1000 * 60 * 60
 
 export default async () => {
-  const lastDeployDate = await getLastDeployDate()
-  const now = new Date()
-  const doIt = shouldBuild(now, lastDeployDate)
+  try {
+    console.log("running scheduled deploy")
+    const lastDeployDate = await getLastDeployDate()
+    const now = new Date()
+    const doIt = shouldBuild(now, lastDeployDate)
 
-  if (doIt) {
-    console.log("sending request to build hook")
-    const response = await fetch(BUILD_HOOK, {
-      method: "POST",
-    })
+    if (doIt) {
+      console.log("sending request to build hook")
+      const response = await fetch(BUILD_HOOK, {
+        method: "POST",
+      })
 
-    const json = await response.text()
-    console.log("Build hook response:", json)
-  } else {
-    console.log("skipping build")
+      const json = await response.text()
+      console.log("Build hook response:", json)
+    } else {
+      console.log("skipping build")
+    }
+  } catch (error) {
+    console.log("Caught general error")
+    console.log(error)
   }
 
   return new Response("ok")
@@ -30,8 +36,9 @@ export const config = {
 }
 
 const getLastDeployDate = async () => {
+  console.log("getting last deploy date")
   const res = await fetch(
-    `https://api.netlify.com//api/v1/sites/${SITE_ID}/deploys`,
+    `https://api.netlify.com/api/v1/sites/${SITE_ID}/deploys`,
     {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
@@ -40,8 +47,10 @@ const getLastDeployDate = async () => {
   )
 
   const json = await res.json()
-  const rawDate = json[0].created_at
+  console.log("last deploy response:")
+  console.log(JSON.stringify(json, null, 2))
 
+  const rawDate = json[0].created_at
   return new Date(rawDate)
 }
 
