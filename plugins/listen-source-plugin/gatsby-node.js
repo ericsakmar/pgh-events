@@ -8,6 +8,7 @@ const startthebeat = require("./feeds/startthebeat")
 const wpts = require("./feeds/wpts")
 const wyep = require("./feeds/wyep")
 const youtube = require("./feeds/youtube")
+const callback = require("./feeds/callback")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -52,9 +53,10 @@ exports.sourceNodes = async ({
     wpts,
     wyep,
     youtube,
+    callback,
   ]
 
-  const devSources = [youtube]
+  const devSources = [youtube, callback]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
