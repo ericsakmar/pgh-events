@@ -1,5 +1,5 @@
-const source = require("./sources/preserving.js")
+const source = require("./sources/sidequest.js")
 
 source.getEvents().then(e => {
-  // console.log(JSON.stringify(e, null, 2))
+  console.log(JSON.stringify(e, null, 2))
 })

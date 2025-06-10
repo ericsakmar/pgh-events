@@ -34,6 +34,7 @@ const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
 const shsb = require("./sources/squirrelHillSportsBar.js")
+const sidequest = require("./sources/sidequest.js")
 const smalls = require("./sources/smalls.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
@@ -116,6 +117,7 @@ exports.sourceNodes = async ({
     roxian,
     shredshed,
     shsb,
+    sidequest,
     smalls,
     spaceupstairs,
     spirit,
@@ -129,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [haven, moondogs, tech25]
+  const devSources = [haven, sidequest]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
