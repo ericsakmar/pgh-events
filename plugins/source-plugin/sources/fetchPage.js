@@ -8,8 +8,8 @@ const getPage = async url => {
   const res = await fetch(url, {
     signal: controller.signal,
     headers: {
-      "User-Agent": "node-fetch"
-    }
+      "User-Agent": "node-fetch",
+    },
   })
 
   clearTimeout(id)
@@ -24,7 +24,7 @@ exports.fetchPage = async url => {
   } catch (exception) {
     const error = {
       exception,
-      url
+      url,
     }
 
     throw error
@@ -39,7 +39,7 @@ exports.fetchPage = async url => {
   const error = {
     code: res.status,
     url,
-    body
+    body,
   }
 
   throw error

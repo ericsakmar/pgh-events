@@ -131,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [haven, sidequest]
+  const devSources = [winery, cityWinery]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

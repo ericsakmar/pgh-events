@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://pittsburgh.citywinery.com/"
+const url = "https://citywinery.com/pittsburgh/events"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -10,31 +10,34 @@ exports.getEvents = async () => {
 
   const $ = cheerio.load(data)
 
-  const events = $(".other-event-box-link")
-    .toArray()
-    .map(el => {
-      const n = $(el)
+  const stuff = $("main astro-island")
+  const foo = stuff.eq(1).attr("props")
 
-      const title = n.find(".text.medium").text().trim()
-      const rawDate = n.find(".dateindicator").text().trim()
-      const date = parseDate(rawDate)
+  const parsed = JSON.parse(foo)
 
-      const location = "City Winery"
+  const events = parsed.events[1].map(e => {
+    const title = e[1].name[1]
 
-      const link = n.attr("href")
+    const rawDate = e[1].start[1]
 
-      const poster = n.find("img").attr("src")?.trim()
+    const date = parseDate(rawDate)
 
-      return {
-        title,
-        date,
-        location,
-        link: `https://pittsburgh.citywinery.com${link}`,
-        source: url,
-        hasTime: false,
-        poster,
-      }
-    })
+    const location = "City Winery"
+
+    const link = e[1].url[1]
+
+    const poster = e[1].image[1]
+
+    return {
+      title,
+      date,
+      location,
+      link: `https://citywinery.com/pittsburgh/events/${link}`,
+      source: url,
+      hasTime: true,
+      poster,
+    }
+  })
 
   return events
 }
