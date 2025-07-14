@@ -131,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [clubcafe]
+  const devSources = [glitterbox]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

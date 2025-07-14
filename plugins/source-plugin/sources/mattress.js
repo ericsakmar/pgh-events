@@ -25,7 +25,7 @@ exports.getEvents = async () => {
 
       const link = n.find("a").attr("href").trim()
 
-      const poster = n.find("img").attr("src").trim()
+      const poster = n.find("img").attr("data-src").trim()
 
       return {
         title,
