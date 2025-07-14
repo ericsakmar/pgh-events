@@ -1,44 +1,63 @@
-const fs = require("fs")
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
-const { zonedTimeToUtc } = require("date-fns-tz")
+const { parseDate } = require("./parseDate")
 
-const url =
-  "https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219?pl=opusfood.php"
+const url = "https://www.clubcafelive.com/upcoming-shows"
 exports.url = url
-
-const getDate = rawDate => zonedTimeToUtc(new Date(rawDate), "America/New_York")
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
 
   const $ = cheerio.load(data)
 
-  const events = $(`head script[type="application/ld+json"]`)
+  const events = $(".list-item")
     .toArray()
     .map(el => {
-      const ldJson = el.children[0].data
+      const n = $(el)
 
-      // at some point, an event had a tab character in the name, and the parser did not like that
-      const fixed = ldJson.replace(/\t/g, "")
+      const title = n.find(".list-item-content__title").text().trim()
 
-      const json = JSON.parse(fixed)
-      return json
-    })
-    .flatMap(events => events)
-    .filter(event => event["@type"] === "MusicEvent")
-    .map(event => {
+      const details = n.find(".list-item-content__description p")
+
+      const rawDate = details.eq(0).text().trim()
+
+      const rawTime = details
+        .eq(1)
+        .text()
+        .trim()
+        .split(" | ")[0]
+        ?.substring("doors ".length)
+        ?.replace("P", "pm")
+        ?.replace("A", "am")
+
+      const hasTime = rawTime !== undefined
+
+      const date = hasTime
+        ? parseDate(`${rawDate} at ${rawTime}`)
+        : parseDate(rawDate)
+
+      // some events don't have a date yet (as of Jul 14 2025)
+      if (date === undefined) {
+        return null
+      }
+
+      const location = "Club Cafe"
+
+      const link = n.find(".list-item-content__button").attr("href").trim()
+
+      const poster = n.find(".list-image").attr("src")?.trim()
+
       return {
-        title: event.name,
-        // YYYY-MM-DDTHH:MM
-        date: getDate(event.startDate),
-        location: event.location.name,
-        link: event.url,
+        title,
+        date,
+        location,
+        link,
         source: url,
-        hasTime: true,
-        poster: event.image,
+        hasTime,
+        poster,
       }
     })
+    .filter(e => e !== null)
 
   return events
 }

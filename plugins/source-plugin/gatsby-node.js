@@ -1,5 +1,5 @@
 // const cattivo = require("./sources/cattivo.js")
-// const clubcafe = require("./sources/clubcafe.js")
+const clubcafe = require("./sources/clubcafe.js")
 // const donttell = require("./sources/donttell.js")
 // const hartwood = require("./sources/hartwood.js")
 // const southsideworks = require("./sources/southsideworks.js")
@@ -83,7 +83,7 @@ exports.sourceNodes = async ({
 
   const prodSources = [
     // cattivo,
-    // clubcafe,
+    clubcafe,
     // donttell,
     // hartwood,
     arcade,
@@ -131,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [winery, cityWinery]
+  const devSources = [clubcafe]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
