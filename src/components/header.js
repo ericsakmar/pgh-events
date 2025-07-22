@@ -43,7 +43,7 @@ const Header = () => {
           <li className={styles.emojiLink}>
             <span>✉️</span>
             <a
-              href="https://forms.gle/3rAUbTXAW5ei4Jp68"
+              href="https://admin.pgh.events/events/create"
               className={styles.link}
             >
               Add an Event

@@ -1,5 +1,6 @@
 const fetchPage = require("./fetchPage")
 const csv = require("@fast-csv/parse")
+const { Client } = require("pg")
 const { parseDate } = require("./parseDate")
 
 const url = process.env.CSV_URL
@@ -28,8 +29,42 @@ const parse = data =>
       .on("end", () => resolve(parsed))
   })
 
+async function queryDatabase() {
+  const client = new Client({
+    connectionString: process.env.ADMIN_DATABASE_URL,
+  })
+
+  try {
+    await client.connect()
+
+    const eventsRes = await client.query(
+      `SELECT name, date, location, "eventLink", "posterLink" FROM "Event"`
+    )
+
+    const events = eventsRes.rows.map(r => ({
+      title: r.name,
+      date: r.date,
+      location: r.location,
+      link: r.eventLink,
+      poster: r.posterLink,
+      source: "admin-db",
+      hasTime: true,
+    }))
+
+    return events
+  } catch (err) {
+    console.error("Error connecting or querying database:", err)
+  } finally {
+    await client.end() // Close the connection
+  }
+}
+
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
   const parsed = await parse(data)
-  return parsed.filter(e => e.approved === "YES")
+  const csvEvents = parsed.filter(e => e.approved === "YES")
+
+  const dbEvents = await queryDatabase()
+
+  return [...csvEvents, dbEvents]
 }
