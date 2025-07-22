@@ -38,7 +38,7 @@ async function queryDatabase() {
     await client.connect()
 
     const eventsRes = await client.query(
-      `SELECT name, date, location, "eventLink", "posterLink" FROM "Event"`
+      `SELECT name, date, location, "eventLink", "posterLink" FROM "Event" WHERE approved=TRUE`
     )
 
     const events = eventsRes.rows.map(r => ({
@@ -66,5 +66,5 @@ exports.getEvents = async () => {
 
   const dbEvents = await queryDatabase()
 
-  return [...csvEvents, dbEvents]
+  return [...csvEvents, ...dbEvents]
 }
