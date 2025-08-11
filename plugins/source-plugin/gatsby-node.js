@@ -92,7 +92,7 @@ exports.sourceNodes = async ({
     brillo,
     carnegieHomestead,
     cityOfAsylum,
-    cityWinery,
+    // cityWinery, // they serve 403s, their loss
     conAlmaDowntown,
     crafthouse,
     csv,
@@ -131,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [mixtape]
+  const devSources = [csv]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
