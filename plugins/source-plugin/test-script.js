@@ -1,4 +1,4 @@
-const source = require("./sources/cityWinery.js")
+const source = require("./sources/mixtape.js")
 
 source
   .getEvents()

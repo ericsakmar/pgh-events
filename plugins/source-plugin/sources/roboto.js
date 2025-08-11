@@ -48,7 +48,8 @@ exports.getEvents = async () => {
         date,
         location,
         poster,
-        link: `https://dltsgdom.ticketleap.com${link}`,
+        // https://www.ticketleap.events/tickets/dltsgdom/good-sleepy-if-kansas-had-trees-bug-moment
+        link: `https://www.ticketleap.events${link}`,
         source: url,
         hasTime: true,
       }
