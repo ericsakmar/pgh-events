@@ -1,8 +1,8 @@
 const fetchPage = require("./fetchPage")
 const csv = require("@fast-csv/parse")
-const { Client } = require("pg")
 const { parseDate } = require("./parseDate")
 const { Pool } = require("pg")
+const { addHours } = require("date-fns")
 
 const pool = new Pool({
   connectionString: process.env.ADMIN_DATABASE_URL,
@@ -16,6 +16,8 @@ const url = process.env.CSV_URL
 exports.url = "csv"
 
 const undefinedIfBlank = str => (str === "" ? undefined : str)
+
+const utc_offset = 4
 
 const parse = data =>
   new Promise(resolve => {
@@ -48,7 +50,7 @@ async function queryDatabase() {
 
     const events = eventsRes.rows.map(r => ({
       title: r.name,
-      date: r.date,
+      date: addHours(r.date, utc_offset).toISOString(),
       location: r.location,
       link: r.eventLink,
       poster: r.posterLink,
