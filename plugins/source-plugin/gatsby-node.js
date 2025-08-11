@@ -131,7 +131,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [csv]
+  const devSources = [csv, roboto]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

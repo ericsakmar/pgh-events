@@ -1,33 +1,54 @@
 const cheerio = require("cheerio")
-const fetchPage = require("./fetchPage")
+const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
 const url = "https://dltsgdom.ticketleap.com/"
 exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
+  const data = await fetchDynamicPage.fetchDynamicPage(url, ".listing-item")
 
   const $ = cheerio.load(data)
 
-  const events = $(".org-upcoming-event")
+  const events = $(".listing-item")
     .toArray()
     .map(el => {
       const n = $(el)
 
-      const title = n.find("h3").text().trim()
-      const rawDate = n.find(".org-upcoming-date-long").text().trim()
-      const date = parseDate(rawDate)
-      const link = n.find("h3 a").attr("href").trim()
-      const location = "DLTSGDOM! Collective"
-      const poster = n.find(".org-upcoming-image img").attr("src").trim()
+      const title = n.find(".listing-item__header").text().trim()
+
+      // finding stuff in the description got a little funny because there is malformed HTML
+      const rawDate = n
+        .find(".listing-item__description div")
+        .eq(0)
+        .text()
+        .trim()
+
+      const rawTime = n
+        .find(".listing-item__description div")
+        .eq(1)
+        .text()
+        .trim()
+        .split(" - ")[0]
+
+      const date = parseDate(`${rawDate} at ${rawTime}`)
+
+      const link = n.find(".button--primary").attr("href").trim()
+
+      const location = n
+        .find(".listing-item__description > p")
+        .eq(2)
+        .text()
+        .trim()
+
+      const poster = n.find(".listing-item__image").attr("src").trim()
 
       return {
         title,
         date,
         location,
         poster,
-        link,
+        link: `https://dltsgdom.ticketleap.com${link}`,
         source: url,
         hasTime: true,
       }
