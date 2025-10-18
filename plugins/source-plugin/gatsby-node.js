@@ -5,7 +5,7 @@ const bottlerocket = require("./sources/bottlerocket.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cityOfAsylum = require("./sources/cityOfAsylum.js")
-const cityWinery = require("./sources/cityWinery.js")
+// const cityWinery = require("./sources/cityWinery.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
 const csv = require("./sources/csv.js")
@@ -83,7 +83,7 @@ exports.sourceNodes = async ({
     brillo,
     carnegieHomestead,
     cityOfAsylum,
-    cityWinery,
+    // cityWinery, // still 403 as of 2025/10/18
     conAlmaDowntown,
     crafthouse,
     csv,
