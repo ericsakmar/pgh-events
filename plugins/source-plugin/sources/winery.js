@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://events.pittsburghwinery.com/"
+const url = "https://pittsburghwinery.com/events/"
 exports.url = url
 
 exports.getEvents = async () => {
