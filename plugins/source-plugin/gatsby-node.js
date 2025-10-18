@@ -1,8 +1,4 @@
-// const cattivo = require("./sources/cattivo.js")
 const clubcafe = require("./sources/clubcafe.js")
-// const donttell = require("./sources/donttell.js")
-// const hartwood = require("./sources/hartwood.js")
-// const southsideworks = require("./sources/southsideworks.js")
 const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
 const bottlerocket = require("./sources/bottlerocket.js")
@@ -18,7 +14,6 @@ const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
 const haven = require("./sources/haven.js")
-const honky = require("./sources/honkytonkjukebox.js")
 const jergels = require("./sources/jergels.js")
 const kingfly = require("./sources/kingfly.js")
 const mattress = require("./sources/mattress.js")
@@ -33,7 +28,7 @@ const remedy = require("./sources/remedy.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
-const shsb = require("./sources/squirrelHillSportsBar.js")
+// const shsb = require("./sources/squirrelHillSportsBar.js")
 const sidequest = require("./sources/sidequest.js")
 const smalls = require("./sources/smalls.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
@@ -41,7 +36,6 @@ const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
 const starlake = require("./sources/starlake.js")
 const tech25 = require("./sources/tech25.js")
-const theforge = require("./sources/theforge.js")
 const thunderbird = require("./sources/thunderbird.js")
 const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
@@ -82,17 +76,14 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
-    // cattivo,
     clubcafe,
-    // donttell,
-    // hartwood,
     arcade,
     belvederes,
     bottlerocket,
     brillo,
     carnegieHomestead,
     cityOfAsylum,
-    // cityWinery, // they serve 403s, their loss
+    cityWinery,
     conAlmaDowntown,
     crafthouse,
     csv,
@@ -101,7 +92,6 @@ exports.sourceNodes = async ({
     governmentCenter,
     greenbeacon,
     haven,
-    honky,
     jergels,
     kingfly,
     mattress,
@@ -116,7 +106,7 @@ exports.sourceNodes = async ({
     roboto,
     roxian,
     shredshed,
-    shsb,
+    // shsb, // they don't update their calendar often
     sidequest,
     smalls,
     spaceupstairs,
@@ -124,14 +114,13 @@ exports.sourceNodes = async ({
     stageae,
     starlake,
     tech25,
-    theforge,
     thunderbird,
     trace,
     warhol,
     winery,
   ]
 
-  const devSources = [csv]
+  const devSources = [winery, roxian, cityWinery]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
