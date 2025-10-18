@@ -2,7 +2,8 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-events"
+const url =
+  "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-presented-by-citizens-events"
 exports.url = url
 
 exports.getEvents = async () => {
