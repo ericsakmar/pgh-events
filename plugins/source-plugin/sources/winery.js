@@ -16,7 +16,15 @@ exports.getEvents = async () => {
 
       const title = n.find("#eventTitle").attr("title")?.trim()
       const day = n.find("#eventDate").text().trim()
-      const time = n.find(".eventDoorStartDate").text().trim().split(" ")[1]
+
+      const time = n
+        .find(".eventDoorStartDate")
+        .text()
+        .trim()
+        .replace("Doors:", "")
+        .split(" // ")[0]
+        .trim()
+
       const rawDate = `${day} at ${time}`
       const date = parseDate(rawDate)
       const location = n.find(".venueLink").text().trim()
