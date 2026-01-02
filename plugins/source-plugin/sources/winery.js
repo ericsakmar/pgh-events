@@ -27,7 +27,7 @@ exports.getEvents = async () => {
 
       const rawDate = `${day} at ${time}`
       const date = parseDate(rawDate)
-      const location = n.find(".venueLink").text().trim()
+      const location = "The Original Pittsburgh Winery"
       const link = n.find("#eventTitle").attr("href")?.trim()
       const poster = n.find(".rhp-events-event-image img").attr("src")?.trim()
 
