@@ -20,30 +20,32 @@ const Event = ({ event }) => {
         />
       )}
 
-      <h3>
-        {event.link ? (
-          <a
-            href={event.link}
-            className={containerStyles.mainLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {event.title}
-          </a>
-        ) : (
-          event.title
-        )}
-      </h3>
+      <div className={containerStyles.details}>
+        <p className={containerStyles.location}>{event.location}</p>
 
-      <p>{event.location}</p>
+        <h3 className={containerStyles.title}>
+          {event.link ? (
+            <a
+              href={event.link}
+              className={containerStyles.mainLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {event.title}
+            </a>
+          ) : (
+            event.title
+          )}
+        </h3>
 
-      <p>
-        <EventTime event={event} />
-      </p>
+        <p>
+          <EventTime event={event} />
+        </p>
 
-      <div className={containerStyles.actions}>
-        <AddToCalendar event={event} />
-        <WebShare event={event} />
+        <div className={containerStyles.actions}>
+          <AddToCalendar event={event} />
+          <WebShare event={event} />
+        </div>
       </div>
     </li>
   )

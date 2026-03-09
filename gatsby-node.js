@@ -176,32 +176,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return { date: key, count: events ? events.length : 0 }
   })
 
-  const allFeedsCount = statsResult.data.allListenlink.nodes.length
-  const feedsMinDate = statsResult.data.allListenlink.min
-  const feedsMaxDate = statsResult.data.allListenlink.max
-  const feedCounts = statsResult.data.allListenlink.nodes.reduce(
-    (acc, node) => {
-      return {
-        podcasts: node.tags.includes("podcast")
-          ? acc.podcasts + 1
-          : acc.podcasts,
-        playlists: node.tags.includes("spotify playlist")
-          ? acc.playlists + 1
-          : acc.playlists,
-        blogs: node.tags.includes("blog") ? acc.blogs + 1 : acc.blogs,
-        videos: node.tags.includes("youtube channel")
-          ? acc.videos + 1
-          : acc.videos,
-      }
-    },
-    {
-      podcasts: 0,
-      playlists: 0,
-      blogs: 0,
-      videos: 0,
-    }
-  )
-
   createPage({
     path: "/about",
     component: path.resolve("./src/templates/about.js"),
@@ -212,10 +186,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       eventCountsByDate,
       allEventsCount,
       allVenuesCount,
-      allFeedsCount,
-      feedCounts,
-      feedsMinDate,
-      feedsMaxDate,
     },
   })
 }

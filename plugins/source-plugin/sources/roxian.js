@@ -1,18 +1,22 @@
 const cheerio = require("cheerio")
-const fetchPage = require("./fetchPage")
+const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
 const url =
   "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-presented-by-citizens-events"
+const waitForSelector = "main .lnd-container .group"
 exports.url = url
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
+  const data = await fetchDynamicPage.fetchDynamicPage(url, waitForSelector)
 
   const $ = cheerio.load(data)
 
-  const events = $(`script[type="application/ld+json"]`)
-    .toArray()
+  const eventData = $(
+    `main .lnd-container script[type="application/ld+json"]`
+  ).toArray()
+
+  const events = eventData
     .map(el => {
       const ldJson = el.children[0].data
       const json = JSON.parse(ldJson)

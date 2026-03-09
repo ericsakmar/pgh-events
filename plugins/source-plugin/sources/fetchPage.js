@@ -1,9 +1,11 @@
 const fetch = require("node-fetch")
 const AbortController = require("abort-controller")
 
+const TIMEOUT = 10_000
+
 const getPage = async url => {
   const controller = new AbortController()
-  const id = setTimeout(() => controller.abort(), 8000)
+  const id = setTimeout(() => controller.abort(), TIMEOUT)
 
   const res = await fetch(url, {
     signal: controller.signal,

@@ -8,18 +8,8 @@
   flex-grow: 1;
 }
 
-.side {
-  flex-grow: 1;
-  max-width: 15rem;
-  color: var(--light);
-}
-
 @media (max-width: 600px) {
   .page {
     flex-direction: column;
-  }
-
-  .side {
-    max-width: unset;
   }
 }

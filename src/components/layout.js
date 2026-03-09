@@ -5,26 +5,22 @@ import * as styles from "./layout.module.css"
 import "./layout.css"
 import "../templates/global.css"
 import Header from "./header"
+import { Link } from "gatsby"
 
-const Layout = ({ sidebar, children, footer }) => {
+const Layout = ({ children }) => {
   return (
-    <div
-      style={{
-        margin: `0 auto`,
-        padding: `0 1rem 1rem`,
-        maxWidth: "1200px",
-      }}
-    >
-      <div className={styles.page}>
-        <div className={styles.side}>
-          <Header />
-          {sidebar}
-        </div>
+    <div>
+      <Header />
 
+      <div className={styles.page}>
         <main className={styles.main}>{children}</main>
       </div>
 
-      {footer}
+      <footer className={styles.footer}>
+        <Link to="/about" className={styles.footer}>
+          About
+        </Link>
+      </footer>
     </div>
   )
 }
