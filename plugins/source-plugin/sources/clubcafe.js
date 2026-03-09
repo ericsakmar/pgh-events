@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
+const { findTimes } = require("./findTime")
 const { parseDate } = require("./parseDate")
 
 const url = "https://www.clubcafelive.com/upcoming-shows"
@@ -21,16 +22,10 @@ exports.getEvents = async () => {
 
       const rawDate = details.eq(0).text().trim()
 
-      const rawTime = details
-        .eq(1)
-        .text()
-        .trim()
-        .split(" | ")[0]
-        ?.substring("doors ".length)
-        ?.replace("P", "pm")
-        ?.replace("A", "am")
+      const desc = n.find(".list-item-content__description").text().trim()
+      const rawTime = findTimes(desc)
 
-      const hasTime = rawTime !== undefined
+      const hasTime = rawTime !== null
 
       const date = hasTime
         ? parseDate(`${rawDate} at ${rawTime}`)
@@ -51,7 +46,7 @@ exports.getEvents = async () => {
         title,
         date,
         location,
-        link,
+        link: link === "/" ? url : link,
         source: url,
         hasTime,
         poster,

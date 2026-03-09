@@ -2,7 +2,7 @@ const cheerio = require("cheerio")
 const fetchDynamicPage = require("./fetchDynamicPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://events.ticketleap.com/events/dltsgdom"
+const url = "https://events.ticketleap.com/events/perry-house"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -25,19 +25,18 @@ exports.getEvents = async () => {
 
       const date = parseDate(`${rawDate} at ${rawTime}`)
 
-      const link = n.find(".button--primary").attr("href").trim()
+      const link = n.find(".button--primary").attr("href")?.trim()
 
-      const location = "DLTSGDOM! Collective"
+      const location = "Perry-House Productions"
 
-      const poster = n.find(".listing-item__image").attr("src").trim()
+      const poster = n.find(".listing-item__image").attr("src")?.trim()
 
       return {
         title,
         date,
         location,
         poster,
-        // https://www.ticketleap.events/tickets/dltsgdom/good-sleepy-if-kansas-had-trees-bug-moment
-        link: `https://www.ticketleap.events${link}`,
+        link: `https://www.ticketleap.events${link}` ?? url,
         source: url,
         hasTime: true,
       }

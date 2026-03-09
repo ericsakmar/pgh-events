@@ -33,7 +33,7 @@ const VenueStats = ({ venues: allVenues }) => {
             y={0}
             radius={8}
             all
-            fill="var(--very-dark)"
+            fill="var(--border-color)"
           />
 
           <BarRounded
@@ -43,7 +43,7 @@ const VenueStats = ({ venues: allVenues }) => {
             y={4}
             radius={5}
             all
-            fill="currentcolor"
+            fill="var(--accent-color)"
           />
         </svg>
       </div>

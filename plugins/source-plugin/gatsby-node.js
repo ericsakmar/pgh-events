@@ -1,40 +1,40 @@
-const clubcafe = require("./sources/clubcafe.js")
+// const haven = require("./sources/haven.js")
+// const shsb = require("./sources/squirrelHillSportsBar.js")
+// const starlake = require("./sources/starlake.js")
 const arcade = require("./sources/arcade.js")
 const belvederes = require("./sources/belvederes.js")
 const bottlerocket = require("./sources/bottlerocket.js")
 const brillo = require("./sources/brillo.js")
 const carnegieHomestead = require("./sources/carnegieHomestead.js")
 const cityOfAsylum = require("./sources/cityOfAsylum.js")
-// const cityWinery = require("./sources/cityWinery.js")
+const cityWinery = require("./sources/cityWinery.js")
+const clubcafe = require("./sources/clubcafe.js")
 const conAlmaDowntown = require("./sources/conalmaDowntown.js")
 const crafthouse = require("./sources/crafthouse.js")
-const csv = require("./sources/csv.js")
 const glitterbox = require("./sources/glitterbox.js")
 const goldmark = require("./sources/goldmark.js")
 const governmentCenter = require("./sources/governmentcenter.js")
 const greenbeacon = require("./sources/greenbeacon.js")
-const haven = require("./sources/haven.js")
 const jergels = require("./sources/jergels.js")
-const kingfly = require("./sources/kingfly.js")
 const mattress = require("./sources/mattress.js")
 const mixtape = require("./sources/mixtape.js")
 const moondogs = require("./sources/moondogs.js")
 const newHazlett = require("./sources/newHazlettTheater.js")
 const oaks = require("./sources/oaks.js")
 const ormsby = require("./sources/ormsby.js")
+const parkHouse = require("./sources/parkhouse.js")
+const perryHouse = require("./sources/perryHouse.js")
 const poetry = require("./sources/poetry.js")
 const preserving = require("./sources/preserving.js")
 const remedy = require("./sources/remedy.js")
 const roboto = require("./sources/roboto.js")
 const roxian = require("./sources/roxian.js")
 const shredshed = require("./sources/shredshed.js")
-// const shsb = require("./sources/squirrelHillSportsBar.js")
 const sidequest = require("./sources/sidequest.js")
 const smalls = require("./sources/smalls.js")
 const spaceupstairs = require("./sources/spaceupstairs.js")
 const spirit = require("./sources/sprirt.js")
 const stageae = require("./sources/stageae.js")
-const starlake = require("./sources/starlake.js")
 const tech25 = require("./sources/tech25.js")
 const thunderbird = require("./sources/thunderbird.js")
 const trace = require("./sources/trace.js")
@@ -76,43 +76,43 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const prodSources = [
-    clubcafe,
+    // haven, // closed for now
+    // shsb, // they don't update their calendar often
+    // starlake, // not really interested in this place right now
     arcade,
     belvederes,
     bottlerocket,
     brillo,
     carnegieHomestead,
     cityOfAsylum,
-    // cityWinery, // still 403 as of 2025/10/18
+    cityWinery,
+    clubcafe,
     conAlmaDowntown,
     crafthouse,
-    csv,
     glitterbox,
     goldmark,
     governmentCenter,
     greenbeacon,
-    haven,
     jergels,
-    kingfly,
     mattress,
     mixtape,
     moondogs,
     newHazlett,
     oaks,
     ormsby,
+    parkHouse,
+    perryHouse,
     poetry,
     preserving,
     remedy,
     roboto,
     roxian,
     shredshed,
-    // shsb, // they don't update their calendar often
     sidequest,
     smalls,
     spaceupstairs,
     spirit,
     stageae,
-    starlake,
     tech25,
     thunderbird,
     trace,
@@ -120,12 +120,18 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [winery, roxian]
+  const devSources = [moondogs, perryHouse, clubcafe, crafthouse]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
 
+  const now = new Date()
+
   const results = await Promise.all(sources.map(s => getEvents(s)))
+
+  console.log(
+    `fetched data in ${(new Date().getTime() - now.getTime()) / 1000} seconds`,
+  )
 
   const events = results.flatMap(r => r)
 
@@ -133,7 +139,7 @@ exports.sourceNodes = async ({
     createNode({
       ...event,
       id: createNodeId(
-        `${POST_NODE_TYPE}-${event.title}-${event.date}-${event.location}`
+        `${POST_NODE_TYPE}-${event.title}-${event.date}-${event.location}`,
       ),
       parent: null,
       children: [],
@@ -142,6 +148,6 @@ exports.sourceNodes = async ({
         content: JSON.stringify(event),
         contentDigest: createContentDigest(event),
       },
-    })
+    }),
   )
 }

@@ -16,8 +16,13 @@ exports.getEvents = async () => {
       const n = $(el)
 
       const title = n.find(".title1").text().trim()
-      const rawDate = n.find(".callout-box-list").text().trim()
+
+      const month = n.find(".callout_month").text().trim()
+      const dayOfMonth = n.find(".callout_date").text().trim()
+      const time = n.find(".callout_time").text().trim()
+      const rawDate = `${month} ${dayOfMonth} at ${time}`
       const date = parseDate(rawDate)
+
       const link = n.find(".entry-title a").attr("href").trim()
       const poster = n.find(".ecs_event_feed_image").attr("src")?.trim()
 

@@ -1,49 +1,44 @@
 import * as React from "react"
+import { format, parse } from "date-fns"
 
 import Day from "../components/day"
-import Nav from "../components/nav"
 import Seo from "../components/seo"
-
-import Search from "../components/search"
-import FeedSummary from "../components/feedSummary"
+import DateSelect from "../components/dateSelect"
 import Layout from "../components/layout"
-import Links from "../components/links"
+
+const getDayOfWeek = date => format(date, "EEE")
+const getDate = date => format(date, "MMMM d")
 
 export function Head() {
   return <Seo title="pgh.events" />
 }
 
 const IndexPage = ({ pageContext }) => {
-  const {
-    events,
-    date,
-    previous,
-    next,
-    venues,
-    feeds,
-    venue,
-    minDate,
-    maxDate,
-  } = pageContext
+  const { events, date, previous, next, minDate, maxDate } = pageContext
+  const parsedDate = parse(date, "yyyy-MM-dd", new Date())
+  const displayDate = `${getDayOfWeek(parsedDate)}, ${getDate(parsedDate)}`
 
   return (
-    <Layout
-      sidebar={
-        <>
-          <Search
-            date={date}
-            venue={venue?.slug}
-            venues={venues}
-            minDate={minDate}
-            maxDate={maxDate}
-          />
-          <FeedSummary feeds={feeds} />
-          <Links />
-        </>
-      }
-    >
-      <Day date={date} venue={venue} events={events} />
-      <Nav previous={previous} next={next} />
+    <Layout>
+      <h2>{displayDate}</h2>
+
+      <DateSelect
+        date={date}
+        minDate={minDate}
+        maxDate={maxDate}
+        next={next}
+        previous={previous}
+      />
+
+      <Day events={events} />
+
+      <DateSelect
+        date={date}
+        minDate={minDate}
+        maxDate={maxDate}
+        next={next}
+        previous={previous}
+      />
     </Layout>
   )
 }

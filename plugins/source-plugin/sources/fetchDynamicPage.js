@@ -1,19 +1,21 @@
 const puppeteer = require("puppeteer")
 
+const TIMEOUT = 10_000
+
 const getPage = async (url, selector) => {
   const browser = await puppeteer.launch({
-    // args: chromium.args,
-    // executablePath: await chromium.executablePath,
     headless: true,
   })
 
   const page = await browser.newPage()
   await page.emulateTimezone("America/New_York")
-  // page.setDefaultNavigationTimeout(4000);
-  // page.setDefaultTimeout(3000);
-  await page.goto(url)
-  await page.waitForSelector(selector)
+
+  const res = await page.goto(url)
+
+  await page.waitForSelector(selector, { timeout: TIMEOUT })
   const content = await page.content()
+
+  // should this be in a finally() or something?
   await browser.close()
 
   return content

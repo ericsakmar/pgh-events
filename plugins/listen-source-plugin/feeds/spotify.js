@@ -1,4 +1,3 @@
-const fetch = require("node-fetch")
 const dateFns = require("date-fns")
 const csv = require("@fast-csv/parse")
 const { fetchPage } = require("./fetchPage")
@@ -102,10 +101,10 @@ exports.getLinks = async () => {
 
   const links = playlists.map(p => ({
     title: p.name,
-    subtitle: undefined,
+    subtitle: "Spotify",
     url: p.external_urls.spotify,
     timestamp: getLastUpdated(p.tracks.items),
-    tags: ["spotify playlist"],
+    tags: ["playlist"],
     image: p.images[0].url,
   }))
 

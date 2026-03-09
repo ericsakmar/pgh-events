@@ -1,5 +1,3 @@
-const fetch = require("node-fetch")
-
 const BUILD_HOOK = process.env.BUILD_HOOK
 const API_TOKEN = process.env.API_TOKEN
 const SITE_ID = process.env.SITE_ID
