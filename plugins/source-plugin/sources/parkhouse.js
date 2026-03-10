@@ -2,8 +2,7 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url =
-  "https://www.warhol.org/calendar/list/?tribe_eventcategory%5B0%5D=1546"
+const url = "https://parkhouse412.com/calendar/list/"
 exports.url = url
 
 exports.getEvents = async () => {
@@ -24,11 +23,12 @@ exports.getEvents = async () => {
       return {
         title: event.name,
         date: parseDate(event.startDate),
-        location: event.location.name ?? "The Warhol",
+        location: "Park House",
         link: event.url,
         source: url,
         hasTime,
-        poster: event.image,
+        poster:
+          "https://parkhouse412.com/wp-content/uploads/2025/11/Park-House-Logo.png",
       }
     })
 

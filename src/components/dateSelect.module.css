@@ -1,0 +1,39 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.date {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+}
+
+.dateButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1.333rem;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  box-shadow: 2px 2px var(--border-color);
+}
+
+.dateButtonDisabled {
+  opacity: 0.2;
+}

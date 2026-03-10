@@ -13,7 +13,7 @@ function Seo({ title }) {
           }
         }
 
-        ogImageDefault: file(relativePath: { eq: "card-2023.png" }) {
+        ogImageDefault: file(relativePath: { eq: "card-2026.png" }) {
           childImageSharp {
             gatsbyImageData(layout: FIXED, height: 1200, width: 1200)
           }

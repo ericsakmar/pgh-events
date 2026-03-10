@@ -22,10 +22,28 @@
   src: url(/fonts/PontanoSans-Medium.ttf) format("truetype");
 }
 
+:root {
+  --background: #f5f5f5;
+  --text: #1a1a1b;
+  --max-page-width: 1200px;
+  --accent-color: #ffb300;
+  --accent-color-2: #00d4ff;
+  --border-color: #1a1a1b;
+  --header-font: Bevan, monospace;
+}
+
 body {
-  background-color: #393e46;
-  color: #222831;
+  background-color: var(--background);
+  color: var(--text);
   font-family: "Pontano Sans";
+
+  background-image: radial-gradient(
+      circle,
+      rgba(245, 245, 245, 1) 60%,
+      rgba(245, 245, 245, 0.35) 100%
+    ),
+    radial-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 0);
+  background-size: 100% 100%, 6px 6px;
 }
 
 /* from https://kittygiraudel.com/snippets/sr-only-class/ */
@@ -69,27 +87,12 @@ body {
   margin-bottom: 1px;
 }
 
-:root {
-  --accent: #ffd369;
-  --light: #eeeeee;
-  --dark: #393e46;
-  --very-dark: #222831;
-  --header-font: Bevan, monospace;
-}
-
 h2 {
-  border-bottom: 5px solid var(--very-dark);
-  color: var(--accent);
   font-family: var(--header-font);
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: normal;
-  line-height: 2rem;
+  line-height: 2.5rem;
   margin-bottom: 1rem;
-  margin-right: -1px;
-  text-shadow: 3px 3px var(--very-dark);
-}
-
-@media (min-width: 45rem) {
-  h2 {
-  }
+  margin-top: 1rem;
+  text-align: center;
 }

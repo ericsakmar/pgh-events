@@ -14,6 +14,8 @@ const CHANNEL_IDS = [
   "UC1j_mioKL69rn_8P821iehA", // little giant
   "UCGd9HYAFcmULiyoSsNEZLWw", // thunderbird
   "UCfsmz7-5_Gw2UlPmCn1LMjQ", // enjoy wrestling
+  "UCqf3IkFdeTJg2F17jpNMuYQ", // no skip show
+  "UC9WLEFXZmaohzgFsjUqWtHg", // plankfan
 ]
 
 const getChannel = async id => {

@@ -13,7 +13,7 @@ const useLink = link => {
   return stateLink
 }
 
-const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
+const Playlist = React.forwardRef(({ playlist, lazy, type }, ref) => {
   const link = useLink(playlist.url)
   const [showImage, setShowImage] = React.useState(!lazy)
 
@@ -33,19 +33,25 @@ const Playlist = React.forwardRef(({ playlist, lazy }, ref) => {
         rel="noopener noreferrer"
       >
         {playlist.image && showImage && (
-          <img
-            role="presentation"
-            src={playlist.image}
-            alt={`${playlist.title} thumbnail`}
-            className={containerStyles.poster}
-          />
+          <div
+            className={containerStyles.posterWrapper}
+            style={{ aspectRatio: type === "video" ? "4/3" : "1/1" }}
+          >
+            <img
+              role="presentation"
+              src={playlist.image}
+              alt={`${playlist.title} thumbnail`}
+              className={containerStyles.poster}
+            />
+          </div>
         )}
 
         <div className={containerStyles.details}>
+          {playlist.subtitle && (
+            <p className={containerStyles.source}>{playlist.subtitle}</p>
+          )}
           <h3 className={containerStyles.title}>{playlist.title}</h3>
-          {playlist.subtitle && <p>{playlist.subtitle}</p>}
           <p>{playlist.timestamp}</p>
-          <p className={containerStyles.tags}>{playlist.tags.join(", ")}</p>
         </div>
       </a>
     </li>

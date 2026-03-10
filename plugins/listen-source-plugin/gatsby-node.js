@@ -1,6 +1,5 @@
 const agaveparty = require("./feeds/agaveparty")
 const boredinpittsburgh = require("./feeds/boredinpittsburgh")
-const cazart = require("./feeds/cazart")
 const cruelnoise = require("./feeds/cruelnoise")
 const spotify = require("./feeds/spotify")
 const pittsburghindependent = require("./feeds/pittsburghindependent")
@@ -9,6 +8,8 @@ const wpts = require("./feeds/wpts")
 const wyep = require("./feeds/wyep")
 const youtube = require("./feeds/youtube")
 const callback = require("./feeds/callback")
+const youtubeMusic = require("./feeds/youtube-music")
+const noskip = require("./feeds/noskip")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -45,7 +46,6 @@ exports.sourceNodes = async ({
   const prodSources = [
     agaveparty,
     boredinpittsburgh,
-    cazart,
     cruelnoise,
     spotify,
     pittsburghindependent,
@@ -54,9 +54,11 @@ exports.sourceNodes = async ({
     wyep,
     youtube,
     callback,
+    youtubeMusic,
+    noskip,
   ]
 
-  const devSources = [youtube, callback]
+  const devSources = [noskip]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

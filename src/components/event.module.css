@@ -2,11 +2,9 @@
   margin-bottom: 1rem;
   margin-right: 5px;
   break-inside: avoid-column;
-  box-shadow: 5px 5px 0 #ffd369;
-  padding: 1rem;
-  border: 5px solid #222831;
-  background-color: #eee;
-  border-radius: 10px;
+  box-shadow: 2px 2px var(--border-color);
+  border: 1px solid var(--border-color);
+  background-color: #fff;
   transition: all 100ms ease-in-out;
 
   position: relative;
@@ -29,11 +27,6 @@
   }
 }
 
-.event:focus-within {
-  /* transform: translate(-5px, -5px); */
-  /* box-shadow: 10px 10px 0px 0px var(--accent) !important; */
-}
-
 .actions {
   display: flex;
   gap: 0 1rem;
@@ -45,12 +38,25 @@
 .poster {
   max-height: 600px;
   width: 100%;
-  border: 5px solid #222831;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .details {
+  margin: 0.5rem;
+}
+
+.location {
+  background-color: var(--accent-color);
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.666rem;
+  padding: 0.1rem 0.5rem;
+  font-weight: bold;
+  margin-bottom: 0.333rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
 }
 
 /* https://inclusive-components.design/cards/ */
@@ -61,10 +67,4 @@
   left: 0;
   bottom: 0;
   right: 0;
-}
-
-@media (min-width: 45rem) {
-  .event {
-    /* margin-right: 0; */
-  }
 }
