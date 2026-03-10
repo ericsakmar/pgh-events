@@ -1,4 +1,3 @@
-const fetch = require("node-fetch")
 const dateFns = require("date-fns")
 const csv = require("@fast-csv/parse")
 const { fetchPage } = require("./fetchPage")

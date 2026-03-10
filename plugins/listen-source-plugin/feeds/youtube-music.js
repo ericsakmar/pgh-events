@@ -1,5 +1,3 @@
-const fetch = require("node-fetch")
-
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY
 
 const PLAYLIST_IDS = [
