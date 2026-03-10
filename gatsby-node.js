@@ -6,11 +6,7 @@ const {
   eachDayOfInterval,
   add,
 } = require("date-fns")
-const {
-  formatInTimeZone,
-  utcToZonedTime,
-  zonedTimeToUtc,
-} = require("date-fns-tz")
+const { formatInTimeZone, toZonedTime, fromZonedTime } = require("date-fns-tz")
 const { decode } = require("html-entities")
 
 const TIME_ZONE = "America/New_York"
@@ -21,48 +17,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage, createRedirect } = actions
 
   const date = new Date()
-  const serverDate = zonedTimeToUtc(date, TIME_ZONE)
-  const localToday = utcToZonedTime(serverDate, TIME_ZONE)
-  const today = zonedTimeToUtc(startOfDay(localToday), TIME_ZONE)
+  const serverDate = fromZonedTime(date, TIME_ZONE)
+  const localToday = toZonedTime(serverDate, TIME_ZONE)
+  const today = fromZonedTime(startOfDay(localToday), TIME_ZONE)
 
-  const result = await graphql(
-    `
-      query MyQuery {
-        allEvent {
-          edges {
-            node {
-              id
-              title
-              date
-              location
-              link
-              hasTime
-              source
-              poster
-            }
-          }
-        }
-      }
-    `
-  )
-
-  const feedsResult = await graphql(
-    `
-      query MyQuery {
-        allListenlink(sort: { fields: timestamp, order: DESC }, limit: 6) {
-          nodes {
+  const result = await graphql(`
+    query MyQuery {
+      allEvent {
+        edges {
+          node {
             id
-            tags
-            timestamp
             title
-            url
-            image
-            subtitle
+            date
+            location
+            link
+            hasTime
+            source
+            poster
           }
         }
       }
-    `
-  )
+    }
+  `)
+
+  const feedsResult = await graphql(`
+    query MyQuery {
+      allListenlink(sort: { timestamp: DESC }, limit: 6) {
+        nodes {
+          id
+          tags
+          timestamp
+          title
+          url
+          image
+          subtitle
+        }
+      }
+    }
+  `)
 
   if (result.errors || feedsResult.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
@@ -96,7 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     end: add(today, {
       months: 3,
     }),
-  }).map(d => zonedTimeToUtc(d, TIME_ZONE))
+  }).map(d => fromZonedTime(d, TIME_ZONE))
 
   const minDate = formatDay(dates[0])
   const maxDate = formatDay(dates[dates.length - 1])
@@ -135,14 +127,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const statsResult = await graphql(`
     query MyQuery {
       allEvent(filter: { date: { gte: "${minDate}", lte: "${maxDate}" } }) {
-        group(field: location) {
-          fieldValue
+        group(field: {location: SELECT}) {
           totalCount
-          distinct(field: source)
+          distinct(field: {source: SELECT})
+          fieldValue
         }
         totalCount
       }
-      allListenlink(sort: { fields: timestamp, order: DESC }, limit: 60) {
+      allListenlink(sort: { timestamp: DESC }, limit: 60) {
         nodes {
           id
           tags
@@ -152,8 +144,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           image
           subtitle
         }
-        min(field: timestamp)
-        max(field: timestamp)
       }
     }
   `)

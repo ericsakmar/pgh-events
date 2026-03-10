@@ -47,7 +47,7 @@ export default VideosPage
 export const query = graphql`
   query MyQuery {
     allListenlink(
-      sort: { fields: timestamp, order: DESC }
+      sort: { timestamp: DESC }
       limit: 100
       filter: { tags: { in: "youtube channel" } }
     ) {
