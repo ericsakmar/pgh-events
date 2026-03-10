@@ -6,7 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",
-    "@netlify/functions": "^2.6.0",
+    "@netlify/functions": "^5.1.2",
     "@visx/axis": "^3.12.0",
     "@visx/grid": "^3.12.0",
     "@visx/group": "^3.12.0",
