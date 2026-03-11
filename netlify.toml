@@ -22,3 +22,7 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[plugins]]
+  package = "netlify-plugin-chromium"
+  package = "@netlify/plugin-gatsby"
