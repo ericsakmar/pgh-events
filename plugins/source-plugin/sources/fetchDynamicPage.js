@@ -5,6 +5,7 @@ const TIMEOUT = 10_000
 const getPage = async (url, selector) => {
   const browser = await puppeteer.launch({
     headless: true,
+    executablePath: process.env.CHROME_PATH,
   })
 
   const page = await browser.newPage()
