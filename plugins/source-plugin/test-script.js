@@ -1,4 +1,4 @@
-const source = require("./sources/clubcafe.js")
+const source = require("./sources/amw.js")
 
 source
   .getEvents()

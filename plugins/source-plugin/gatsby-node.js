@@ -40,6 +40,7 @@ const thunderbird = require("./sources/thunderbird.js")
 const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
 const winery = require("./sources/winery.js")
+const amw = require("./sources/amw.js")
 
 const POST_NODE_TYPE = `Event`
 const MAX_RETRIES = 3
@@ -80,6 +81,7 @@ exports.sourceNodes = async ({
     // shsb, // they don't update their calendar often
     // starlake, // not really interested in this place right now
     arcade,
+    amw,
     belvederes,
     bottlerocket,
     brillo,
@@ -120,7 +122,7 @@ exports.sourceNodes = async ({
     winery,
   ]
 
-  const devSources = [moondogs, perryHouse, clubcafe, crafthouse]
+  const devSources = [amw, smalls]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
