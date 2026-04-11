@@ -15,10 +15,7 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const titleAndDate = n
-        .find(".pp-post-title")
-        .text()
-        .trim()
+      const titleAndDate = n.find(".pp-post-title").text().trim()
 
       const [rawTitle, rawDate] = titleAndDate.split("∙")
 
@@ -31,15 +28,9 @@ exports.getEvents = async () => {
         .attr("content")
         .trim()
 
-      const link = n
-        .find(".pp-post-link")
-        .attr("href")
-        .trim()
+      const link = n.find(".pp-post-link").attr("href").trim()
 
-      const poster = n
-        .find(".pp-post-img")
-        .attr("src")
-        .trim()
+      const poster = n.find(".pp-post-img").attr("src").trim()
 
       return {
         title,
@@ -48,7 +39,8 @@ exports.getEvents = async () => {
         link,
         source: url,
         hasTime: false,
-        poster
+        poster,
+        city: "pgh",
       }
     })
 

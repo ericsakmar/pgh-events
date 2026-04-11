@@ -15,10 +15,7 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".summary-title")
-        .text()
-        .trim()
+      const title = n.find(".summary-title").text().trim()
 
       const rawDate = n
         .find(".summary-metadata-item--date")
@@ -30,15 +27,9 @@ exports.getEvents = async () => {
 
       const location = "Kingfly Spirits"
 
-      const link = n
-        .find(".summary-title-link")
-        .attr("href")
-        .trim()
+      const link = n.find(".summary-title-link").attr("href").trim()
 
-      const poster = n
-        .find(".summary-thumbnail-image")
-        .attr("data-src")
-        .trim()
+      const poster = n.find(".summary-thumbnail-image").attr("data-src").trim()
 
       return {
         title,
@@ -47,7 +38,8 @@ exports.getEvents = async () => {
         link: `https://www.kingflyspirits.com${link}`,
         source: url,
         hasTime: false,
-        poster
+        poster,
+        city: "pgh",
       }
     })
 

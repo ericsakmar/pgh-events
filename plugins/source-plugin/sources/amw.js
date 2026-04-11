@@ -37,6 +37,7 @@ exports.getEvents = async () => {
         link: `https://acousticmusicworks.com${link}`,
         source: url,
         poster,
+        city: "pgh",
       }
     })
 

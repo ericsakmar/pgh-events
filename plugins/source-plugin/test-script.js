@@ -1,4 +1,4 @@
-const source = require("./sources/amw.js")
+const source = require("./sources/oneTwoThree.js")
 
 source
   .getEvents()

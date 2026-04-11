@@ -15,32 +15,17 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".info h2")
-        .text()
-        .trim()
+      const title = n.find(".info h2").text().trim()
 
-      const rawDate = n
-        .find(".date .doors-time")
-        .text()
-        .trim()
+      const rawDate = n.find(".date .doors-time").text().trim()
 
-      const rawTime = n
-        .find(".time .doors-time")
-        .text()
-        .trim()
+      const rawTime = n.find(".time .doors-time").text().trim()
 
       const date = parseDate(`${rawDate} ${rawTime}`)
 
-      const location = n
-        .find(".venue-name")
-        .text()
-        .trim()
+      const location = n.find(".venue-name").text().trim()
 
-      const link = n
-        .find(".box-link")
-        .attr("href")
-        .trim()
+      const link = n.find(".box-link").attr("href").trim()
 
       const poster = n
         .find(".background-image")
@@ -49,7 +34,16 @@ exports.getEvents = async () => {
         .match(/'.*?'/)[0]
         .replace(/'/g, "")
 
-      return { title, date, location, link, source: url, hasTime: true, poster }
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: true,
+        poster,
+        city: "pgh",
+      }
     })
     .filter(e => e.location === "Stage AE")
 

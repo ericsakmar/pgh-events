@@ -3,7 +3,7 @@ const {
   add,
   eachDayOfInterval,
   getDay,
-  format
+  format,
 } = require("date-fns")
 const { parseDate } = require("./parseDate")
 
@@ -13,7 +13,7 @@ exports.url = url
 // 0 is sunday
 const schedule = [
   { day: 3, location: "Golden Age Beer Co.", time: "7pm" },
-  { day: 4, location: "East End Brewing Company", time: "7pm" }
+  { day: 4, location: "East End Brewing Company", time: "7pm" },
 ]
 
 exports.getEvents = async () => {
@@ -38,6 +38,7 @@ const buildEvents = date => {
       source: url,
       hasTime: true,
       poster:
-        "https://images.squarespace-cdn.com/content/v1/5fb43f5c7fae89205d83fc95/1605648304951-SC0ECNGSXZXGB9IIC3I2/DrewsCluesNewBlueColor.png?format=1500w"
+        "https://images.squarespace-cdn.com/content/v1/5fb43f5c7fae89205d83fc95/1605648304951-SC0ECNGSXZXGB9IIC3I2/DrewsCluesNewBlueColor.png?format=1500w",
+      city: "pgh",
     }))
 }

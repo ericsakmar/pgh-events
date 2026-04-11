@@ -39,6 +39,7 @@ const parsePage = async pageUrl => {
     source: url,
     hasTime: true,
     poster: poster !== "" ? poster : undefined,
+    city: "pgh",
   }))
 }
 

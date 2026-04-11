@@ -15,29 +15,17 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".eventlist-title")
-        .text()
-        .trim()
+      const title = n.find(".eventlist-title").text().trim()
 
-      const rawDate = n
-        .find(".eventlist-meta-date")
-        .text()
-        .trim()
+      const rawDate = n.find(".eventlist-meta-date").text().trim()
 
-      const rawTime = n
-        .find(".event-time-12hr-start")
-        .text()
-        .trim()
+      const rawTime = n.find(".event-time-12hr-start").text().trim()
 
       const date = parseDate(`${rawDate} ${rawTime}`)
 
       const location = "The Oaks Theater"
 
-      const link = n
-        .find(".eventlist-title-link")
-        .attr("href")
-        .trim()
+      const link = n.find(".eventlist-title-link").attr("href").trim()
 
       const poster = n.find(".eventlist-thumbnail").attr("data-src")
 
@@ -48,7 +36,8 @@ exports.getEvents = async () => {
         link: `https://www.theoakstheater.com${link}`,
         source: url,
         hasTime: true,
-        poster
+        poster,
+        city: "pgh",
       }
     })
 

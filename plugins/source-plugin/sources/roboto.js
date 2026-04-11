@@ -40,6 +40,7 @@ exports.getEvents = async () => {
         link: `https://www.ticketleap.events${link}`,
         source: url,
         hasTime: true,
+        city: "pgh",
       }
     })
 

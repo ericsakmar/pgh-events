@@ -41,6 +41,7 @@ const get = (container, location, $) => {
         hasTime: true,
         poster:
           "https://www.alleghenycounty.us/uploadedImages/Allegheny_Home/Dept-Content/Special_Events/Images/Logos/2023SummerConcertSeries_430x320.jpg?targetTypeId=Desktop",
+        city: "pgh",
       }
     })
 

@@ -13,7 +13,7 @@ exports.getEvents = async () => {
   const $ = cheerio.load(data)
 
   const eventData = $(
-    `main .lnd-container script[type="application/ld+json"]`
+    `main .lnd-container script[type="application/ld+json"]`,
   ).toArray()
 
   const events = eventData
@@ -31,6 +31,7 @@ exports.getEvents = async () => {
       source: url,
       hasTime: true,
       poster: event.image,
+      city: "pgh",
     }))
 
   return events

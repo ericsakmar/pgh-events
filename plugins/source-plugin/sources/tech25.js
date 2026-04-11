@@ -38,6 +38,7 @@ exports.getEvents = async () => {
         source: url,
         hasTime: true,
         poster: `https://www.tech25.org${poster}`,
+        city: "pgh",
       }
     })
     .filter(event => event !== null)

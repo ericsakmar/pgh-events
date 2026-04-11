@@ -37,6 +37,7 @@ exports.getEvents = async () => {
         hasTime: true,
         poster:
           "https://southsideworks.com/wp-content/uploads/2020/07/SSW-lockup.png",
+        city: "pgh",
       }
     })
 

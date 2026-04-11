@@ -1,15 +1,9 @@
-.page {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+.filters {
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 
-.main {
-  flex-grow: 1;
-}
-
-@media (max-width: 600px) {
-  .page {
-    flex-direction: column;
-  }
+.checkbox {
+  margin-right: 0.333rem;
 }

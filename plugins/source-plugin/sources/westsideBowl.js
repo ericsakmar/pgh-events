@@ -2,14 +2,15 @@ const cheerio = require("cheerio")
 const fetchPage = require("./fetchPage")
 const { parseDate } = require("./parseDate")
 
-const url = "https://parkhouse412.com/calendar/list/"
+const url = "https://westsidebowl.com/events/"
 exports.url = url
 
 exports.getEvents = async () => {
   const data = await fetchPage.fetchPage(url)
+
   const $ = cheerio.load(data)
 
-  const events = $(`body script[type="application/ld+json"]`)
+  const events = $(`.tribe-events script[type="application/ld+json"]`)
     .toArray()
     .map(el => {
       const ldJson = el.children[0].data
@@ -18,18 +19,15 @@ exports.getEvents = async () => {
     })
     .flatMap(events => events)
     .map(event => {
-      const hasTime = event.startDate.includes("T")
-
       return {
         title: event.name,
         date: parseDate(event.startDate),
-        location: "Park House",
+        location: "Westside Bowl",
         link: event.url,
         source: url,
-        hasTime,
-        poster:
-          "https://parkhouse412.com/wp-content/uploads/2025/11/Park-House-Logo.png",
-        city: "pgh",
+        hasTime: true,
+        poster: event.image,
+        city: "yng",
       }
     })
 

@@ -60,6 +60,7 @@ exports.getEvents = async () => {
           source: url,
           hasTime: false,
           poster,
+          city: "pgh",
         }))
       } catch (e) {
         console.warn(`error while parsing ${rawTitle}`)

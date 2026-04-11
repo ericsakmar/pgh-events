@@ -17,25 +17,13 @@ exports.getEvents = async () => {
     .map(el => {
       const n = $(el)
 
-      const title = n
-        .find(".eventColl-eventInfo")
-        .text()
-        .trim()
+      const title = n.find(".eventColl-eventInfo").text().trim()
 
-      const rawMonth = n
-        .find(".eventColl-month")
-        .text()
-        .trim()
+      const rawMonth = n.find(".eventColl-month").text().trim()
 
-      const rawDay = n
-        .find(".eventColl-date")
-        .text()
-        .trim()
+      const rawDay = n.find(".eventColl-date").text().trim()
 
-      const rawTime = n
-        .find(".eventColl-detail--doors")
-        .text()
-        .trim()
+      const rawTime = n.find(".eventColl-detail--doors").text().trim()
 
       const rawDate = `${rawMonth} ${rawDay} at ${rawTime}`
 
@@ -47,10 +35,7 @@ exports.getEvents = async () => {
 
       const location = "Carnegie Library of Homestead Music Hall"
 
-      const link = n
-        .find(".eventColl-eventInfo a")
-        .attr("href")
-        .trim()
+      const link = n.find(".eventColl-eventInfo a").attr("href").trim()
 
       const poster = n.find("img").attr("src")
 
@@ -61,7 +46,8 @@ exports.getEvents = async () => {
         link: `https://librarymusichall.com${link}`,
         source: url,
         hasTime: true,
-        poster
+        poster,
+        city: "pgh",
       }
     })
     .filter(e => e !== undefined)

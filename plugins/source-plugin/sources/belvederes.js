@@ -41,6 +41,7 @@ exports.getEvents = async () => {
         link,
         source: url,
         hasTime: true,
+        city: "pgh",
       }
     })
     .filter(e => e !== undefined)

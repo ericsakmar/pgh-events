@@ -29,6 +29,7 @@ exports.getEvents = async () => {
         source: url,
         hasTime,
         poster: `https://images.sk-static.com/images/${event.image}`,
+        city: "pgh",
       }
     })
 

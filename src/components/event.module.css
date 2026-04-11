@@ -55,6 +55,16 @@
   margin-bottom: 0.333rem;
 }
 
+.location[data-city="yng"] {
+  background-color: #4a6741;
+  color: #fff;
+}
+
+.location[data-city="mgw"] {
+  background-color: #9c7c38;
+  color: #fff;
+}
+
 .title {
   margin-bottom: 0.5rem;
 }

@@ -41,6 +41,8 @@ const trace = require("./sources/trace.js")
 const warhol = require("./sources/warhol.js")
 const winery = require("./sources/winery.js")
 const amw = require("./sources/amw.js")
+const westsideBowl = require("./sources/westsideBowl.js")
+const oneTwoThree = require("./sources/oneTwoThree.js")
 
 const POST_NODE_TYPE = `Event`
 const MAX_RETRIES = 3
@@ -120,9 +122,11 @@ exports.sourceNodes = async ({
     trace,
     warhol,
     winery,
+    westsideBowl,
+    oneTwoThree,
   ]
 
-  const devSources = [amw, smalls]
+  const devSources = [amw, smalls, westsideBowl, oneTwoThree]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

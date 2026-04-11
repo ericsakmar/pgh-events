@@ -29,6 +29,7 @@ exports.getEvents = async () => {
         source: url,
         hasTime,
         poster: event.image,
+        city: "pgh",
       }
     })
 

@@ -3,7 +3,7 @@ const {
   add,
   eachDayOfInterval,
   getDay,
-  format
+  format,
 } = require("date-fns")
 const { parseDate } = require("./parseDate")
 
@@ -20,7 +20,7 @@ const schedule = [
   { day: 4, location: "OTB South Side", time: "7pm" },
   { day: 4, location: "Inner Groove Brewing", time: "7pm" },
   { day: 4, location: "Cobblehaus", time: "7pm" },
-  { day: 5, location: "Getaway Cafe", time: "9pm" }
+  { day: 5, location: "Getaway Cafe", time: "9pm" },
 ]
 
 exports.getEvents = async () => {
@@ -45,6 +45,7 @@ const buildEvents = date => {
       source: url,
       hasTime: true,
       poster:
-        "https://pbs.twimg.com/profile_banners/239935492/1616084747/1500x500"
+        "https://pbs.twimg.com/profile_banners/239935492/1616084747/1500x500",
+      city: "pgh",
     }))
 }

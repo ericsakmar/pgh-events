@@ -45,7 +45,7 @@ async function queryDatabase() {
     client = await pool.connect()
 
     const eventsRes = await client.query(
-      `SELECT name, date, location, "eventLink", "posterLink" FROM "Event" WHERE approved=TRUE`
+      `SELECT name, date, location, "eventLink", "posterLink" FROM "Event" WHERE approved=TRUE`,
     )
 
     const events = eventsRes.rows.map(r => ({
@@ -56,6 +56,7 @@ async function queryDatabase() {
       poster: r.posterLink,
       source: "admin-db",
       hasTime: true,
+      city: "pgh",
     }))
 
     return events

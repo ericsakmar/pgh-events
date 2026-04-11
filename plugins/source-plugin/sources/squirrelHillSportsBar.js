@@ -23,7 +23,16 @@ exports.getEvents = async () => {
       const link = n.find(".mec-event-title").find("a").attr("href").trim()
       const poster = n.find(".attachment-thumblist").attr("src")?.trim()
 
-      return { title, date, location, link, source: url, hasTime: true, poster }
+      return {
+        title,
+        date,
+        location,
+        link,
+        source: url,
+        hasTime: true,
+        poster,
+        city: "pgh",
+      }
     })
 
   return events

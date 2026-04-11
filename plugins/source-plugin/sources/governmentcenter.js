@@ -56,6 +56,7 @@ const getEventsOnPage = data => {
         source: url,
         hasTime: false,
         poster,
+        city: "pgh",
       }
     })
 

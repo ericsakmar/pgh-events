@@ -8,6 +8,9 @@ import EventTime from "./eventTime"
 const Event = ({ event }) => {
   const renderPoster = event.poster !== undefined && event.poster !== null
 
+  const location =
+    event.city !== "pgh" ? `${event.location} (${event.city})` : event.location
+
   return (
     <li className={containerStyles.event} id={event.id}>
       {renderPoster && (
@@ -21,7 +24,9 @@ const Event = ({ event }) => {
       )}
 
       <div className={containerStyles.details}>
-        <p className={containerStyles.location}>{event.location}</p>
+        <p className={containerStyles.location} data-city={event.city}>
+          {location}
+        </p>
 
         <h3 className={containerStyles.title}>
           {event.link ? (
