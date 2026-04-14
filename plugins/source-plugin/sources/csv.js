@@ -17,7 +17,8 @@ exports.url = "csv"
 
 const undefinedIfBlank = str => (str === "" ? undefined : str)
 
-const utc_offset = 5 // 4
+// this is the thing you're supposed to remember to change
+const utc_offset = 4 // 5
 
 const parse = data =>
   new Promise(resolve => {
