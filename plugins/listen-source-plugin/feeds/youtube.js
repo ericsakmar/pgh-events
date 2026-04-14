@@ -16,11 +16,12 @@ const CHANNEL_IDS = [
   "UCfsmz7-5_Gw2UlPmCn1LMjQ", // enjoy wrestling
   "UCqf3IkFdeTJg2F17jpNMuYQ", // no skip show
   "UC9WLEFXZmaohzgFsjUqWtHg", // plankfan
+  "UCfyxMrvJnoGAZFqJI4b3AgQ", // wyep
 ]
 
 const getChannel = async id => {
   const feed = await parser.parseURL(
-    `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`
+    `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`,
   )
 
   const links = feed.items.map(i => ({

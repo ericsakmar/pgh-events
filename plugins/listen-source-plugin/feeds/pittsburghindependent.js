@@ -6,7 +6,7 @@ const parseDate = rawDate => chrono.parseDate(rawDate, { timezone: "EST" })
 
 exports.getLinks = async () => {
   const data = await fetchPage(
-    "https://www.pghindependent.com/post-category/music"
+    "https://www.pittsburghmanifold.com/post-category/music",
   )
   const $ = cheerio.load(data)
 
@@ -24,8 +24,8 @@ exports.getLinks = async () => {
 
       return {
         title,
-        subtitle: "Pittsburgh Independent",
-        url: `https://www.pghindependent.com${link}`,
+        subtitle: "Pittsburgh Manifold",
+        url: `https://www.pittsburghmanifold.com${link}`,
         timestamp: date,
         tags: ["blog"],
         image,

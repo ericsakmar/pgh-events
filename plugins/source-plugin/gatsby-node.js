@@ -43,6 +43,7 @@ const winery = require("./sources/winery.js")
 const amw = require("./sources/amw.js")
 const westsideBowl = require("./sources/westsideBowl.js")
 const oneTwoThree = require("./sources/oneTwoThree.js")
+const csv = require("./sources/csv.js")
 
 const POST_NODE_TYPE = `Event`
 const MAX_RETRIES = 3
@@ -124,9 +125,10 @@ exports.sourceNodes = async ({
     winery,
     westsideBowl,
     oneTwoThree,
+    csv,
   ]
 
-  const devSources = [amw, smalls, westsideBowl, oneTwoThree]
+  const devSources = [amw, smalls, westsideBowl, oneTwoThree, csv]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

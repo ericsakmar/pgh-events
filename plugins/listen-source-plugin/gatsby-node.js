@@ -58,7 +58,7 @@ exports.sourceNodes = async ({
     noskip,
   ]
 
-  const devSources = [noskip]
+  const devSources = [noskip, pittsburghindependent, youtube]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources
@@ -78,6 +78,6 @@ exports.sourceNodes = async ({
         content: JSON.stringify(link),
         contentDigest: createContentDigest(link),
       },
-    })
+    }),
   )
 }

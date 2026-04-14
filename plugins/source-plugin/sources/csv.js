@@ -71,11 +71,12 @@ async function queryDatabase() {
 }
 
 exports.getEvents = async () => {
-  const data = await fetchPage.fetchPage(url)
-  const parsed = await parse(data)
-  const csvEvents = parsed.filter(e => e.approved === "YES")
+  // const data = await fetchPage.fetchPage(url)
+  // const parsed = await parse(data)
+  // const csvEvents = parsed.filter(e => e.approved === "YES")
 
   const dbEvents = await queryDatabase()
 
-  return [...csvEvents, ...dbEvents]
+  // return [...csvEvents, ...dbEvents]
+  return dbEvents
 }
