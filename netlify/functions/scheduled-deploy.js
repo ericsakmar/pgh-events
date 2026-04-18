@@ -41,14 +41,13 @@ const getLastDeployDate = async () => {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
       },
-    }
+    },
   )
 
   const json = await res.json()
-  console.log("last deploy response:")
-  console.log(JSON.stringify(json, null, 2))
-
   const rawDate = json[0].created_at
+
+  console.log("last deploy date:", rawDate)
   return new Date(rawDate)
 }
 
