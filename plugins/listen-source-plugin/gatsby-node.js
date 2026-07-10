@@ -10,6 +10,7 @@ const youtube = require("./feeds/youtube")
 const callback = require("./feeds/callback")
 const youtubeMusic = require("./feeds/youtube-music")
 const noskip = require("./feeds/noskip")
+const buildthescene = require("./feeds/buildthescene")
 
 const NODE_TYPE = "listenlink"
 const MAX_RETRIES = 3
@@ -56,9 +57,10 @@ exports.sourceNodes = async ({
     callback,
     youtubeMusic,
     noskip,
+    buildthescene,
   ]
 
-  const devSources = [noskip, pittsburghindependent, youtube]
+  const devSources = [noskip, pittsburghindependent, youtube, buildthescene]
 
   const sources =
     process.env.NODE_ENV === "development" ? devSources : prodSources

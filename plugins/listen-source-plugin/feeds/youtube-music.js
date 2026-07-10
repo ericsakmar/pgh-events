@@ -1,6 +1,9 @@
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY
 
 const PLAYLIST_IDS = [
+  "PLb6SQXhVAmc_M10HArQzrw0m7clOvmra5", // pghlmt may 2026
+  "PLb6SQXhVAmc8DSYuqOoPr66c8pVq8SL6X", // pghlmt apr 2026
+  "PLb6SQXhVAmc8OcBprcvdxWX0nPcRFBE9P", // pghlmt mar 2026
   "PLb6SQXhVAmc_5SkSe3KMt4GgZpNiUryA3", // pghlmt feb 2026
   "PLb6SQXhVAmc-0smSO_HEsiNXt6zYyCGwQ", // pghlmt jan 2026
   "PLb6SQXhVAmc9dqgP5Hz2KGDoBGXIiKvkp", // pghlmt best of 2025
@@ -26,7 +29,7 @@ const getDetails = async id => {
     const playlist = metaJson.items[0]
 
     const itemsUrl = new URL(
-      "https://www.googleapis.com/youtube/v3/playlistItems"
+      "https://www.googleapis.com/youtube/v3/playlistItems",
     )
     itemsUrl.searchParams.set("part", "snippet")
     itemsUrl.searchParams.set("maxResults", "50")
