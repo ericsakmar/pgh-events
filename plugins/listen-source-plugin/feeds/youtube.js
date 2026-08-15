@@ -17,6 +17,7 @@ const CHANNEL_IDS = [
   "UCqf3IkFdeTJg2F17jpNMuYQ", // no skip show
   "UC9WLEFXZmaohzgFsjUqWtHg", // plankfan
   "UCfyxMrvJnoGAZFqJI4b3AgQ", // wyep
+  "UCkarZl_u7MeMwrHUCejHSkw", // baum baum club
 ]
 
 const getChannel = async id => {
