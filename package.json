@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@fast-csv/parse": "^5.0.0",
     "@netlify/functions": "^5.1.2",
     "@visx/axis": "^3.12.0",
     "@visx/grid": "^3.12.0",
@@ -13,8 +12,6 @@
     "@visx/responsive": "^3.12.0",
     "@visx/scale": "^3.12.0",
     "@visx/shape": "^3.12.0",
-    "cheerio": "^1.0.0-rc.12",
-    "chrono-node": "^2.7.5",
     "date-fns": "^3.6.0",
     "date-fns-tz": "^3.0.1",
     "gatsby": "^5.13.7",
@@ -29,8 +26,7 @@
     "ical": "^0.8.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "rss-parser": "^3.13.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "prettier": "^3.2.5"

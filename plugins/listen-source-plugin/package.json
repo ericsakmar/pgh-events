@@ -13,11 +13,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fast-csv/parse": "^5.0.0",
-    "cheerio": "^1.0.0-rc.12",
-    "chrono-node": "^2.7.5",
-    "date-fns": "^3.6.0",
-    "date-fns-tz": "^3.0.1",
-    "rss-parser": "^3.13.0"
   }
 }

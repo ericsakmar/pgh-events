@@ -1,43 +1,4 @@
-const agaveparty = require("./feeds/agaveparty")
-const boredinpittsburgh = require("./feeds/boredinpittsburgh")
-const cruelnoise = require("./feeds/cruelnoise")
-const spotify = require("./feeds/spotify")
-const pittsburghindependent = require("./feeds/pittsburghindependent")
-const startthebeat = require("./feeds/startthebeat")
-const wpts = require("./feeds/wpts")
-const wyep = require("./feeds/wyep")
-const youtube = require("./feeds/youtube")
-const callback = require("./feeds/callback")
-const youtubeMusic = require("./feeds/youtube-music")
-const noskip = require("./feeds/noskip")
-const buildthescene = require("./feeds/buildthescene")
-const telegraphtree = require("./feeds/telegraphtree")
-const boom = require("./feeds/boom")
-
 const NODE_TYPE = "listenlink"
-const MAX_RETRIES = 3
-
-const getLinks = async (feed, retries = 0) => {
-  if (retries >= MAX_RETRIES) {
-    console.warn(`max retries exceeded for ${feed.name}`)
-    return []
-  }
-
-  try {
-    const links = await feed.getLinks()
-
-    if (links.length === 0) {
-      console.warn(`no links found for ${feed.name}`)
-    }
-
-    return links
-  } catch (error) {
-    console.error(error)
-
-    const retry = await getLinks(feed, retries + 1)
-    return retry
-  }
-}
 
 exports.sourceNodes = async ({
   actions,
@@ -46,32 +7,11 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions
 
-  const prodSources = [
-    agaveparty,
-    boredinpittsburgh,
-    cruelnoise,
-    spotify,
-    pittsburghindependent,
-    startthebeat,
-    wpts,
-    wyep,
-    youtube,
-    callback,
-    youtubeMusic,
-    noskip,
-    buildthescene,
-    telegraphtree,
-    boom,
-  ]
+  const res = await fetch(
+    "https://raw.githubusercontent.com/ericsakmar/pgh-events-data/refs/heads/main/feeds.json",
+  )
 
-  const devSources = [pittsburghindependent, boom, telegraphtree]
-
-  const sources =
-    process.env.NODE_ENV === "development" ? devSources : prodSources
-
-  const results = await Promise.all(sources.map(s => getLinks(s)))
-
-  const links = results.flatMap(r => r)
+  const links = await res.json()
 
   links.forEach(link =>
     createNode({
