@@ -72,7 +72,12 @@ const ArticlesPage = ({ data }) => {
 
 const Article = ({ article }) => {
   return (
-    <div className={styles.gridItem}>
+    <a
+      href={article.url}
+      className={styles.gridItem}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <img src={article.image} />
 
       <div className={styles.details}>
@@ -80,24 +85,28 @@ const Article = ({ article }) => {
         <h3>{article.title}</h3>
         <p>{article.timestamp}</p>
       </div>
-    </div>
+    </a>
   )
 }
 
 const ArticleTiny = ({ article }) => {
   return (
-    <div className={styles.gridItemTiny}>
+    <a
+      href={article.url}
+      className={styles.gridItemTiny}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <img src={article.image} />
       <div className={styles.details}>
-        <div>
-          <div className={styles.source}>{article.subtitle}</div>
-        </div>
+        <div className={styles.source}>{article.subtitle}</div>
         <h3>{article.title}</h3>
         <p>{article.timestamp}</p>
       </div>
-    </div>
+    </a>
   )
 }
+
 export default ArticlesPage
 
 export const query = graphql`

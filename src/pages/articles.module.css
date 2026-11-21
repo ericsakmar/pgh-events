@@ -98,16 +98,13 @@
 /* super copied, maybe should be component */
 .source {
   background-color: var(--accent-color);
-  display: inline; /* allows text wrapping and fits strictly around words */
+  display: inline-block;
   text-transform: uppercase;
   font-size: 0.666rem;
-  padding: 0 0.1rem; /* minimal side padding so text doesn't touch edges */
+  padding: 0.1rem 0.5rem;
   font-weight: bold;
   margin-bottom: 0.333rem;
-
-  /* Ensures highlight wraps neatly if the text spans across lines */
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+  color: var(--text);
 }
 
 @media (max-width: 900px) {
