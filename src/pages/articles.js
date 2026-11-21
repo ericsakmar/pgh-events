@@ -1,11 +1,9 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { format, parseISO } from "date-fns"
-import Playlist from "../components/playlist"
 import Seo from "../components/seo"
 import * as styles from "./articles.module.css"
 import Layout from "../components/layout"
-import { useLazy } from "../hooks/useLazy"
 
 export function Head() {
   return <Seo title="pgh.events/articles" />
@@ -26,8 +24,6 @@ const ArticlesPage = ({ data }) => {
     ...l,
     timestamp: format(parseISO(l.timestamp), "E, LLL d"),
   }))
-
-  const imgRefs = useLazy(articles)
 
   return (
     <Layout>

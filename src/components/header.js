@@ -28,32 +28,11 @@ const Header = () => {
             Events
           </Link>
           <Link
-            to="/videos"
-            className={styles.link}
-            activeClassName={styles.activeLink}
-          >
-            Videos
-          </Link>
-          <Link
-            to="/podcasts"
-            className={styles.link}
-            activeClassName={styles.activeLink}
-          >
-            Podcasts
-          </Link>
-          <Link
-            to="/playlists"
-            className={styles.link}
-            activeClassName={styles.activeLink}
-          >
-            Playlists
-          </Link>
-          <Link
             to="/articles"
             className={styles.link}
             activeClassName={styles.activeLink}
           >
-            Articles
+            Other Stuff
           </Link>
 
           <a
