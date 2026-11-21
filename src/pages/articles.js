@@ -12,7 +12,7 @@ export function Head() {
 }
 
 const ArticlesPage = ({ data }) => {
-  const items = data.articles.nodes.map(l => ({
+  const articles = data.articles.nodes.map(l => ({
     ...l,
     timestamp: format(parseISO(l.timestamp), "E, LLL d"),
   }))
@@ -27,33 +27,18 @@ const ArticlesPage = ({ data }) => {
     timestamp: format(parseISO(l.timestamp), "E, LLL d"),
   }))
 
-  const imgRefs = useLazy(items)
+  const imgRefs = useLazy(articles)
 
   return (
     <Layout>
-      <h2>Articles</h2>
-
-      {items.length === 0 ? (
-        <p>there's nothing here!</p>
-      ) : (
+      {articles.length === 0 ? null : (
         <>
+          <h2>Articles</h2>
+
           <div className={styles.grid}>
-            <div className={styles.gridItemLarge}>
-              <img src={items[0].image} />
-
-              <div className={styles.details}>
-                <div className={styles.source}>{items[0].subtitle}</div>
-                <h3>{items[0].title}</h3>
-                <p>{items[0].timestamp}</p>
-              </div>
-            </div>
-
-            <ArticleSmall article={items[1]} />
-            <ArticleSmall article={items[2]} />
-
-            <ArticleSmall article={items[3]} />
-            <ArticleSmall article={items[4]} />
-            <ArticleSmall article={items[5]} />
+            {articles.map(article => (
+              <Article article={article} key={article.id} />
+            ))}
           </div>
         </>
       )}
@@ -64,7 +49,7 @@ const ArticlesPage = ({ data }) => {
 
           <div className={styles.gridSub}>
             {videos.map(podcast => (
-              <ArticleSmall article={podcast} key={podcast.id} />
+              <Article article={podcast} key={podcast.id} />
             ))}
           </div>
         </>
@@ -85,10 +70,11 @@ const ArticlesPage = ({ data }) => {
   )
 }
 
-const ArticleSmall = ({ article }) => {
+const Article = ({ article }) => {
   return (
-    <div className={styles.gridItemSmall}>
+    <div className={styles.gridItem}>
       <img src={article.image} />
+
       <div className={styles.details}>
         <div className={styles.source}>{article.subtitle}</div>
         <h3>{article.title}</h3>
@@ -118,7 +104,7 @@ export const query = graphql`
   query MyQuery {
     articles: allListenlink(
       sort: { timestamp: DESC }
-      limit: 12
+      limit: 6
       filter: { tags: { in: "blog" } }
     ) {
       nodes {
